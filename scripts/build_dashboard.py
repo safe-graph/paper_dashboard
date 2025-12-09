@@ -1,9 +1,15 @@
 import argparse
 import logging
 import os
+import sys
 from dataclasses import asdict
 from pathlib import Path
 from typing import Dict, List
+
+# Ensure repository root is on sys.path when executed as a script
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from paper_dashboard import analysis
 from paper_dashboard.builder import render_dashboard
