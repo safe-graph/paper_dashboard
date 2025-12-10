@@ -139,17 +139,18 @@ DOMAIN_KEYWORDS = {
 }
 
 
+def infer_domain(title: str) -> str:
+    lower = title.lower()
+    for domain, patterns in DOMAIN_KEYWORDS.items():
+        if any(re.search(pat, lower) for pat in patterns):
+            return domain
+    return "General"
+
+
 def domain_focus(papers: Iterable[PaperEntry]) -> List[Dict[str, int]]:
     counter: Counter[str] = Counter()
     for paper in papers:
-        lower = paper.title.lower()
-        matched_any = False
-        for domain, patterns in DOMAIN_KEYWORDS.items():
-            if any(re.search(pat, lower) for pat in patterns):
-                counter[domain] += 1
-                matched_any = True
-        if not matched_any:
-            counter["General"] += 1
+        counter[infer_domain(paper.title)] += 1
     return [{"domain": k, "count": counter[k]} for k in sorted(counter.keys(), key=lambda x: (-counter[x], x))]
 
 
@@ -241,13 +242,13 @@ def derive_insights(stats: Dict) -> List[str]:
         insights.append(
             f"{peak['year']} is the busiest year with {peak['count']} papers listed."
         )
-        if len(year_counts) > 1:
-            first, last = year_counts[0], year_counts[-1]
-            change = last["count"] - first["count"]
-            if change > 0:
-                insights.append(
-                    f"Paper volume grew by {change} from {first['year']} to {last['year']}."
-                )
+        # if len(year_counts) > 1:
+        #     first, last = year_counts[0], year_counts[-1]
+        #     change = last["count"] - first["count"]
+        #     if change > 0:
+        #         insights.append(
+        #             f"Paper volume grew by {change} from {first['year']} to {last['year']}."
+        #         )
     if venue_counts:
         top = venue_counts[0]
         insights.append(f"{top['venue']} appears most often ({top['count']} times).")
@@ -258,18 +259,18 @@ def derive_insights(stats: Dict) -> List[str]:
         insights.append(
             f"Code is linked for {code_stats['with_code']} papers ({code_stats['percentage']}%)."
         )
-    if category_counts:
-        top_cat = max(category_counts, key=lambda x: x["count"])
-        insights.append(
-            f"{top_cat['category']} contains the most entries ({top_cat['count']})."
-        )
-    if domain_counts:
-        top_domain = max(domain_counts, key=lambda x: x["count"])
-        insights.append(f"Most common domain focus: {top_domain['domain']}.")
-    if method_counts:
-        top_method = max(method_counts, key=lambda x: x["count"])
-        insights.append(f"Prevalent method family: {top_method['method']}.")
-    return insights
+    # if category_counts:
+    #     top_cat = max(category_counts, key=lambda x: x["count"])
+    #     insights.append(
+    #         f"{top_cat['category']} contains the most entries ({top_cat['count']})."
+    #     )
+    # if domain_counts:
+    #     top_domain = max(domain_counts, key=lambda x: x["count"])
+    #     insights.append(f"Most common domain focus: {top_domain['domain']}.")
+    # if method_counts:
+    #     top_method = max(method_counts, key=lambda x: x["count"])
+    #     insights.append(f"Prevalent method family: {top_method['method']}.")
+    # return insights
 
 
 def to_serializable(papers: Iterable[PaperEntry]) -> List[Dict]:
@@ -283,6 +284,7 @@ def to_serializable(papers: Iterable[PaperEntry]) -> List[Dict]:
             "category": paper.category,
             "subcategory": paper.subcategory,
             "has_code": paper.has_code,
+            "domain": infer_domain(paper.title),
         }
         for paper in papers
     ]

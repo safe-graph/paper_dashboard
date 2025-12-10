@@ -8,6 +8,9 @@
   let query = "";
   let category = "All";
   let domain = "All";
+  let yearFilter = "All";
+  let page = 1;
+  const pageSize = 20;
 
   const langIcons = {
     Python: "🐍",
@@ -54,6 +57,8 @@
   $: resources = data?.resources || [];
   $: categories = ["All", ...new Set(papers.map((p) => p.category).filter(Boolean))];
   $: domains = ["All", ...new Set(stats.domain_counts?.map((d) => d.domain) || [])];
+  $: years = ["All", ...Array.from(new Set(papers.map((p) => p.year).filter(Boolean))).sort((a, b) => b - a)];
+  $: page = 1, query, category, domain, yearFilter; // reset page on filter change
   $: filtered = papers.filter((p) => {
     const q = query.trim().toLowerCase();
     const matchesQuery =
@@ -61,11 +66,13 @@
       p.title.toLowerCase().includes(q) ||
       (p.venue && p.venue.toLowerCase().includes(q));
     const matchesCategory = category === "All" || p.category === category;
-    const matchesDomain =
-      domain === "All" ||
-      (stats.domain_counts || []).some((d) => d.domain === domain && p.title.toLowerCase().includes(d.domain.toLowerCase()));
-    return matchesQuery && matchesCategory && matchesDomain;
+    const matchesDomain = domain === "All" || p.domain === domain;
+    const matchesYear = yearFilter === "All" || p.year === yearFilter;
+    return matchesQuery && matchesCategory && matchesDomain && matchesYear;
   });
+  $: pageCount = filtered.length ? Math.max(1, Math.ceil(filtered.length / pageSize)) : 1;
+  $: page = Math.min(page, pageCount);
+  $: pageItems = filtered.slice((page - 1) * pageSize, page * pageSize);
 
   const baseBar = (items, xKey, yKey, title, horizontal = false, color = "#22d3ee", labelOpts = {}) => ({
     textStyle: { color: "#e2e8f0" },
@@ -289,6 +296,9 @@
           <select bind:value={domain}>
             {#each domains as d}<option value={d}>{d}</option>{/each}
           </select>
+          <select bind:value={yearFilter}>
+            {#each years as y}<option value={y}>{y}</option>{/each}
+          </select>
           <div class="chip">Showing {fmt(filtered.length)} papers</div>
         </div>
         <div style="overflow:auto;">
@@ -304,7 +314,7 @@
               </tr>
             </thead>
             <tbody>
-              {#each filtered as p}
+              {#each pageItems as p}
                 <tr>
                   <td>{p.year || "—"}</td>
                   <td><a href={p.paper_url || "#"} target="_blank" rel="noopener">{p.title}</a></td>
@@ -316,6 +326,11 @@
               {/each}
             </tbody>
           </table>
+        </div>
+        <div class="pagination">
+          <button on:click={() => (page = Math.max(1, page - 1))} disabled={page === 1}>Prev</button>
+          <span>Page {page} / {pageCount}</span>
+          <button on:click={() => (page = Math.min(pageCount, page + 1))} disabled={page === pageCount}>Next</button>
         </div>
       </div>
     </section>

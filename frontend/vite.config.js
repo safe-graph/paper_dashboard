@@ -18,7 +18,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false, // disable source maps to avoid extra requests on GitHub Pages / file:// previews
   },
   resolve: {
     alias: {

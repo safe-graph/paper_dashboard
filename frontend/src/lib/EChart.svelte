@@ -26,14 +26,31 @@
 
   onMount(() => {
     render();
-    resizeObserver = new ResizeObserver(() => {
-      try {
-        chart?.resize();
-      } catch (err) {
-        console.error("EChart resize error", err);
-      }
-    });
-    resizeObserver.observe(el);
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => {
+        try {
+          chart?.resize();
+        } catch (err) {
+          console.error("EChart resize error", err);
+        }
+      });
+      resizeObserver.observe(el);
+    } else {
+      // Fallback for very old browsers: resize on window resize
+      const handler = () => {
+        try {
+          chart?.resize();
+        } catch (err) {
+          console.error("EChart resize error", err);
+        }
+      };
+      window.addEventListener("resize", handler);
+      resizeObserver = {
+        disconnect() {
+          window.removeEventListener("resize", handler);
+        },
+      };
+    }
   });
 
   $: if (chart && option) {

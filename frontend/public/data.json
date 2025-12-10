@@ -8,7 +8,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2026,
@@ -18,7 +19,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2026,
@@ -28,7 +30,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -38,7 +41,8 @@
       "code_url": "https://github.com/yzhangjy/PANTHER",
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -48,7 +52,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -58,7 +63,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2025,
@@ -68,7 +74,8 @@
       "code_url": "https://github.com/CoDS-GCS/OCR-APT",
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -78,7 +85,8 @@
       "code_url": "https://github.com/Flanders1914/TAG_AD",
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -88,7 +96,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2025,
@@ -98,7 +107,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -108,7 +118,8 @@
       "code_url": "https://anonymous.4open.science/r/FraudSquad-5389/",
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2025,
@@ -118,7 +129,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -128,7 +140,8 @@
       "code_url": "https://github.com/THUDM/WhoIsWho/tree/main/mind",
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -138,7 +151,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -148,7 +162,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -158,7 +173,8 @@
       "code_url": "https://github.com/kaustpradalab/Fraud-R1",
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2025,
@@ -168,7 +184,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -178,7 +195,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -188,7 +206,8 @@
       "code_url": null,
       "category": "LLM and Transformer Papers",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2026,
@@ -198,7 +217,8 @@
       "code_url": "https://github.com/0xllssFF/PromoGuardian",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2026",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2026,
@@ -208,7 +228,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2026",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2026,
@@ -218,7 +239,8 @@
       "code_url": "https://github.com/CampanulaBells/TUNE",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2026",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -228,7 +250,8 @@
       "code_url": "https://github.com/mala-lab/RHO",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -238,7 +261,8 @@
       "code_url": "https://github.com/kg-cc/IA-GGAD/",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -248,7 +272,8 @@
       "code_url": "https://github.com/weicy15/CGADM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -258,7 +283,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -268,7 +294,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -278,7 +305,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -288,7 +316,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -298,7 +327,8 @@
       "code_url": "https://anonymous.4open.science/r/JANUS-5EDF/",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -308,7 +338,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2025,
@@ -318,7 +349,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -328,7 +360,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -338,7 +371,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2025,
@@ -348,7 +382,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -358,7 +393,8 @@
       "code_url": "https://github.com/Tlhey/decaf_code",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -368,7 +404,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -378,7 +415,8 @@
       "code_url": "https://github.com/XsLangley/CRoC_ECAI2025",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -388,7 +426,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -398,7 +437,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -408,7 +448,8 @@
       "code_url": "https://github.com/wuanjunruc/GEL",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -418,7 +459,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2025,
@@ -428,7 +470,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -438,7 +481,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -448,7 +492,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -458,7 +503,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -468,7 +514,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -478,7 +525,8 @@
       "code_url": "https://github.com/Thankstaro/GraphPN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -488,7 +536,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -498,7 +547,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2025,
@@ -508,7 +558,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -518,7 +569,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -528,7 +580,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -538,7 +591,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -548,7 +602,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -558,7 +613,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -568,7 +624,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -578,7 +635,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -588,7 +646,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -598,7 +657,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2025,
@@ -608,7 +668,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -618,7 +679,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -628,7 +690,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -638,7 +701,8 @@
       "code_url": "https://github.com/zhenglecheng/CARE-demo",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -648,7 +712,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -658,7 +723,8 @@
       "code_url": "https://github.com/UB-GOLD/UB-GOLD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -668,7 +734,8 @@
       "code_url": "https://github.com/xydong127/SpaceGNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -678,7 +745,8 @@
       "code_url": "https://github.com/mala-lab/NSReg",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -688,7 +756,8 @@
       "code_url": "https://github.com/fortunato-all/DiffGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -698,7 +767,8 @@
       "code_url": "https://github.com/AI4Risk/antifraud",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2025,
@@ -708,7 +778,8 @@
       "code_url": "https://github.com/karish-grover/curvgad",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -718,7 +789,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -728,7 +800,8 @@
       "code_url": "https://github.com/mala-lab/AnomalyGFM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -738,7 +811,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -748,7 +822,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -758,7 +833,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -768,7 +844,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -778,7 +855,8 @@
       "code_url": "https://github.com/yimingxu24/AD-GCL",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -788,7 +866,8 @@
       "code_url": "https://github.com/IWantBe/Dynamic-Spectral-Graph-Anomaly-Detection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -798,7 +877,8 @@
       "code_url": "https://github.com/CampanulaBells/HUGE-GAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -808,7 +888,8 @@
       "code_url": "https://github.com/bdi-lab/MonTi",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "Cybersecurity/Malware"
     },
     {
       "year": 2025,
@@ -818,7 +899,8 @@
       "code_url": "https://github.com/YXNTU/GeneralDyG",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -828,7 +910,8 @@
       "code_url": "https://github.com/AtwoodDuan/GAAP",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2025",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -838,7 +921,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -848,7 +932,8 @@
       "code_url": "https://github.com/lllyyq1121/UniGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -858,7 +943,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -868,7 +954,8 @@
       "code_url": "https://github.com/missinghwan/ANOMIX",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -878,7 +965,8 @@
       "code_url": "https://github.com/junhongmit/FraudGT",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -888,7 +976,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -898,7 +987,8 @@
       "code_url": "https://github.com/nigelnnk/FairGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -908,7 +998,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -918,7 +1009,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -928,7 +1020,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -938,7 +1031,8 @@
       "code_url": "https://github.com/TommyDzh/DIAM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -948,7 +1042,8 @@
       "code_url": "https://github.com/wdhyun/LEX-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -958,7 +1053,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -968,7 +1064,8 @@
       "code_url": "https://github.com/mala-lab/UNPrompt",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -978,7 +1075,8 @@
       "code_url": "https://github.com/LIyvqi/U-A2GAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -988,7 +1086,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -998,7 +1097,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Telecom"
     },
     {
       "year": 2024,
@@ -1008,7 +1108,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1018,7 +1119,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1028,7 +1130,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2024,
@@ -1038,7 +1141,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1048,7 +1152,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1058,7 +1163,8 @@
       "code_url": "https://github.com/XiongxiaoXu/MetaGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1068,7 +1174,8 @@
       "code_url": "https://github.com/JYZHU03/PSGT",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -1078,7 +1185,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1088,7 +1196,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1098,7 +1207,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1108,7 +1218,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1118,7 +1229,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Cybersecurity/Malware"
     },
     {
       "year": 2024,
@@ -1128,7 +1240,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1138,7 +1251,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1148,7 +1262,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1158,7 +1273,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Telecom"
     },
     {
       "year": 2024,
@@ -1168,7 +1284,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1178,7 +1295,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1188,7 +1306,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1198,7 +1317,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1208,7 +1328,8 @@
       "code_url": "https://github.com/Yali-F/HC-GLAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1218,7 +1339,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1228,7 +1350,8 @@
       "code_url": "https://github.com/AhaChang/DEFEND",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1238,7 +1361,8 @@
       "code_url": "https://github.com/timpostuvan/CTDG-link-anomaly-detection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1248,7 +1372,8 @@
       "code_url": "https://github.com/yixinliu233/ARC",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1258,7 +1383,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1268,7 +1394,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1278,7 +1405,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -1288,7 +1416,8 @@
       "code_url": "https://github.com/blacksingular/Bio-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1298,7 +1427,8 @@
       "code_url": "https://github.com/blacksingular/Bio-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1308,7 +1438,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -1318,7 +1449,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1328,7 +1460,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1338,7 +1471,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1348,7 +1482,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -1358,7 +1493,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1368,7 +1504,8 @@
       "code_url": "https://github.com/fortunato-all/skl-GDN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "Cybersecurity/Malware"
     },
     {
       "year": 2024,
@@ -1378,7 +1515,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1388,7 +1526,8 @@
       "code_url": "https://anonymous.4open.science/r/RAGFormer-4675",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1398,7 +1537,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -1408,7 +1548,8 @@
       "code_url": "https://github.com/mala-lab/GGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1418,7 +1559,8 @@
       "code_url": "https://github.com/AhaChang/MITIGATE",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1428,7 +1570,8 @@
       "code_url": "https://github.com/IBM/Multi-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1438,7 +1581,8 @@
       "code_url": "https://github.com/CcQunResearch/RAGCL",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -1448,7 +1592,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1458,7 +1603,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1468,7 +1614,8 @@
       "code_url": "https://github.com/finint/POCL",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1478,7 +1625,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2024,
@@ -1488,7 +1636,8 @@
       "code_url": "https://github.com/Xtra-Computing/PMP",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1498,7 +1647,8 @@
       "code_url": "https://github.com/Xtra-Computing/ConsisGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1508,7 +1658,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1518,7 +1669,8 @@
       "code_url": "https://github.com/xydong127/RQGNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1528,7 +1680,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -1538,7 +1691,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2024",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1548,7 +1702,8 @@
       "code_url": "https://github.com/Jing-DS/HNN_GAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1558,7 +1713,8 @@
       "code_url": "https://pypi.org/project/godm/",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1568,7 +1724,8 @@
       "code_url": "https://github.com/Graph-COM/GAD-NR",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1578,7 +1735,8 @@
       "code_url": "https://github.com/AtwoodDuan/DGA-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1588,7 +1746,8 @@
       "code_url": "https://github.com/GraphBerry/DiG-In-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1598,7 +1757,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -1608,7 +1768,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1618,7 +1779,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1628,7 +1790,8 @@
       "code_url": "https://github.com/IBM/Multi-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1638,7 +1801,8 @@
       "code_url": "https://github.com/squareRoot3/GADBench",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1648,7 +1812,8 @@
       "code_url": "https://github.com/Graph-COM/GAD-EBM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1658,7 +1823,8 @@
       "code_url": "https://github.com/yixinliu233/SIGNET",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1668,7 +1834,8 @@
       "code_url": "https://github.com/mala-lab/TAM-master/",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1678,7 +1845,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1688,7 +1856,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1698,7 +1867,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2023,
@@ -1708,7 +1878,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1718,7 +1889,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1728,7 +1900,8 @@
       "code_url": "https://github.com/split-gnn/splitgnn",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1738,7 +1911,8 @@
       "code_url": "https://github.com/THGNN/THGNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -1748,7 +1922,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2023,
@@ -1758,7 +1933,8 @@
       "code_url": "https://github.com/jhkim611/CLAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1768,7 +1944,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1778,7 +1955,8 @@
       "code_url": "https://github.com/k-s-b/gnn_wco",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1788,7 +1966,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1798,7 +1977,8 @@
       "code_url": "https://github.com/CatScarf/COFD-MM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1808,7 +1988,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -1818,7 +1999,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1828,7 +2010,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1838,7 +2021,8 @@
       "code_url": "https://github.com/shresthaanu/RoleRGCN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -1848,7 +2032,8 @@
       "code_url": "https://github.com/yul091/GraphLogAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1858,7 +2043,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1868,7 +2054,8 @@
       "code_url": "https://github.com/MrZealand/S3GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1878,7 +2065,8 @@
       "code_url": "https://github.com/TommyDzh/DIAM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1888,7 +2076,8 @@
       "code_url": "https://github.com/jiaxililearn/HRGCN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1898,7 +2087,8 @@
       "code_url": "https://github.com/D10Andy/SAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1908,7 +2098,8 @@
       "code_url": "https://github.com/KellyGong/SparseGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1918,7 +2109,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1928,7 +2120,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1938,7 +2131,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -1948,7 +2142,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1958,7 +2153,8 @@
       "code_url": "https://github.com/jiayingwu19/DECOR",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -1968,7 +2164,8 @@
       "code_url": "https://github.com/XiaoxiaoMa-MQ/GmapAD/",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1978,7 +2175,8 @@
       "code_url": "https://github.com/wulongfeng/CaliRare",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -1988,7 +2186,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2023,
@@ -1998,7 +2197,8 @@
       "code_url": "https://github.com/lwwang1995/ACD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2008,7 +2208,8 @@
       "code_url": "https://github.com/yujianke100/GFDN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2023,
@@ -2018,7 +2219,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -2028,7 +2230,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2038,7 +2241,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2048,7 +2252,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2058,7 +2263,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -2068,7 +2274,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -2078,7 +2285,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2088,7 +2296,8 @@
       "code_url": "https://github.com/realfolkcode/GraphDiffusionAnomaly",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2098,7 +2307,8 @@
       "code_url": "https://github.com/grab/GraphBEAN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2108,7 +2318,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2118,7 +2329,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2023,
@@ -2128,7 +2340,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -2138,7 +2351,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2148,7 +2362,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2158,7 +2373,8 @@
       "code_url": "https://github.com/IsolationKernel/Codes/tree/main/IDK/GraphAnomalyDetection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2168,7 +2384,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2178,7 +2395,8 @@
       "code_url": "https://github.com/finint/antifraud",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -2188,7 +2406,8 @@
       "code_url": "https://github.com/scu-kdde/OAM-TUAF-2023",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2198,7 +2417,8 @@
       "code_url": "https://github.com/anonymousDualFraud/DualFraud",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2208,7 +2428,8 @@
       "code_url": "https://github.com/xxhu94/GAT-COBO",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Telecom"
     },
     {
       "year": 2023,
@@ -2218,7 +2439,8 @@
       "code_url": "https://github.com/xxhu94/CSGNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -2228,7 +2450,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -2238,7 +2461,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2248,7 +2472,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2258,7 +2483,8 @@
       "code_url": "https://github.com/AwesomeDeepAI/Graph-based-money-laundering-detection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2268,7 +2494,8 @@
       "code_url": "https://github.com/qitianwu/GraphOOD-GNNSafe",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2278,7 +2505,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2288,7 +2516,8 @@
       "code_url": "https://github.com/hwang219/AttackFakeNews",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -2298,7 +2527,8 @@
       "code_url": "https://github.com/Orion-wyc/GAGA",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2308,7 +2538,8 @@
       "code_url": "https://github.com/blacksingular/GHRN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2318,7 +2549,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -2328,7 +2560,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2023,
@@ -2338,7 +2571,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -2348,7 +2582,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2023",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -2358,7 +2593,8 @@
       "code_url": "https://github.com/xingsumq/Us-DeFake",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2368,7 +2604,8 @@
       "code_url": "https://github.com/blacksingular/wsdm_GDN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2378,7 +2615,8 @@
       "code_url": "https://github.com/QZ-WANG/ACT",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2388,7 +2626,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -2398,7 +2637,8 @@
       "code_url": "https://github.com/ujeong1/IEEEBigdata22_HGFND",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2408,7 +2648,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2022,
@@ -2418,7 +2659,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2022,
@@ -2428,7 +2670,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2022,
@@ -2438,7 +2681,8 @@
       "code_url": "https://github.com/graph-level-anomalies/iGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2448,7 +2692,8 @@
       "code_url": "https://github.com/goldenNormal/vgod-github",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2458,7 +2703,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -2468,7 +2714,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2478,7 +2725,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2488,7 +2736,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2498,7 +2747,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2508,7 +2758,8 @@
       "code_url": "https://github.com/FanzhenLiu/DAGAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2518,7 +2769,8 @@
       "code_url": "https://github.com/sawlani/GLAM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2528,7 +2780,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2538,7 +2791,8 @@
       "code_url": "https://github.com/CRIPAC-DIG/GETRAL",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2548,7 +2802,8 @@
       "code_url": "https://github.com/pygod-team/pygod/tree/main/benchmark",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2558,7 +2813,8 @@
       "code_url": "https://github.com/DGraphXinye/DGraphFin_baseline",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -2568,7 +2824,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2578,7 +2835,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2588,7 +2846,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2598,7 +2857,8 @@
       "code_url": "https://github.com/allanchen95/GCCAD",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2608,7 +2868,8 @@
       "code_url": "https://github.com/finint/antifraud",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2618,7 +2879,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2628,7 +2890,8 @@
       "code_url": "https://github.com/snap-stanford/roland",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2638,7 +2901,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2648,7 +2912,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2022,
@@ -2658,7 +2923,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2668,7 +2934,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2678,7 +2945,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2688,7 +2956,8 @@
       "code_url": "https://github.com/squareRoot3/Rethinking-Anomaly-Detection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2698,7 +2967,8 @@
       "code_url": "https://github.com/zjunet/AMNet",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2708,7 +2978,8 @@
       "code_url": "https://github.com/DS3Lab/DyHGN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2718,7 +2989,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2728,7 +3000,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2738,7 +3011,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -2748,7 +3022,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -2758,7 +3033,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2768,7 +3044,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2778,7 +3055,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2788,7 +3066,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2798,7 +3077,8 @@
       "code_url": "https://github.com/mobvistaresearch/BotSpot-Plus",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2022,
@@ -2808,7 +3088,8 @@
       "code_url": "https://github.com/Charlesvandamme/Inductive-Graph-Representation-Learning-for-Fraud-Detection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2818,7 +3099,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2828,7 +3110,8 @@
       "code_url": "https://github.com/dleyan/MDGCN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -2838,7 +3121,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -2848,7 +3132,8 @@
       "code_url": "https://github.com/Ahren09/FinerFact",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2022",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -2858,7 +3143,8 @@
       "code_url": "https://github.com/GeZhangMQ/eFraudCom",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2021,
@@ -2868,7 +3154,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2878,7 +3165,8 @@
       "code_url": "https://github.com/FraudDetection/FRAUDRE",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2888,7 +3176,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2021,
@@ -2898,7 +3187,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2908,7 +3198,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2918,7 +3209,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -2928,7 +3220,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2938,7 +3231,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2948,7 +3242,8 @@
       "code_url": "https://github.com/Meta-HG/MetaHG",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -2958,7 +3253,8 @@
       "code_url": "https://github.com/GRAND-Lab/ANEMONE",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2968,7 +3264,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -2978,7 +3275,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2988,7 +3286,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -2998,7 +3297,8 @@
       "code_url": "https://github.com/DM2-ND/Eland",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3008,7 +3308,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3018,7 +3319,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3028,7 +3330,8 @@
       "code_url": "https://github.com/zhao-tong/Graph-Anomaly-Loss",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3038,7 +3341,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3048,7 +3352,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3058,7 +3363,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Cybersecurity/Malware"
     },
     {
       "year": 2021,
@@ -3068,7 +3374,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -3078,7 +3385,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3088,7 +3396,8 @@
       "code_url": "https://github.com/qema/bidyn",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3098,7 +3407,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3108,7 +3418,8 @@
       "code_url": "https://github.com/BUPT-GAMMA/CompareNet_FakeNewsDetection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3118,7 +3429,8 @@
       "code_url": "https://github.com/weilingwei96/EBGCN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3128,7 +3440,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3138,7 +3451,8 @@
       "code_url": "https://github.com/wyl7/DCI-pytorch",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3148,7 +3462,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3158,7 +3473,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3168,7 +3484,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3178,7 +3495,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2021,
@@ -3188,7 +3506,8 @@
       "code_url": "https://github.com/safe-graph/GNN-FakeNews",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3198,7 +3517,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -3208,7 +3528,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2021,
@@ -3218,7 +3539,8 @@
       "code_url": "https://github.com/gesy17/TGBully",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3228,7 +3550,8 @@
       "code_url": "https://github.com/PonderLY/PC-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3238,7 +3561,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -3248,7 +3572,8 @@
       "code_url": "https://github.com/xiawenwen49/DeepIS",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -3258,7 +3583,8 @@
       "code_url": "https://github.com/kaize0409/Meta-GDN_AnomalyDetection",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -3268,7 +3594,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2021",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3278,7 +3605,8 @@
       "code_url": "https://github.com/GRAND-Lab/CoLA",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3288,7 +3616,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3298,7 +3627,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3308,7 +3638,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3318,7 +3649,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3328,7 +3660,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2020,
@@ -3338,7 +3671,8 @@
       "code_url": "https://www.dropbox.com/sh/bmgz7d1q3tq5429/AAAAcmbgKOp-gtftVWhz533ua?dl=0",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3348,7 +3682,8 @@
       "code_url": "https://github.com/iqiyi/HMGNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3358,7 +3693,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3368,7 +3704,8 @@
       "code_url": "https://github.com/mobvistaresearch/CIKM2020-BotSpot",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2020,
@@ -3378,7 +3715,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3388,7 +3726,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3398,7 +3737,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3408,7 +3748,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3418,7 +3759,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2020,
@@ -3428,7 +3770,8 @@
       "code_url": "https://github.com/YingtongDou/CARE-GNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3438,7 +3781,8 @@
       "code_url": "https://github.com/shaanchandra/SAFER",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3448,7 +3792,8 @@
       "code_url": "https://github.com/nguyenvanhoang7398/FANG",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3458,7 +3803,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3468,7 +3814,8 @@
       "code_url": "https://github.com/zhao-tong/Graph-Anomaly-Loss",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3478,7 +3825,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3488,7 +3836,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3498,7 +3847,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3508,7 +3858,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3518,7 +3869,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3528,7 +3880,8 @@
       "code_url": "https://github.com/cuilimeng/DETERRENT",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3538,7 +3891,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud-TF2/tree/main/algorithms/GraphConsis",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3548,7 +3902,8 @@
       "code_url": "https://github.com/l852888/GCAN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3558,7 +3913,8 @@
       "code_url": "https://github.com/Giruvegan/generative-camouflaged-spam-detector",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3568,7 +3924,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3578,7 +3935,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -3588,7 +3946,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3598,7 +3957,8 @@
       "code_url": "https://github.com/zsjdddhr/GraphRfi",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3608,7 +3968,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -3618,7 +3979,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3628,7 +3990,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -3638,7 +4001,8 @@
       "code_url": "https://github.com/TianBian95/BiGCN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2019,
@@ -3648,7 +4012,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud-TF2/tree/main/algorithms/GAS",
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2019,
@@ -3658,7 +4023,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud-TF2/tree/main/algorithms/SemiGNN",
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2019,
@@ -3668,7 +4034,8 @@
       "code_url": "https://github.com/Giruvegan/stoneskipping",
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2019,
@@ -3678,7 +4045,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2019,
@@ -3688,7 +4056,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2019,
@@ -3698,7 +4067,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2019,
@@ -3708,7 +4078,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud",
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2019,
@@ -3718,7 +4089,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud",
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2018,
@@ -3728,7 +4100,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud-TF2/tree/main/algorithms/GEM",
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2018,
@@ -3738,7 +4111,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2018,
@@ -3748,7 +4122,8 @@
       "code_url": null,
       "category": "Deep Learning Graph Papers",
       "subcategory": "Before 2020",
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2025,
@@ -3758,7 +4133,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2025,
@@ -3768,7 +4144,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2025,
@@ -3778,7 +4155,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -3788,7 +4166,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -3798,7 +4177,8 @@
       "code_url": "https://github.com/Xtra-Computing/RUSH",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -3808,7 +4188,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2024,
@@ -3818,7 +4199,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2024,
@@ -3828,7 +4210,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -3838,7 +4221,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -3848,7 +4232,8 @@
       "code_url": "https://github.com/mtcazzolato/callmine",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -3858,7 +4243,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -3868,7 +4254,8 @@
       "code_url": "https://github.com/git-disl/EllipticPlusPlus",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2023,
@@ -3878,7 +4265,8 @@
       "code_url": "https://github.com/Stream-AD/AnoGraph",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2023,
@@ -3888,7 +4276,8 @@
       "code_url": "https://github.com/CompNet/Pang",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -3898,7 +4287,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -3908,7 +4298,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -3918,7 +4309,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -3928,7 +4320,8 @@
       "code_url": "https://github.com/tsourakakis-lab/antibenford-subgraphs",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -3938,7 +4331,8 @@
       "code_url": "https://github.com/zjlxgxz/DynAnom",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -3948,7 +4342,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -3958,7 +4353,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2022,
@@ -3968,7 +4364,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -3978,7 +4375,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -3988,7 +4386,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2022,
@@ -3998,7 +4397,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2022,
@@ -4008,7 +4408,8 @@
       "code_url": "https://github.com/Seondong/Customs-Fraud-Detection",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -4018,7 +4419,8 @@
       "code_url": "https://www.dropbox.com/sh/81tkcf1amemmq2i/AAC2k1vdX2DhsbFQz9LCzovEa?dl=0",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -4028,7 +4430,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -4038,7 +4441,8 @@
       "code_url": "https://github.com/alibaba/GraphScope",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -4048,7 +4452,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -4058,7 +4463,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -4068,7 +4474,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Blockchain/Crypto"
     },
     {
       "year": 2021,
@@ -4078,7 +4485,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2021,
@@ -4088,7 +4496,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2021,
@@ -4098,7 +4507,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -4108,7 +4518,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2021,
@@ -4118,7 +4529,8 @@
       "code_url": "https://github.com/snap-stanford/F-FADE",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4128,7 +4540,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -4138,7 +4551,8 @@
       "code_url": "https://github.com/mengchillee/AutoAudit",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -4148,7 +4562,8 @@
       "code_url": "https://github.com/wenchieh/specgreedy",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4158,7 +4573,8 @@
       "code_url": "https://github.com/Stream-AD/MIDAS",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4168,7 +4584,8 @@
       "code_url": "https://github.com/YingtongDou/Nash-Detect",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -4178,7 +4595,8 @@
       "code_url": "https://github.com/Roytsai27/Dual-Attentive-Tree-aware-Embedding",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4188,7 +4606,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4198,7 +4617,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4208,7 +4628,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4218,7 +4639,8 @@
       "code_url": "https://www.dropbox.com/sh/v1nmsdabk4wumcn/AADiRakrTIxx546qaOMNHPTWa?dl=0",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2020,
@@ -4228,7 +4650,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -4238,7 +4661,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2020,
@@ -4248,7 +4672,8 @@
       "code_url": "https://github.com/Stream-AD/MIDAS",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2020,
@@ -4258,7 +4683,8 @@
       "code_url": "https://github.com/aplaceof/FlowScope",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2019,
@@ -4268,7 +4694,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2019,
@@ -4278,7 +4705,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2019,
@@ -4288,7 +4716,8 @@
       "code_url": "https://github.com/hamedn/SliceNDice",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2019,
@@ -4298,7 +4727,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2019,
@@ -4308,7 +4738,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Finance/Credit"
     },
     {
       "year": 2019,
@@ -4318,7 +4749,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2019,
@@ -4328,7 +4760,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2019,
@@ -4338,7 +4771,8 @@
       "code_url": "https://github.com/LCS2-IIITD/DeFrauder",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2019,
@@ -4348,7 +4782,8 @@
       "code_url": "https://github.com/safe-graph/DGFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2018,
@@ -4358,7 +4793,8 @@
       "code_url": "https://github.com/zhao-tong/DeepFD-pyTorch",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2018,
@@ -4368,7 +4804,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2018,
@@ -4378,7 +4815,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2018,
@@ -4388,7 +4826,8 @@
       "code_url": "https://github.com/maianhpuco/alibabaFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2018,
@@ -4398,7 +4837,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2018,
@@ -4408,7 +4848,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2018,
@@ -4418,7 +4859,8 @@
       "code_url": "https://cs.stanford.edu/~srijan/rev2/",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2017,
@@ -4428,7 +4870,8 @@
       "code_url": "https://github.com/safe-graph/UGFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2017,
@@ -4438,7 +4881,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2017,
@@ -4448,7 +4892,8 @@
       "code_url": "https://github.com/safe-graph/UGFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "Social Media/News"
     },
     {
       "year": 2017,
@@ -4458,7 +4903,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "General"
     },
     {
       "year": 2017,
@@ -4468,7 +4914,8 @@
       "code_url": "https://github.com/shenghua-liu/HoloScope",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2017,
@@ -4478,7 +4925,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2017,
@@ -4488,7 +4936,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2017,
@@ -4498,7 +4947,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2016,
@@ -4508,7 +4958,8 @@
       "code_url": "https://github.com/safe-graph/UGFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     },
     {
       "year": 2015,
@@ -4518,7 +4969,8 @@
       "code_url": null,
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": false
+      "has_code": false,
+      "domain": "Social Media/News"
     },
     {
       "year": 2015,
@@ -4528,7 +4980,8 @@
       "code_url": "https://github.com/safe-graph/UGFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "E-commerce/Ads"
     },
     {
       "year": 2014,
@@ -4538,7 +4991,8 @@
       "code_url": "https://github.com/safe-graph/UGFraud",
       "category": "Non-Deep-Learning Papers since 2014",
       "subcategory": null,
-      "has_code": true
+      "has_code": true,
+      "domain": "General"
     }
   ],
   "stats": {
@@ -4808,24 +5262,24 @@
         "count": 285
       },
       {
-        "domain": "Social Media/News",
-        "count": 77
-      },
-      {
         "domain": "Finance/Credit",
         "count": 67
       },
       {
+        "domain": "Social Media/News",
+        "count": 64
+      },
+      {
         "domain": "E-commerce/Ads",
-        "count": 25
+        "count": 23
       },
       {
         "domain": "Blockchain/Crypto",
-        "count": 16
+        "count": 8
       },
       {
         "domain": "Cybersecurity/Malware",
-        "count": 13
+        "count": 4
       },
       {
         "domain": "Telecom",
@@ -4885,9 +5339,2022 @@
       }
     ],
     "paper_count": 454,
-    "language_counts": [],
-    "code_repos": [],
-    "top_repos": [],
+    "language_counts": [
+      {
+        "language": "Jupyter Notebook",
+        "bytes": 93497930
+      },
+      {
+        "language": "Python",
+        "bytes": 20941075
+      },
+      {
+        "language": "TypeScript",
+        "bytes": 9030538
+      },
+      {
+        "language": "C++",
+        "bytes": 7609918
+      },
+      {
+        "language": "Java",
+        "bytes": 5137418
+      },
+      {
+        "language": "Rust",
+        "bytes": 5129187
+      },
+      {
+        "language": "Turing",
+        "bytes": 1164632
+      },
+      {
+        "language": "HTML",
+        "bytes": 1020413
+      },
+      {
+        "language": "Shell",
+        "bytes": 973436
+      },
+      {
+        "language": "MATLAB",
+        "bytes": 316073
+      },
+      {
+        "language": "C",
+        "bytes": 290461
+      },
+      {
+        "language": "Makefile",
+        "bytes": 153580
+      },
+      {
+        "language": "Cypher",
+        "bytes": 121182
+      },
+      {
+        "language": "CMake",
+        "bytes": 96566
+      },
+      {
+        "language": "M4",
+        "bytes": 63439
+      },
+      {
+        "language": "Dockerfile",
+        "bytes": 53528
+      },
+      {
+        "language": "ANTLR",
+        "bytes": 38883
+      },
+      {
+        "language": "Euphoria",
+        "bytes": 34033
+      },
+      {
+        "language": "Cython",
+        "bytes": 27505
+      },
+      {
+        "language": "Cuda",
+        "bytes": 22474
+      },
+      {
+        "language": "Smarty",
+        "bytes": 21653
+      },
+      {
+        "language": "QMake",
+        "bytes": 4670
+      },
+      {
+        "language": "PowerShell",
+        "bytes": 1751
+      },
+      {
+        "language": "ReScript",
+        "bytes": 1211
+      },
+      {
+        "language": "Xonsh",
+        "bytes": 1174
+      },
+      {
+        "language": "SWIG",
+        "bytes": 277
+      },
+      {
+        "language": "Linker Script",
+        "bytes": 35
+      }
+    ],
+    "code_repos": [
+      {
+        "full_name": "yzhangjy/PANTHER",
+        "url": "https://github.com/WeChatPay-Pretraining/PANTHER",
+        "stars": 2,
+        "language": "Python",
+        "topics": [
+          "llm",
+          "pretraining"
+        ],
+        "languages": {
+          "Python": 551851
+        }
+      },
+      {
+        "full_name": "CoDS-GCS/OCR-APT",
+        "url": "https://github.com/CoDS-GCS/OCR-APT",
+        "stars": 10,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 546965,
+          "Shell": 24913
+        }
+      },
+      {
+        "full_name": "Flanders1914/TAG_AD",
+        "url": "https://github.com/Flanders1914/TAG_AD",
+        "stars": 1,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 122497,
+          "Shell": 653
+        }
+      },
+      {
+        "full_name": "THUDM/WhoIsWho",
+        "url": "https://github.com/THUDM/WhoIsWho",
+        "stars": 44,
+        "language": "Python",
+        "topics": [
+          "academic-graph",
+          "data-mining",
+          "name-disambiguation"
+        ],
+        "languages": {
+          "Python": 839675,
+          "Shell": 1362
+        }
+      },
+      {
+        "full_name": "kaustpradalab/Fraud-R1",
+        "url": "https://github.com/kaustpradalab/Fraud-R1",
+        "stars": 23,
+        "language": "Python",
+        "topics": [
+          "aisafety",
+          "benchmark",
+          "ethic",
+          "nlp",
+          "trustworthy-ai"
+        ],
+        "languages": {
+          "Python": 70891,
+          "Shell": 8654
+        }
+      },
+      {
+        "full_name": "0xllssFF/PromoGuardian",
+        "url": "https://github.com/0xllssFF/PromoGuardian",
+        "stars": 0,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 12397
+        }
+      },
+      {
+        "full_name": "CampanulaBells/TUNE",
+        "url": "https://github.com/CampanulaBells/TUNE",
+        "stars": 0,
+        "language": null,
+        "topics": [],
+        "languages": {}
+      },
+      {
+        "full_name": "mala-lab/RHO",
+        "url": "https://github.com/mala-lab/RHO",
+        "stars": 12,
+        "language": "Python",
+        "topics": [
+          "graph-anomaly-detection",
+          "semi-supervised-learning"
+        ],
+        "languages": {
+          "Python": 25647,
+          "Shell": 935
+        }
+      },
+      {
+        "full_name": "kg-cc/IA-GGAD",
+        "url": "https://github.com/kg-cc/IA-GGAD",
+        "stars": 2,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 68370
+        }
+      },
+      {
+        "full_name": "weicy15/CGADM",
+        "url": "https://github.com/weicy15/CGADM",
+        "stars": 0,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 47660
+        }
+      },
+      {
+        "full_name": "Tlhey/decaf_code",
+        "url": "https://github.com/Tlhey/decaf_code",
+        "stars": 0,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 245097
+        }
+      },
+      {
+        "full_name": "XsLangley/CRoC_ECAI2025",
+        "url": "https://github.com/XsLangley/CRoC_ECAI2025",
+        "stars": 0,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 43856
+        }
+      },
+      {
+        "full_name": "wuanjunruc/GEL",
+        "url": "https://github.com/wuanjunruc/GEL",
+        "stars": 1,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 63434
+        }
+      },
+      {
+        "full_name": "zhenglecheng/CARE-demo",
+        "url": "https://github.com/zhenglecheng/CARE-demo",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 48149
+        }
+      },
+      {
+        "full_name": "UB-GOLD/UB-GOLD",
+        "url": "https://github.com/UB-GOLD/UB-GOLD",
+        "stars": 62,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 430341,
+          "Shell": 116075
+        }
+      },
+      {
+        "full_name": "xydong127/SpaceGNN",
+        "url": "https://github.com/xydong127/SpaceGNN",
+        "stars": 12,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 20531
+        }
+      },
+      {
+        "full_name": "mala-lab/NSReg",
+        "url": "https://github.com/mala-lab/NSReg",
+        "stars": 10,
+        "language": "Python",
+        "topics": [
+          "graph-anomaly-detection",
+          "graph-neural-networks",
+          "open-set-recognition"
+        ],
+        "languages": {
+          "Python": 61582,
+          "Shell": 625
+        }
+      },
+      {
+        "full_name": "fortunato-all/DiffGAD",
+        "url": "https://github.com/fortunato-all/DiffGAD",
+        "stars": 13,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 28706
+        }
+      },
+      {
+        "full_name": "AI4Risk/antifraud",
+        "url": "https://github.com/AI4Risk/antifraud",
+        "stars": 300,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 383122
+        }
+      },
+      {
+        "full_name": "karish-grover/curvgad",
+        "url": "https://github.com/karish-grover/curvgad",
+        "stars": 4,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 186978,
+          "Shell": 427
+        }
+      },
+      {
+        "full_name": "mala-lab/AnomalyGFM",
+        "url": "https://github.com/mala-lab/AnomalyGFM",
+        "stars": 35,
+        "language": "Python",
+        "topics": [
+          "few-shot-anomaly-detection",
+          "graph-anomaly-detection",
+          "graph-foundation-model",
+          "prompt-tuning",
+          "zero-shot-anomaly-detection"
+        ],
+        "languages": {
+          "Python": 200223
+        }
+      },
+      {
+        "full_name": "yimingxu24/AD-GCL",
+        "url": "https://github.com/yimingxu24/AD-GCL",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 27604
+        }
+      },
+      {
+        "full_name": "IWantBe/Dynamic-Spectral-Graph-Anomaly-Detection",
+        "url": "https://github.com/IWantBe/Dynamic-Spectral-Graph-Anomaly-Detection",
+        "stars": 19,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 22713
+        }
+      },
+      {
+        "full_name": "CampanulaBells/HUGE-GAD",
+        "url": "https://github.com/CampanulaBells/HUGE-GAD",
+        "stars": 8,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 21215
+        }
+      },
+      {
+        "full_name": "bdi-lab/MonTi",
+        "url": "https://github.com/bdi-lab/MonTi",
+        "stars": 17,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 103768
+        }
+      },
+      {
+        "full_name": "YXNTU/GeneralDyG",
+        "url": "https://github.com/YXNTU/GeneralDyG",
+        "stars": 47,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 70964
+        }
+      },
+      {
+        "full_name": "AtwoodDuan/GAAP",
+        "url": "https://github.com/AtwoodDuan/GAAP",
+        "stars": 3,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 135709
+        }
+      },
+      {
+        "full_name": "lllyyq1121/UniGAD",
+        "url": "https://github.com/lllyyq1121/UniGAD",
+        "stars": 28,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 99750
+        }
+      },
+      {
+        "full_name": "missinghwan/ANOMIX",
+        "url": "https://github.com/missinghwan/ANOMIX",
+        "stars": 0,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 32249
+        }
+      },
+      {
+        "full_name": "junhongmit/FraudGT",
+        "url": "https://github.com/junhongmit/FraudGT",
+        "stars": 23,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 769382,
+          "Shell": 15413
+        }
+      },
+      {
+        "full_name": "nigelnnk/FairGAD",
+        "url": "https://github.com/nigelnnk/FairGAD",
+        "stars": 12,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "fairness-ml"
+        ],
+        "languages": {
+          "Python": 401022
+        }
+      },
+      {
+        "full_name": "TommyDzh/DIAM",
+        "url": "https://github.com/TommyDzh/DIAM",
+        "stars": 9,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 79134
+        }
+      },
+      {
+        "full_name": "wdhyun/LEX-GNN",
+        "url": "https://github.com/wdhyun/LEX-GNN",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 13994
+        }
+      },
+      {
+        "full_name": "mala-lab/UNPrompt",
+        "url": "https://github.com/mala-lab/UNPrompt",
+        "stars": 22,
+        "language": "Python",
+        "topics": [
+          "graph-anomaly-detection",
+          "graph-prompt-learning",
+          "graph-prompting",
+          "zero-shot-anomaly-detection"
+        ],
+        "languages": {
+          "Python": 18996,
+          "Shell": 50
+        }
+      },
+      {
+        "full_name": "LIyvqi/U-A2GAD",
+        "url": "https://github.com/LIyvqi/U-A2GAD",
+        "stars": 3,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 26275
+        }
+      },
+      {
+        "full_name": "XiongxiaoXu/MetaGAD",
+        "url": "https://github.com/XiongxiaoXu/MetaGAD",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 14386
+        }
+      },
+      {
+        "full_name": "JYZHU03/PSGT",
+        "url": "https://github.com/JYZHU03/PSGT",
+        "stars": 12,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 46898
+        }
+      },
+      {
+        "full_name": "Yali-F/HC-GLAD",
+        "url": "https://github.com/Yali-Fu/HC-GLAD",
+        "stars": 13,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 52497,
+          "Shell": 2445
+        }
+      },
+      {
+        "full_name": "AhaChang/DEFEND",
+        "url": "https://github.com/AhaChang/DEFEND",
+        "stars": 3,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 23777
+        }
+      },
+      {
+        "full_name": "timpostuvan/CTDG-link-anomaly-detection",
+        "url": "https://github.com/timpostuvan/CTDG-link-anomaly-detection",
+        "stars": 10,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 435941
+        }
+      },
+      {
+        "full_name": "yixinliu233/ARC",
+        "url": "https://github.com/yixinliu233/ARC",
+        "stars": 28,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 16775
+        }
+      },
+      {
+        "full_name": "blacksingular/Bio-GNN",
+        "url": "https://github.com/blacksingular/Bio-GNN",
+        "stars": 0,
+        "language": null,
+        "topics": [],
+        "languages": {}
+      },
+      {
+        "full_name": "fortunato-all/skl-GDN",
+        "url": "https://github.com/fortunato-all/skl-GDN",
+        "stars": 8,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 90490
+        }
+      },
+      {
+        "full_name": "mala-lab/GGAD",
+        "url": "https://github.com/mala-lab/GGAD",
+        "stars": 61,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "graph-anomaly-detection",
+          "graph-neural-networks",
+          "semi-supervised-anomaly-detection",
+          "semi-supervised-methods"
+        ],
+        "languages": {
+          "Python": 253470
+        }
+      },
+      {
+        "full_name": "AhaChang/MITIGATE",
+        "url": "https://github.com/AhaChang/MITIGATE",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 40134
+        }
+      },
+      {
+        "full_name": "IBM/Multi-GNN",
+        "url": "https://github.com/IBM/Multi-GNN",
+        "stars": 95,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 54509
+        }
+      },
+      {
+        "full_name": "CcQunResearch/RAGCL",
+        "url": "https://github.com/CcQunResearch/RAGCL",
+        "stars": 26,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 95316
+        }
+      },
+      {
+        "full_name": "finint/POCL",
+        "url": "https://github.com/AI4Risk/POCL",
+        "stars": 12,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 18600
+        }
+      },
+      {
+        "full_name": "Xtra-Computing/PMP",
+        "url": "https://github.com/Xtra-Computing/PMP",
+        "stars": 18,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 124418
+        }
+      },
+      {
+        "full_name": "Xtra-Computing/ConsisGAD",
+        "url": "https://github.com/Xtra-Computing/ConsisGAD",
+        "stars": 23,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 27826
+        }
+      },
+      {
+        "full_name": "xydong127/RQGNN",
+        "url": "https://github.com/xydong127/RQGNN",
+        "stars": 6,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 19798
+        }
+      },
+      {
+        "full_name": "Jing-DS/HNN_GAD",
+        "url": "https://github.com/Jing-DS/HNN_GAD",
+        "stars": 4,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 167516
+        }
+      },
+      {
+        "full_name": "Graph-COM/GAD-NR",
+        "url": "https://github.com/Graph-COM/GAD-NR",
+        "stars": 51,
+        "language": "Jupyter Notebook",
+        "topics": [
+          "anomaly-detection",
+          "auto-encoder",
+          "deep-learning",
+          "graph-anomaly-detection",
+          "graph-neural-networks",
+          "pytorch",
+          "unsupervised-learning"
+        ],
+        "languages": {
+          "Jupyter Notebook": 32681056
+        }
+      },
+      {
+        "full_name": "AtwoodDuan/DGA-GNN",
+        "url": "https://github.com/AtwoodDuan/DGA-GNN",
+        "stars": 29,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 49772,
+          "Shell": 202
+        }
+      },
+      {
+        "full_name": "GraphBerry/DiG-In-GNN",
+        "url": "https://github.com/GraphBerry/DiG-In-GNN",
+        "stars": 23,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 98489
+        }
+      },
+      {
+        "full_name": "squareRoot3/GADBench",
+        "url": "https://github.com/squareRoot3/GADBench",
+        "stars": 136,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 113453,
+          "Jupyter Notebook": 26288
+        }
+      },
+      {
+        "full_name": "Graph-COM/GAD-EBM",
+        "url": "https://github.com/Graph-COM/GAD-EBM",
+        "stars": 5,
+        "language": "Jupyter Notebook",
+        "topics": [
+          "energy-based-model",
+          "glfrontiers",
+          "graph-anomaly-detection",
+          "neurips-2023"
+        ],
+        "languages": {
+          "Jupyter Notebook": 130796
+        }
+      },
+      {
+        "full_name": "yixinliu233/SIGNET",
+        "url": "https://github.com/yixinliu233/SIGNET",
+        "stars": 29,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 36704,
+          "Shell": 766
+        }
+      },
+      {
+        "full_name": "mala-lab/TAM-master",
+        "url": "https://github.com/mala-lab/TAM-master",
+        "stars": 44,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "graph-anomaly-detection",
+          "graph-neural-networks",
+          "one-class-learning"
+        ],
+        "languages": {
+          "Python": 50149
+        }
+      },
+      {
+        "full_name": "split-gnn/splitgnn",
+        "url": "https://github.com/Split-GNN/SplitGNN",
+        "stars": 28,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 26329
+        }
+      },
+      {
+        "full_name": "THGNN/THGNN",
+        "url": "https://github.com/THGNN/THGNN",
+        "stars": 2,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 57059
+        }
+      },
+      {
+        "full_name": "jhkim611/CLAD",
+        "url": "https://github.com/jhkim611/CLAD",
+        "stars": 17,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 4732
+        }
+      },
+      {
+        "full_name": "k-s-b/gnn_wco",
+        "url": "https://github.com/k-s-b/gnn_wco",
+        "stars": 0,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 2545356,
+          "Python": 420316,
+          "Shell": 291778
+        }
+      },
+      {
+        "full_name": "CatScarf/COFD-MM",
+        "url": "https://github.com/CatScarf/COFD-MM",
+        "stars": 3,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 74479
+        }
+      },
+      {
+        "full_name": "shresthaanu/RoleRGCN",
+        "url": "https://github.com/shresthaanu/RoleRGCN",
+        "stars": 1,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 303670,
+          "Python": 12457
+        }
+      },
+      {
+        "full_name": "yul091/GraphLogAD",
+        "url": "https://github.com/yul091/GraphLogAD",
+        "stars": 22,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "few-shot-learning",
+          "graph-neural-networks",
+          "information-extraction",
+          "one-class-classification",
+          "transformers"
+        ],
+        "languages": {
+          "Python": 502514,
+          "Jupyter Notebook": 9627,
+          "Shell": 88
+        }
+      },
+      {
+        "full_name": "MrZealand/S3GNN",
+        "url": "https://github.com/MrZealand/S3GNN",
+        "stars": 0,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 28767
+        }
+      },
+      {
+        "full_name": "jiaxililearn/HRGCN",
+        "url": "https://github.com/jiaxililearn/HRGCN",
+        "stars": 14,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 114250,
+          "Shell": 1347
+        }
+      },
+      {
+        "full_name": "D10Andy/SAD",
+        "url": "https://github.com/D10Andy/SAD",
+        "stars": 31,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 66396
+        }
+      },
+      {
+        "full_name": "KellyGong/SparseGAD",
+        "url": "https://github.com/KellyGong/SparseGAD",
+        "stars": 18,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 35497,
+          "Shell": 540
+        }
+      },
+      {
+        "full_name": "jiayingwu19/DECOR",
+        "url": "https://github.com/jiayingwu19/DECOR",
+        "stars": 23,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 18001
+        }
+      },
+      {
+        "full_name": "XiaoxiaoMa-MQ/GmapAD",
+        "url": "https://github.com/XiaoxiaoMa-MQ/GmapAD",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 26181
+        }
+      },
+      {
+        "full_name": "wulongfeng/CaliRare",
+        "url": "https://github.com/wulongfeng/CaliRare",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 58420,
+          "Shell": 110
+        }
+      },
+      {
+        "full_name": "lwwang1995/ACD",
+        "url": "https://github.com/lwwang1995/ACD",
+        "stars": 2,
+        "language": null,
+        "topics": [],
+        "languages": {}
+      },
+      {
+        "full_name": "yujianke100/GFDN",
+        "url": "https://github.com/yujianke100/GFDN",
+        "stars": 16,
+        "language": "C",
+        "topics": [],
+        "languages": {
+          "C": 105735,
+          "C++": 45476,
+          "Euphoria": 34033,
+          "Python": 29322,
+          "SWIG": 277,
+          "Shell": 113
+        }
+      },
+      {
+        "full_name": "realfolkcode/GraphDiffusionAnomaly",
+        "url": "https://github.com/realfolkcode/GraphDiffusionAnomaly",
+        "stars": 3,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 389343,
+          "Python": 138859
+        }
+      },
+      {
+        "full_name": "grab/GraphBEAN",
+        "url": "https://github.com/grab/GraphBEAN",
+        "stars": 13,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 146960
+        }
+      },
+      {
+        "full_name": "IsolationKernel/Codes",
+        "url": "https://github.com/IsolationKernel/Codes",
+        "stars": 51,
+        "language": "TypeScript",
+        "topics": [],
+        "languages": {
+          "TypeScript": 9030538,
+          "Turing": 1164632,
+          "Jupyter Notebook": 772766,
+          "C++": 635951,
+          "MATLAB": 316073,
+          "Python": 300545,
+          "Makefile": 118579,
+          "C": 114521,
+          "Java": 101254,
+          "HTML": 83168,
+          "M4": 63439,
+          "Cuda": 22474,
+          "QMake": 4670,
+          "Shell": 2444
+        }
+      },
+      {
+        "full_name": "finint/antifraud",
+        "url": "https://github.com/AI4Risk/antifraud",
+        "stars": 300,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 383122
+        }
+      },
+      {
+        "full_name": "scu-kdde/OAM-TUAF-2023",
+        "url": "https://github.com/scu-kdde/OAM-TUAF-2023",
+        "stars": 0,
+        "language": null,
+        "topics": [],
+        "languages": {
+          "Python": 42308
+        }
+      },
+      {
+        "full_name": "anonymousDualFraud/DualFraud",
+        "url": "https://github.com/anonymousDualFraud/DualFraud",
+        "stars": 3,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 107452,
+          "Python": 14260
+        }
+      },
+      {
+        "full_name": "xxhu94/GAT-COBO",
+        "url": "https://github.com/xxhu94/GAT-COBO",
+        "stars": 17,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 189352
+        }
+      },
+      {
+        "full_name": "xxhu94/CSGNN",
+        "url": "https://github.com/xxhu94/CSGNN",
+        "stars": 14,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 34088
+        }
+      },
+      {
+        "full_name": "AwesomeDeepAI/Graph-based-money-laundering-detection",
+        "url": "https://github.com/AwesomeDeepAI/Graph-based-money-laundering-detection",
+        "stars": 0,
+        "language": null,
+        "topics": [],
+        "languages": {}
+      },
+      {
+        "full_name": "qitianwu/GraphOOD-GNNSafe",
+        "url": "https://github.com/qitianwu/GraphOOD-GNNSafe",
+        "stars": 84,
+        "language": "Python",
+        "topics": [
+          "anamoly-detection",
+          "artificial-intelligence",
+          "deep-learning",
+          "distribution-shift",
+          "geometric-deep-learning",
+          "graph-neural-networks",
+          "label-propagation",
+          "large-graph",
+          "node-classification",
+          "out-of-distribution-detection",
+          "out-of-distribution-generalization",
+          "outlier-detection",
+          "pytorch",
+          "pytorch-geometric",
+          "trustworthy-ai"
+        ],
+        "languages": {
+          "Python": 463273,
+          "Jupyter Notebook": 256933,
+          "Shell": 15964
+        }
+      },
+      {
+        "full_name": "hwang219/AttackFakeNews",
+        "url": "https://github.com/hwang219/AttackFakeNews",
+        "stars": 26,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 74843
+        }
+      },
+      {
+        "full_name": "Orion-wyc/GAGA",
+        "url": "https://github.com/Orion-wyc/GAGA",
+        "stars": 50,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 124854
+        }
+      },
+      {
+        "full_name": "blacksingular/GHRN",
+        "url": "https://github.com/blacksingular/GHRN",
+        "stars": 39,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "graph-neural-networks",
+          "pytorch",
+          "spectral-methods",
+          "www2023"
+        ],
+        "languages": {
+          "Python": 21843
+        }
+      },
+      {
+        "full_name": "xingsumq/Us-DeFake",
+        "url": "https://github.com/xingsumq/Us-DeFake",
+        "stars": 12,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 79110,
+          "Cython": 27505
+        }
+      },
+      {
+        "full_name": "blacksingular/wsdm_GDN",
+        "url": "https://github.com/blacksingular/wsdm_GDN",
+        "stars": 25,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "graph-neural-networks",
+          "out-of-distribution",
+          "pytorch",
+          "wsdm2023"
+        ],
+        "languages": {
+          "Python": 53797
+        }
+      },
+      {
+        "full_name": "QZ-WANG/ACT",
+        "url": "https://github.com/mike-qz-wang/ACT",
+        "stars": 44,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 67629,
+          "Shell": 171
+        }
+      },
+      {
+        "full_name": "ujeong1/IEEEBigdata22_HGFND",
+        "url": "https://github.com/ujeong1/IEEEBigdata22_HGFND",
+        "stars": 36,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 26261
+        }
+      },
+      {
+        "full_name": "graph-level-anomalies/iGAD",
+        "url": "https://github.com/graph-level-anomalies/iGAD",
+        "stars": 12,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 21573
+        }
+      },
+      {
+        "full_name": "goldenNormal/vgod-github",
+        "url": "https://github.com/goldenNormal/vgod-github",
+        "stars": 11,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 3043726,
+          "Python": 32810
+        }
+      },
+      {
+        "full_name": "FanzhenLiu/DAGAD",
+        "url": "https://github.com/FanzhenLiu/DAGAD",
+        "stars": 19,
+        "language": "Python",
+        "topics": [
+          "data-augmentation",
+          "graph-anomaly-detection",
+          "graph-neural-network"
+        ],
+        "languages": {
+          "Python": 14335
+        }
+      },
+      {
+        "full_name": "sawlani/GLAM",
+        "url": "https://github.com/sawlani/GLAM",
+        "stars": 10,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 55087
+        }
+      },
+      {
+        "full_name": "CRIPAC-DIG/GETRAL",
+        "url": "https://github.com/CRIPAC-DIG/GETRAL",
+        "stars": 26,
+        "language": "Python",
+        "topics": [
+          "adversarial-learning",
+          "evidence-based",
+          "fake-news-detection",
+          "graph-contrastive-learning",
+          "semantic-learning"
+        ],
+        "languages": {
+          "Python": 1468876,
+          "Shell": 6745,
+          "PowerShell": 1751,
+          "Xonsh": 1174
+        }
+      },
+      {
+        "full_name": "DGraphXinye/DGraphFin_baseline",
+        "url": "https://github.com/DGraphXinye/DGraphFin_baseline",
+        "stars": 132,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 45057
+        }
+      },
+      {
+        "full_name": "allanchen95/GCCAD",
+        "url": "https://github.com/allanchen95/GraphCAD",
+        "stars": 9,
+        "language": null,
+        "topics": [
+          "anomaly-detection",
+          "contrastive-learning"
+        ],
+        "languages": {}
+      },
+      {
+        "full_name": "snap-stanford/roland",
+        "url": "https://github.com/snap-stanford/roland",
+        "stars": 142,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 22783259,
+          "Python": 727366,
+          "Shell": 5899
+        }
+      },
+      {
+        "full_name": "squareRoot3/Rethinking-Anomaly-Detection",
+        "url": "https://github.com/squareRoot3/Rethinking-Anomaly-Detection",
+        "stars": 194,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "deep-learning",
+          "graph-neural-networks"
+        ],
+        "languages": {
+          "Python": 15571
+        }
+      },
+      {
+        "full_name": "zjunet/AMNet",
+        "url": "https://github.com/zjunet/AMNet",
+        "stars": 38,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 17773
+        }
+      },
+      {
+        "full_name": "DS3Lab/DyHGN",
+        "url": "https://github.com/DS3Lab/DyHGN",
+        "stars": 11,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 353252,
+          "Shell": 2284
+        }
+      },
+      {
+        "full_name": "mobvistaresearch/BotSpot-Plus",
+        "url": "https://github.com/mobvistaresearch/BotSpot-Plus",
+        "stars": 5,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 126729
+        }
+      },
+      {
+        "full_name": "Charlesvandamme/Inductive-Graph-Representation-Learning-for-Fraud-Detection",
+        "url": "https://github.com/Charlesvandamme/Inductive-Graph-Representation-Learning-for-Fraud-Detection",
+        "stars": 34,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 53431,
+          "Python": 14782
+        }
+      },
+      {
+        "full_name": "dleyan/MDGCN",
+        "url": "https://github.com/dleyan/MDGCN",
+        "stars": 5,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 23687
+        }
+      },
+      {
+        "full_name": "Ahren09/FinerFact",
+        "url": "https://github.com/Ahren09/FinerFact",
+        "stars": 33,
+        "language": "Python",
+        "topics": [
+          "aaai",
+          "aaai2022",
+          "fake-news",
+          "fakenews",
+          "fakenewsdetection",
+          "misinformation",
+          "natural-language-processing",
+          "python",
+          "rumor-detection",
+          "text-classification",
+          "text-mining"
+        ],
+        "languages": {
+          "Python": 275553,
+          "Shell": 1366
+        }
+      },
+      {
+        "full_name": "GeZhangMQ/eFraudCom",
+        "url": "https://github.com/GeZhangMQ/eFraudCom",
+        "stars": 17,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 27925
+        }
+      },
+      {
+        "full_name": "FraudDetection/FRAUDRE",
+        "url": "https://github.com/FraudDetection/FRAUDRE",
+        "stars": 37,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 16945
+        }
+      },
+      {
+        "full_name": "Meta-HG/MetaHG",
+        "url": "https://github.com/graphprojects/MetaHG",
+        "stars": 13,
+        "language": "Python",
+        "topics": [
+          "fewshot-learning",
+          "graphlearning",
+          "graphrepresentationlearning",
+          "self-supervised-learning"
+        ],
+        "languages": {
+          "Python": 49933
+        }
+      },
+      {
+        "full_name": "GRAND-Lab/ANEMONE",
+        "url": "https://github.com/TrustAGI-Lab/ANEMONE",
+        "stars": 49,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection-algorithm",
+          "anomaly-detectionn",
+          "graph-anomaly-detection",
+          "graph-neural-networks",
+          "self-supervised-learning"
+        ],
+        "languages": {
+          "Python": 25520
+        }
+      },
+      {
+        "full_name": "DM2-ND/Eland",
+        "url": "https://github.com/DM2-ND/Eland",
+        "stars": 6,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 129744
+        }
+      },
+      {
+        "full_name": "zhao-tong/Graph-Anomaly-Loss",
+        "url": "https://github.com/zhao-tong/Graph-Anomaly-Loss",
+        "stars": 43,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 71724
+        }
+      },
+      {
+        "full_name": "qema/bidyn",
+        "url": "https://github.com/qema/bidyn",
+        "stars": 21,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 115104
+        }
+      },
+      {
+        "full_name": "BUPT-GAMMA/CompareNet_FakeNewsDetection",
+        "url": "https://github.com/BUPT-GAMMA/CompareNet_FakeNewsDetection",
+        "stars": 112,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 57293
+        }
+      },
+      {
+        "full_name": "weilingwei96/EBGCN",
+        "url": "https://github.com/weilingwei96/EBGCN",
+        "stars": 42,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 61545
+        }
+      },
+      {
+        "full_name": "wyl7/DCI-pytorch",
+        "url": "https://github.com/wyl7/DCI-pytorch",
+        "stars": 34,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 25544
+        }
+      },
+      {
+        "full_name": "gesy17/TGBully",
+        "url": "https://github.com/gesy17/TGBully",
+        "stars": 7,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 49187
+        }
+      },
+      {
+        "full_name": "PonderLY/PC-GNN",
+        "url": "https://github.com/PonderLY/PC-GNN",
+        "stars": 107,
+        "language": "Python",
+        "topics": [
+          "gnn-algorithm",
+          "gnns"
+        ],
+        "languages": {
+          "Python": 45044
+        }
+      },
+      {
+        "full_name": "xiawenwen49/DeepIS",
+        "url": "https://github.com/xiawenwen49/DeepIS",
+        "stars": 7,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 54367,
+          "Jupyter Notebook": 21312
+        }
+      },
+      {
+        "full_name": "kaize0409/Meta-GDN_AnomalyDetection",
+        "url": "https://github.com/kaize0409/Meta-GDN_AnomalyDetection",
+        "stars": 60,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "few-shot-learning",
+          "graph-neural-networks"
+        ],
+        "languages": {
+          "Python": 27987
+        }
+      },
+      {
+        "full_name": "GRAND-Lab/CoLA",
+        "url": "https://github.com/TrustAGI-Lab/CoLA",
+        "stars": 96,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "graph-neural-networks"
+        ],
+        "languages": {
+          "Python": 24239
+        }
+      },
+      {
+        "full_name": "iqiyi/HMGNN",
+        "url": "https://github.com/iqiyi/HMGNN",
+        "stars": 63,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 42357
+        }
+      },
+      {
+        "full_name": "mobvistaresearch/CIKM2020-BotSpot",
+        "url": "https://github.com/mobvistaresearch/CIKM2020-BotSpot",
+        "stars": 9,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 97505
+        }
+      },
+      {
+        "full_name": "YingtongDou/CARE-GNN",
+        "url": "https://github.com/YingtongDou/CARE-GNN",
+        "stars": 296,
+        "language": "Python",
+        "topics": [
+          "datamining",
+          "deep-learning",
+          "fraud-detection",
+          "fraud-prevention",
+          "graphneuralnetwork",
+          "machine-learning",
+          "reinforcement-learning",
+          "security"
+        ],
+        "languages": {
+          "Python": 51838
+        }
+      },
+      {
+        "full_name": "shaanchandra/SAFER",
+        "url": "https://github.com/shaanchandra/SAFER",
+        "stars": 22,
+        "language": "Python",
+        "topics": [
+          "fake-news-detection",
+          "graph-neural-networks",
+          "hyperbolic-geometry",
+          "machine-learning",
+          "natural-language-processing",
+          "relational-graphs"
+        ],
+        "languages": {
+          "Python": 361644
+        }
+      },
+      {
+        "full_name": "nguyenvanhoang7398/FANG",
+        "url": "https://github.com/nguyenvanhoang7398/FANG",
+        "stars": 73,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 148591
+        }
+      },
+      {
+        "full_name": "cuilimeng/DETERRENT",
+        "url": "https://github.com/cuilimeng/DETERRENT",
+        "stars": 30,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 35017
+        }
+      },
+      {
+        "full_name": "l852888/GCAN",
+        "url": "https://github.com/l852888/GCAN",
+        "stars": 75,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 20397
+        }
+      },
+      {
+        "full_name": "Giruvegan/generative-camouflaged-spam-detector",
+        "url": "https://github.com/Giruvegan/generative-camouflaged-spam-detector",
+        "stars": 11,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 29480
+        }
+      },
+      {
+        "full_name": "zsjdddhr/GraphRfi",
+        "url": "https://github.com/zsjdddhr/GraphRfi",
+        "stars": 35,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 29548,
+          "Shell": 79
+        }
+      },
+      {
+        "full_name": "TianBian95/BiGCN",
+        "url": "https://github.com/TianBian95/BiGCN",
+        "stars": 295,
+        "language": "Python",
+        "topics": [
+          "graph-convolutional-networks",
+          "rumor-detection",
+          "social-network-analysis"
+        ],
+        "languages": {
+          "Python": 65328,
+          "Shell": 613
+        }
+      },
+      {
+        "full_name": "Giruvegan/stoneskipping",
+        "url": "https://github.com/Giruvegan/stoneskipping",
+        "stars": 20,
+        "language": null,
+        "topics": [
+          "natural-language-processing",
+          "paper"
+        ],
+        "languages": {}
+      },
+      {
+        "full_name": "Xtra-Computing/RUSH",
+        "url": "https://github.com/Xtra-Computing/RUSH",
+        "stars": 6,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 137329,
+          "C++": 66013,
+          "CMake": 971
+        }
+      },
+      {
+        "full_name": "mtcazzolato/callmine",
+        "url": "https://github.com/mtcazzolato/callmine",
+        "stars": 4,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 194706,
+          "Makefile": 2248
+        }
+      },
+      {
+        "full_name": "git-disl/EllipticPlusPlus",
+        "url": "https://github.com/git-disl/EllipticPlusPlus",
+        "stars": 125,
+        "language": "Jupyter Notebook",
+        "topics": [
+          "anomaly-detection",
+          "bitcoin",
+          "blockchain",
+          "financial-forensics",
+          "machine-learning"
+        ],
+        "languages": {
+          "Jupyter Notebook": 12232721
+        }
+      },
+      {
+        "full_name": "Stream-AD/AnoGraph",
+        "url": "https://github.com/Stream-AD/AnoGraph",
+        "stars": 83,
+        "language": "C++",
+        "topics": [
+          "anomaly-detection",
+          "graph",
+          "intrusion-detection",
+          "sketch",
+          "streaming"
+        ],
+        "languages": {
+          "C++": 37825,
+          "Python": 4217,
+          "Shell": 1977,
+          "Makefile": 257
+        }
+      },
+      {
+        "full_name": "CompNet/Pang",
+        "url": "https://github.com/CompNet/Pang",
+        "stars": 13,
+        "language": "Python",
+        "topics": [
+          "attributed-graphs",
+          "decomap",
+          "foppa",
+          "graph-classification",
+          "pang",
+          "pattern-mining",
+          "public-procurement"
+        ],
+        "languages": {
+          "Python": 70740,
+          "Shell": 339
+        }
+      },
+      {
+        "full_name": "tsourakakis-lab/antibenford-subgraphs",
+        "url": "https://github.com/tsourakakis-lab/antibenford-subgraphs",
+        "stars": 17,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 1063545,
+          "Python": 18139,
+          "C++": 5578,
+          "Shell": 64
+        }
+      },
+      {
+        "full_name": "zjlxgxz/DynAnom",
+        "url": "https://github.com/zjlxgxz/DynAnom",
+        "stars": 15,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 1236711,
+          "Python": 144676,
+          "Shell": 2442
+        }
+      },
+      {
+        "full_name": "Seondong/Customs-Fraud-Detection",
+        "url": "https://github.com/Seondong/Customs-Fraud-Detection",
+        "stars": 32,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 15068720,
+          "Python": 284009,
+          "Shell": 180418
+        }
+      },
+      {
+        "full_name": "alibaba/GraphScope",
+        "url": "https://github.com/alibaba/GraphScope",
+        "stars": 3508,
+        "language": "C++",
+        "topics": [
+          "analytics",
+          "big-data",
+          "data-science",
+          "graph",
+          "graph-analytics",
+          "graph-computation",
+          "graph-computing",
+          "graph-data",
+          "graph-neural-networks",
+          "gremlin"
+        ],
+        "languages": {
+          "C++": 6778344,
+          "Rust": 5129187,
+          "Java": 5036164,
+          "Python": 3179621,
+          "Jupyter Notebook": 287642,
+          "Shell": 230145,
+          "Cypher": 121182,
+          "CMake": 93749,
+          "C": 70205,
+          "Dockerfile": 53079,
+          "ANTLR": 38883,
+          "Makefile": 32244,
+          "Smarty": 21653,
+          "Linker Script": 35
+        }
+      },
+      {
+        "full_name": "snap-stanford/F-FADE",
+        "url": "https://github.com/snap-stanford/F-FADE",
+        "stars": 18,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 14303,
+          "Shell": 180
+        }
+      },
+      {
+        "full_name": "mengchillee/AutoAudit",
+        "url": "https://github.com/mengchillee/AutoAudit",
+        "stars": 17,
+        "language": "Python",
+        "topics": [
+          "anomaly-detection",
+          "graph-mining",
+          "time-evolving-networks"
+        ],
+        "languages": {
+          "Python": 20354
+        }
+      },
+      {
+        "full_name": "wenchieh/specgreedy",
+        "url": "https://github.com/wenchieh/specgreedy",
+        "stars": 17,
+        "language": "Python",
+        "topics": [
+          "algorithm",
+          "dense-subgraph",
+          "graph",
+          "graph-algorithms"
+        ],
+        "languages": {
+          "Python": 47340,
+          "ReScript": 1211,
+          "Shell": 704,
+          "Makefile": 252
+        }
+      },
+      {
+        "full_name": "Stream-AD/MIDAS",
+        "url": "https://github.com/Stream-AD/MIDAS",
+        "stars": 779,
+        "language": "C++",
+        "topics": [
+          "aaai2020",
+          "anomaly-detection",
+          "denial-of-service",
+          "fraud-detection",
+          "intrusion-detection"
+        ],
+        "languages": {
+          "C++": 40731,
+          "Python": 5894,
+          "CMake": 1846,
+          "Dockerfile": 449
+        }
+      },
+      {
+        "full_name": "YingtongDou/Nash-Detect",
+        "url": "https://github.com/YingtongDou/Nash-Detect",
+        "stars": 120,
+        "language": "Python",
+        "topics": [
+          "fraud-detection",
+          "game-theory",
+          "machine-learning",
+          "reinforcement-learning",
+          "security",
+          "spam-detection"
+        ],
+        "languages": {
+          "Python": 131430
+        }
+      },
+      {
+        "full_name": "Roytsai27/Dual-Attentive-Tree-aware-Embedding",
+        "url": "https://github.com/Roytsai27/Dual-Attentive-Tree-aware-Embedding",
+        "stars": 67,
+        "language": "HTML",
+        "topics": [],
+        "languages": {
+          "HTML": 937245,
+          "Jupyter Notebook": 404303,
+          "Python": 401824,
+          "Shell": 54956
+        }
+      },
+      {
+        "full_name": "aplaceof/FlowScope",
+        "url": "https://github.com/aplaceof/FlowScope",
+        "stars": 29,
+        "language": null,
+        "topics": [],
+        "languages": {}
+      },
+      {
+        "full_name": "hamedn/SliceNDice",
+        "url": "https://github.com/hamedn/SliceNDice",
+        "stars": 22,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 48564,
+          "Shell": 150
+        }
+      },
+      {
+        "full_name": "LCS2-IIITD/DeFrauder",
+        "url": "https://github.com/LCS2-IIITD/DeFrauder",
+        "stars": 19,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 32957
+        }
+      },
+      {
+        "full_name": "zhao-tong/DeepFD-pyTorch",
+        "url": "https://github.com/zhao-tong/DeepFD-pyTorch",
+        "stars": 31,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 23284
+        }
+      },
+      {
+        "full_name": "maianhpuco/alibabaFraud",
+        "url": "https://github.com/maianhpuco/alibabaFraud",
+        "stars": 0,
+        "language": "Jupyter Notebook",
+        "topics": [],
+        "languages": {
+          "Jupyter Notebook": 30086,
+          "Python": 7687
+        }
+      },
+      {
+        "full_name": "shenghua-liu/HoloScope",
+        "url": "https://github.com/shenghua-liu/HoloScope",
+        "stars": 56,
+        "language": "Python",
+        "topics": [],
+        "languages": {
+          "Python": 79442
+        }
+      }
+    ],
+    "top_repos": [
+      {
+        "full_name": "alibaba/GraphScope",
+        "stars": 3508,
+        "url": "https://github.com/alibaba/GraphScope",
+        "language": "C++"
+      },
+      {
+        "full_name": "Stream-AD/MIDAS",
+        "stars": 779,
+        "url": "https://github.com/Stream-AD/MIDAS",
+        "language": "C++"
+      },
+      {
+        "full_name": "AI4Risk/antifraud",
+        "stars": 300,
+        "url": "https://github.com/AI4Risk/antifraud",
+        "language": "Python"
+      },
+      {
+        "full_name": "finint/antifraud",
+        "stars": 300,
+        "url": "https://github.com/AI4Risk/antifraud",
+        "language": "Python"
+      },
+      {
+        "full_name": "YingtongDou/CARE-GNN",
+        "stars": 296,
+        "url": "https://github.com/YingtongDou/CARE-GNN",
+        "language": "Python"
+      },
+      {
+        "full_name": "TianBian95/BiGCN",
+        "stars": 295,
+        "url": "https://github.com/TianBian95/BiGCN",
+        "language": "Python"
+      },
+      {
+        "full_name": "squareRoot3/Rethinking-Anomaly-Detection",
+        "stars": 194,
+        "url": "https://github.com/squareRoot3/Rethinking-Anomaly-Detection",
+        "language": "Python"
+      },
+      {
+        "full_name": "snap-stanford/roland",
+        "stars": 142,
+        "url": "https://github.com/snap-stanford/roland",
+        "language": "Jupyter Notebook"
+      },
+      {
+        "full_name": "squareRoot3/GADBench",
+        "stars": 136,
+        "url": "https://github.com/squareRoot3/GADBench",
+        "language": "Python"
+      },
+      {
+        "full_name": "DGraphXinye/DGraphFin_baseline",
+        "stars": 132,
+        "url": "https://github.com/DGraphXinye/DGraphFin_baseline",
+        "language": "Python"
+      }
+    ],
     "insights": [
       "2023 is the busiest year with 88 papers listed.",
       "Paper volume grew by 5 from 2014 to 2026.",
