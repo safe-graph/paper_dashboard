@@ -17,9 +17,9 @@ pip install -r requirements.txt
 # generate data.json for the SPA
 python scripts/build_dashboard.py --paper-repo-dir tmp_papers_repo --output-dir frontend/public --skip-code-fetch --json-only
 
-# build Svelte + ECharts SPA into site/
+# build Svelte + ECharts SPA into frontend/dist
 cd frontend && npm install && npm run build
-# open site/index.html in a browser
+# open frontend/dist/index.html in a browser
 ```
 - Omit `--skip-code-fetch` to query GitHub for stars/languages (set `GITHUB_TOKEN` to avoid rate limits).
 - Add `--skip-sync` to reuse a pre-cloned paper repo without pulling.
@@ -33,8 +33,8 @@ cd frontend && npm install && npm run build
 1. Enable Pages in repo settings with source: GitHub Actions.
 2. Push to `main` (or run the workflow manually). The workflow now:
    - Runs the Python pipeline to emit `frontend/public/data.json`
-   - Installs Node deps and builds the SPA into `site/`
-   - Publishes `site/` to Pages
+   - Installs Node deps and builds the SPA into `frontend/dist`
+   - Publishes `frontend/dist` to Pages
 
 ## Updating when the paper repo changes
 - The workflow triggers on a nightly schedule and on `repository_dispatch` with type `paper-repo-updated`.

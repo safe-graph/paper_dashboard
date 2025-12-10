@@ -8,7 +8,7 @@ export default defineConfig({
   // Use relative base so assets resolve on GitHub Pages and local file:// previews
   base: "./",
   build: {
-    outDir: "../site",
+    outDir: "dist",
     emptyOutDir: true,
     sourcemap: true,
   },
