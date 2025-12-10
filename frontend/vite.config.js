@@ -2,13 +2,11 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { defineConfig } from "vite";
 import path from "path";
 
-const repoBase = process.env.GITHUB_REPOSITORY?.split("/")[1];
-
 export default defineConfig({
   plugins: [svelte()],
   root: ".", // run from frontend/ by default
-  // Use repo-relative base on GitHub Pages, otherwise relative paths for local preview
-  base: process.env.GITHUB_ACTIONS && repoBase ? `/${repoBase}/` : "./",
+  // Use relative base so assets resolve on GitHub Pages and local file:// previews
+  base: "./",
   build: {
     outDir: "../site",
     emptyOutDir: true,
