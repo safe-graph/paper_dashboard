@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from "svelte";
   import EChart from "./lib/EChart.svelte";
+  import dataInline from "../public/data.json";
 
-  let data;
+  let data = dataInline;
   let error = "";
-  let loading = true;
+  let loading = false;
   let query = "";
   let category = "All";
   let domain = "All";
@@ -44,19 +44,10 @@
 
   const makeChip = (label, icon) => `<span class="chip"><span class="icon">${icon || "★"}</span>${label}</span>`;
 
-  onMount(async () => {
-    try {
-      const res = await fetch("./data.json");
-      data = await res.json();
-    } catch (err) {
-      error = "Failed to load data.json";
-      console.error(err);
-    } finally {
-      loading = false;
-    }
-  });
-
   const fmt = (n) => (n || n === 0 ? n.toLocaleString("en-US") : "–");
+
+  // Data is bundled statically to avoid fetch/runtime path issues on GitHub Pages.
+  // If we ever need to refresh via fetch, we can add a lightweight onMount fetch fallback.
 
   $: papers = data?.papers || [];
   $: stats = data?.stats || {};
@@ -202,7 +193,7 @@
     <section class="section">
       <h2>Distributions</h2>
       <div class="grid">
-        <div class="panel">{#if yearOption}<EChart {option} height="320px" />{:else}<p>No data.</p>{/if}</div>
+        <div class="panel">{#if yearOption}<EChart option={yearOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
         <div class="panel">{#if categoryOption}<EChart option={categoryOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
         <div class="panel">{#if topicOption}<EChart option={topicOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
       </div>

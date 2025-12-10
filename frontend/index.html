@@ -7,6 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Fallback if module fails to load (common for file:// or path issues)
+      window.__appBootTimer = setTimeout(() => {
+        const app = document.getElementById('app');
+        if (app && app.children.length === 0) {
+          app.innerHTML = "<div style='color:#e2e8f0;padding:24px;font-family:Manrope,system-ui,sans-serif'>Failed to load the dashboard bundle. If opening locally, run a local server (e.g., <code>npm run dev</code> or <code>npx serve frontend/dist</code>) instead of file://. If on GitHub Pages, ensure assets are published.</div>";
+        }
+      }, 2000);
+      window.addEventListener('error', (e) => {
+        if (e.target && e.target.tagName === 'SCRIPT') {
+          const app = document.getElementById('app');
+          if (app) {
+            app.innerHTML = "<div style='color:#e2e8f0;padding:24px;font-family:Manrope,system-ui,sans-serif'>Script load failed: " + (e.message || "module load error") + "</div>";
+          }
+        }
+      }, true);
+    </script>
   </head>
   <body>
     <div id="app"></div>

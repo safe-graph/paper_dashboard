@@ -82,6 +82,16 @@
     },
     {
       "year": 2025,
+      "title": "Enhancing Foundation Models in Transaction Understanding with LLM-based Sentence Embeddings",
+      "venue": "EMNLP 2025",
+      "paper_url": "https://aclanthology.org/2025.emnlp-industry.61.pdf",
+      "code_url": null,
+      "category": "LLM and Transformer Papers",
+      "subcategory": null,
+      "has_code": false
+    },
+    {
+      "year": 2025,
       "title": "LLM as an Algorithmist: Enhancing Anomaly Detectors via Programmatic Synthesis",
       "venue": "arXiv 2025",
       "paper_url": "https://arxiv.org/pdf/2510.03904",
@@ -4579,7 +4589,7 @@
       },
       {
         "year": 2025,
-        "count": 77
+        "count": 78
       },
       {
         "year": 2026,
@@ -4670,16 +4680,16 @@
         "count": 28
       },
       {
+        "topic": "transaction",
+        "count": 20
+      },
+      {
         "topic": "unsupervised",
         "count": 20
       },
       {
         "topic": "online",
         "count": 20
-      },
-      {
-        "topic": "transaction",
-        "count": 19
       },
       {
         "topic": "contrastive",
@@ -4732,9 +4742,9 @@
     ],
     "code_availability": {
       "with_code": 183,
-      "without_code": 270,
-      "total": 453,
-      "percentage": 40.4
+      "without_code": 271,
+      "total": 454,
+      "percentage": 40.31
     },
     "category_counts": [
       {
@@ -4743,7 +4753,7 @@
       },
       {
         "category": "LLM and Transformer Papers",
-        "count": 18
+        "count": 19
       },
       {
         "category": "Non-Deep-Learning Papers since 2014",
@@ -4765,7 +4775,7 @@
       },
       {
         "method": "Transformer/LLM",
-        "count": 27
+        "count": 28
       },
       {
         "method": "Robustness/Attack",
@@ -4803,7 +4813,7 @@
       },
       {
         "domain": "Finance/Credit",
-        "count": 66
+        "count": 67
       },
       {
         "domain": "E-commerce/Ads",
@@ -4825,7 +4835,7 @@
     "venue_strata": [
       {
         "stratum": "Top conf/journal",
-        "count": 275
+        "count": 276
       },
       {
         "stratum": "Other",
@@ -4874,7 +4884,7 @@
         "count": 1
       }
     ],
-    "paper_count": 453,
+    "paper_count": 454,
     "language_counts": [],
     "code_repos": [],
     "top_repos": [],
@@ -4883,7 +4893,7 @@
       "Paper volume grew by 5 from 2014 to 2026.",
       "arXiv 2024 appears most often (13 times).",
       "Dominant themes across titles: social, heterogeneous, fake, news, dynamic.",
-      "Code is linked for 183 papers (40.4%).",
+      "Code is linked for 183 papers (40.31%).",
       "Deep Learning Graph Papers contains the most entries (356).",
       "Most common domain focus: General.",
       "Prevalent method family: Other."

@@ -11,24 +11,37 @@
 
   function render() {
     if (!el) return;
-    if (!chart) {
-      chart = echarts.init(el, null, { renderer: "canvas" });
-    }
-    if (option) {
-      chart.setOption(option, true);
+    try {
+      if (!chart) {
+        chart = echarts.init(el, null, { renderer: "canvas" });
+      }
+      if (option) {
+        chart.setOption(option, true);
+      }
+    } catch (err) {
+      console.error("EChart render error", err);
+      el.innerHTML = `<div style="color:#94a3b8;padding:8px;">Chart failed: ${err?.message || err}</div>`;
     }
   }
 
   onMount(() => {
     render();
     resizeObserver = new ResizeObserver(() => {
-      chart?.resize();
+      try {
+        chart?.resize();
+      } catch (err) {
+        console.error("EChart resize error", err);
+      }
     });
     resizeObserver.observe(el);
   });
 
   $: if (chart && option) {
-    chart.setOption(option, true);
+    try {
+      chart.setOption(option, true);
+    } catch (err) {
+      console.error("EChart update error", err);
+    }
   }
 
   onDestroy(() => {
