@@ -36,6 +36,7 @@ jobs:
       - name: Build dashboard
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          OPENALEX_EMAIL: ${{ secrets.OPENALEX_EMAIL }}
         run: python scripts/build_dashboard.py --output-dir frontend/public --json-only
 
       - name: Setup Node

@@ -270,7 +270,7 @@ def derive_insights(stats: Dict) -> List[str]:
     # if method_counts:
     #     top_method = max(method_counts, key=lambda x: x["count"])
     #     insights.append(f"Prevalent method family: {top_method['method']}.")
-    # return insights
+    return insights
 
 
 def to_serializable(papers: Iterable[PaperEntry]) -> List[Dict]:

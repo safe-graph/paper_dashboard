@@ -5,6 +5,7 @@ Static dashboard that summarizes graph/transformer fraud & anomaly detection pap
 ## Features
 - Pulls the latest paper list and parses every table row into structured data (year, venue, links, category/section).
 - Computes year, venue, topic, and category distributions plus code availability and GitHub language stats (when code links point to GitHub).
+- Optionally pulls citation counts (OpenAlex) to rank top cited papers.
 - Generates a static `site/index.html` with Plotly charts, a searchable/sortable table (Grid.js), and resource links (toolboxes, datasets, surveys).
 - GitHub Actions workflow auto-builds on push, schedule, or repository dispatch and deploys to GitHub Pages.
 
@@ -22,6 +23,7 @@ cd frontend && npm install && npm run build
 # open frontend/dist/index.html in a browser
 ```
 - Omit `--skip-code-fetch` to query GitHub for stars/languages (set `GITHUB_TOKEN` to avoid rate limits).
+- Citation counts come from OpenAlex; set `OPENALEX_EMAIL` (polite usage) or add `--skip-citations` to avoid API calls.
 - Add `--skip-sync` to reuse a pre-cloned paper repo without pulling.
 - The script clones the paper list into `data/papers_repo` by default; override with `--paper-repo-dir` if desired.
 

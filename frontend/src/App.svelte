@@ -49,6 +49,18 @@
 
   const fmt = (n) => (n || n === 0 ? n.toLocaleString("en-US") : "–");
 
+  const palette = {
+    blue: "#94b0ff",
+    teal: "#7fc8c2",
+    coral: "#f2b6a0",
+    lavender: "#c6b2ff",
+    gold: "#f7d19e",
+    slate: "#9dbad5",
+  };
+  const chartText = "#e6edf3";
+  const chartMuted = "#b7c3cd";
+  const chartAxis = "#63707f";
+
   // Data is bundled statically to avoid fetch/runtime path issues on GitHub Pages.
   // If we ever need to refresh via fetch, we can add a lightweight onMount fetch fallback.
 
@@ -74,42 +86,42 @@
   $: page = Math.min(page, pageCount);
   $: pageItems = filtered.slice((page - 1) * pageSize, page * pageSize);
 
-  const baseBar = (items, xKey, yKey, title, horizontal = false, color = "#22d3ee", labelOpts = {}) => ({
-    textStyle: { color: "#e2e8f0" },
-    title: { text: title, textStyle: { color: "#e2e8f0", fontSize: 14 } },
+  const baseBar = (items, xKey, yKey, title, horizontal = false, color = palette.blue, labelOpts = {}) => ({
+    textStyle: { color: chartText },
+    title: { text: title, textStyle: { color: chartText, fontSize: 14 } },
     tooltip: { trigger: "axis" },
     grid: { left: horizontal ? 140 : 50, right: 20, top: 30, bottom: 40 },
     xAxis: horizontal
-      ? { type: "value", axisLine: { lineStyle: { color: "#64748b" } } }
+      ? { type: "value", axisLine: { lineStyle: { color: chartAxis } } }
       : {
           type: "category",
           data: items.map((d) => d[xKey]),
-          axisLabel: { rotate: 30, color: "#cbd5e1" },
-          axisLine: { lineStyle: { color: "#64748b" } },
+          axisLabel: { rotate: 30, color: chartMuted },
+          axisLine: { lineStyle: { color: chartAxis } },
         },
     yAxis: horizontal
       ? {
           type: "category",
           data: items.map((d) => d[yKey]),
-          axisLabel: { color: "#cbd5e1" },
-          axisLine: { lineStyle: { color: "#64748b" } },
+          axisLabel: { color: chartMuted },
+          axisLine: { lineStyle: { color: chartAxis } },
         }
-      : { type: "value", axisLine: { lineStyle: { color: "#64748b" } } },
+      : { type: "value", axisLine: { lineStyle: { color: chartAxis } } },
     series: [
       {
         type: "bar",
         data: items.map((d) => d[horizontal ? xKey : yKey]),
         itemStyle: { color },
         showBackground: true,
-        backgroundStyle: { color: "rgba(255,255,255,0.03)" },
+        backgroundStyle: { color: "rgba(255,255,255,0.04)" },
         label: labelOpts,
       },
     ],
   });
 
   const pie = (items, name, title) => ({
-    textStyle: { color: "#e2e8f0" },
-    title: { text: title, textStyle: { color: "#e2e8f0", fontSize: 14 } },
+    textStyle: { color: chartText },
+    title: { text: title, textStyle: { color: chartText, fontSize: 14 } },
     tooltip: { trigger: "item" },
     series: [
       {
@@ -117,19 +129,19 @@
         radius: ["35%", "60%"],
         center: ["50%", "55%"],
         data: items.map((d) => ({ name: d[name], value: d.count || d.bytes || d.value })),
-        label: { color: "#e2e8f0" },
+        label: { color: chartText },
       },
     ],
   });
 
-  $: yearOption = stats.year_counts ? baseBar(stats.year_counts, "year", "count", "Papers by year", false, "#22d3ee", { show: false }) : null;
-  $: categoryOption = stats.category_counts ? baseBar(stats.category_counts, "count", "category", "Entries by category", true, "#2dd4bf") : null;
-  $: topicOption = stats.topics ? baseBar(stats.topics, "topic", "count", "Frequent title terms", false, "#a855f7") : null;
-  $: methodOption = stats.method_counts ? baseBar(stats.method_counts, "count", "method", "Method families", true, "#f472b6") : null;
-  $: domainOption = stats.domain_counts ? baseBar(stats.domain_counts, "count", "domain", "Domain focus", true, "#38bdf8") : null;
-  $: venueOption = stats.venue_counts ? baseBar(stats.venue_counts.slice(0, 12), "count", "venue", "Top venues", true, "#818cf8") : null;
+  $: yearOption = stats.year_counts ? baseBar(stats.year_counts, "year", "count", "Papers by year", false, palette.blue, { show: false }) : null;
+  $: categoryOption = stats.category_counts ? baseBar(stats.category_counts, "count", "category", "Entries by category", true, palette.teal) : null;
+  $: topicOption = stats.topics ? baseBar(stats.topics, "topic", "count", "Frequent title terms", false, palette.coral) : null;
+  $: methodOption = stats.method_counts ? baseBar(stats.method_counts, "count", "method", "Method families", true, palette.lavender) : null;
+  $: domainOption = stats.domain_counts ? baseBar(stats.domain_counts, "count", "domain", "Domain focus", true, palette.slate) : null;
+  $: venueOption = stats.venue_counts ? baseBar(stats.venue_counts.slice(0, 12), "count", "venue", "Top venues", true, palette.blue) : null;
   $: strataOption = stats.venue_strata ? pie(stats.venue_strata, "stratum", "Venue strata") : null;
-  $: datasetOption = stats.dataset_counts ? baseBar(stats.dataset_counts, "count", "dataset", "Dataset mentions", true, "#22d3ee") : null;
+  $: datasetOption = stats.dataset_counts ? baseBar(stats.dataset_counts, "count", "dataset", "Dataset mentions", true, palette.teal) : null;
   $: codeOption = stats.code_availability
     ? pie(
         [
@@ -194,6 +206,34 @@
             <li>No insights available.</li>
           {/if}
         </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Top cited papers</h2>
+      <div class="panel">
+        <div class="list">
+          {#if stats.top_cited?.length}
+            {#each stats.top_cited as paper, idx}
+              <div class="list-item">
+                <span>
+                  {idx + 1}. <a href={paper.paper_url || paper.openalex_url || "#"} target="_blank" rel="noopener">{paper.title}</a>
+                  {#if paper.year || paper.venue}
+                    <span style="color: var(--muted); font-size: 12px;">({paper.year || "—"} - {paper.venue || "Venue N/A"})</span>
+                  {/if}
+                </span>
+                <span class="badge">{fmt(paper.citation_count)}</span>
+              </div>
+            {/each}
+          {:else}
+            <p style="color: var(--muted); margin: 0;">
+              {stats.citation_note || "Citation data unavailable (OpenAlex lookup failed)."}
+            </p>
+          {/if}
+        </div>
+        {#if stats.citation_source}
+          <p style="color: var(--muted); margin: 10px 0 0;">Source: {stats.citation_source}</p>
+        {/if}
       </div>
     </section>
 
@@ -340,7 +380,7 @@
       <div class="grid">
         {#each resources as res}
           <div class="panel">
-            <div style="color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:1px;">{res.category}</div>
+            <div style="color: var(--muted); font-size:12px;text-transform:uppercase;letter-spacing:1px;">{res.category}</div>
             <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
           </div>
         {/each}

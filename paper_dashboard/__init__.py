@@ -5,4 +5,5 @@ __all__ = [
     "analysis",
     "code_repos",
     "builder",
+    "citations",
 ]

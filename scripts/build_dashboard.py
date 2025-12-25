@@ -5,7 +5,7 @@ import os
 import sys
 from dataclasses import asdict
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 # Ensure repository root is on sys.path when executed as a script
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from paper_dashboard import analysis
+from paper_dashboard import citations
 from paper_dashboard.builder import render_dashboard
 from paper_dashboard.code_repos import (
     RepoMetadata,
@@ -23,7 +24,14 @@ from paper_dashboard.code_repos import (
 from paper_dashboard.parser import ParseResult, parse_readme, sync_repo, load_readme
 
 
-def build_stats(parsed: ParseResult, token: str, skip_code_fetch: bool) -> Dict:
+def build_stats(
+    parsed: ParseResult,
+    token: str,
+    skip_code_fetch: bool,
+    skip_citations: bool,
+    citations_limit: Optional[int],
+    citations_top_k: int,
+) -> Dict:
     papers = parsed.papers
     stats: Dict = {
         "year_counts": analysis.counts_by_year(papers),
@@ -62,6 +70,22 @@ def build_stats(parsed: ParseResult, token: str, skip_code_fetch: bool) -> Dict:
         reverse=True,
     )[:10]
     stats["insights"] = analysis.derive_insights(stats)
+    if skip_citations:
+        stats["top_cited"] = []
+        stats["citation_note"] = "Citation fetch skipped (run without --skip-citations)."
+    else:
+        openalex_email = os.environ.get("OPENALEX_EMAIL")
+        top_cited, note, source = citations.fetch_top_cited(
+            papers,
+            openalex_email=openalex_email,
+            top_k=citations_top_k,
+            limit=citations_limit,
+        )
+        stats["top_cited"] = top_cited
+        if source:
+            stats["citation_source"] = source
+        if note:
+            stats["citation_note"] = note
     return stats
 
 
@@ -93,6 +117,23 @@ def main() -> None:
         help="Skip GitHub API calls for code repos (useful offline).",
     )
     parser.add_argument(
+        "--skip-citations",
+        action="store_true",
+        help="Skip OpenAlex citation fetching.",
+    )
+    parser.add_argument(
+        "--citations-limit",
+        type=int,
+        default=None,
+        help="Limit the number of papers queried for citation counts.",
+    )
+    parser.add_argument(
+        "--citations-top-k",
+        type=int,
+        default=10,
+        help="Number of top cited papers to include in the dashboard.",
+    )
+    parser.add_argument(
         "--skip-sync",
         action="store_true",
         help="Skip git clone/pull (assumes paper repo directory already contains README).",
@@ -116,7 +157,14 @@ def main() -> None:
     readme_text = load_readme(paper_repo_dir)
     parsed = parse_readme(readme_text)
     papers_serializable = analysis.to_serializable(parsed.papers)
-    stats = build_stats(parsed, token=token, skip_code_fetch=args.skip_code_fetch)
+    stats = build_stats(
+        parsed,
+        token=token,
+        skip_code_fetch=args.skip_code_fetch,
+        skip_citations=args.skip_citations,
+        citations_limit=args.citations_limit,
+        citations_top_k=args.citations_top_k,
+    )
 
     context = {
         "papers": papers_serializable,

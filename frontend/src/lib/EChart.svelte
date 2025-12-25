@@ -2,6 +2,30 @@
   import { onDestroy, onMount } from "svelte";
   import * as echarts from "echarts";
 
+  const mildTheme = {
+    color: ["#94b0ff", "#7fc8c2", "#f2b6a0", "#c6b2ff", "#f7d19e", "#9dbad5"],
+    backgroundColor: "transparent",
+    textStyle: {
+      color: "#e6edf3",
+      fontFamily: "Manrope, system-ui, sans-serif",
+    },
+    title: {
+      textStyle: {
+        color: "#e6edf3",
+        fontWeight: 600,
+      },
+    },
+    axisLine: { lineStyle: { color: "#6b7a88" } },
+    axisLabel: { color: "#b7c3cd" },
+    splitLine: { lineStyle: { color: "rgba(255,255,255,0.08)" } },
+    tooltip: {
+      backgroundColor: "rgba(21,27,36,0.92)",
+      borderColor: "rgba(255,255,255,0.08)",
+      textStyle: { color: "#e6edf3" },
+    },
+  };
+  let themeRegistered = false;
+
   export let option;
   export let height = "320px";
 
@@ -12,15 +36,19 @@
   function render() {
     if (!el) return;
     try {
+      if (!themeRegistered) {
+        echarts.registerTheme("mild", mildTheme);
+        themeRegistered = true;
+      }
       if (!chart) {
-        chart = echarts.init(el, null, { renderer: "canvas" });
+        chart = echarts.init(el, "mild", { renderer: "canvas" });
       }
       if (option) {
         chart.setOption(option, true);
       }
     } catch (err) {
       console.error("EChart render error", err);
-      el.innerHTML = `<div style="color:#94a3b8;padding:8px;">Chart failed: ${err?.message || err}</div>`;
+      el.innerHTML = `<div style="color:#9aa8b5;padding:8px;">Chart failed: ${err?.message || err}</div>`;
     }
   }
 

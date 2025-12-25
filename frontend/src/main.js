@@ -37,7 +37,7 @@ try {
   const target = document.getElementById("app");
   if (target) {
     target.innerHTML =
-      "<div style='color:#e2e8f0;padding:24px;font-family:Manrope,system-ui,sans-serif'>App failed to load: " +
+      "<div style='color:#e6edf3;padding:24px;font-family:Manrope,system-ui,sans-serif'>App failed to load: " +
       (err?.message || err) +
       "</div>";
   }

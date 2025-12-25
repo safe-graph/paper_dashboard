@@ -12,14 +12,14 @@
       window.__appBootTimer = setTimeout(() => {
         const app = document.getElementById('app');
         if (app && app.children.length === 0) {
-          app.innerHTML = "<div style='color:#e2e8f0;padding:24px;font-family:Manrope,system-ui,sans-serif'>Failed to load the dashboard bundle. If opening locally, run a local server (e.g., <code>npm run dev</code> or <code>npx serve frontend/dist</code>) instead of file://. If on GitHub Pages, ensure assets are published.</div>";
+          app.innerHTML = "<div style='color:#e6edf3;padding:24px;font-family:Manrope,system-ui,sans-serif'>Failed to load the dashboard bundle. If opening locally, run a local server (e.g., <code>npm run dev</code> or <code>npx serve frontend/dist</code>) instead of file://. If on GitHub Pages, ensure assets are published.</div>";
         }
       }, 2000);
       window.addEventListener('error', (e) => {
         if (e.target && e.target.tagName === 'SCRIPT') {
           const app = document.getElementById('app');
           if (app) {
-            app.innerHTML = "<div style='color:#e2e8f0;padding:24px;font-family:Manrope,system-ui,sans-serif'>Script load failed: " + (e.message || "module load error") + "</div>";
+            app.innerHTML = "<div style='color:#e6edf3;padding:24px;font-family:Manrope,system-ui,sans-serif'>Script load failed: " + (e.message || "module load error") + "</div>";
           }
         }
       }, true);
@@ -28,7 +28,7 @@
   <body>
     <div id="app"></div>
     <noscript>
-      <style>body{background:#0f172a;color:#e2e8f0;font-family:Manrope,system-ui,sans-serif;padding:24px;}</style>
+      <style>body{background:#0f141b;color:#e6edf3;font-family:Manrope,system-ui,sans-serif;padding:24px;}</style>
       <p>This dashboard needs JavaScript to run. Please enable it.</p>
     </noscript>
     <script type="module" src="./src/main.js"></script>
