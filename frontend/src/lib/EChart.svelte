@@ -19,9 +19,55 @@
     axisLabel: { color: "#b7c3cd" },
     splitLine: { lineStyle: { color: "rgba(255,255,255,0.08)" } },
     tooltip: {
-      backgroundColor: "rgba(21,27,36,0.92)",
-      borderColor: "rgba(255,255,255,0.08)",
+      backgroundColor: "rgba(21,27,36,0.95)",
+      borderColor: "rgba(127,200,194,0.3)",
+      borderWidth: 1,
       textStyle: { color: "#e6edf3" },
+      extraCssText: "box-shadow: 0 8px 32px rgba(0,0,0,0.4); backdrop-filter: blur(8px);",
+    },
+    // Animation settings
+    animationDuration: 800,
+    animationEasing: "elasticOut",
+    animationDelay: (idx) => idx * 50,
+    // Emphasis styling for interactivity
+    emphasis: {
+      itemStyle: {
+        shadowBlur: 20,
+        shadowColor: "rgba(127,200,194,0.5)",
+      },
+    },
+    // Bar series defaults
+    bar: {
+      itemStyle: {
+        borderRadius: [4, 4, 0, 0],
+      },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 15,
+          shadowColor: "rgba(127,200,194,0.4)",
+        },
+      },
+    },
+    // Pie series defaults
+    pie: {
+      itemStyle: {
+        borderWidth: 2,
+        borderColor: "#151b24",
+      },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 20,
+          shadowColor: "rgba(127,200,194,0.5)",
+        },
+        scale: true,
+        scaleSize: 10,
+      },
+    },
+    // Radar defaults
+    radar: {
+      axisLine: { lineStyle: { color: "rgba(255,255,255,0.15)" } },
+      splitLine: { lineStyle: { color: "rgba(255,255,255,0.1)" } },
+      splitArea: { areaStyle: { color: ["rgba(127,200,194,0.02)", "rgba(148,176,255,0.02)"] } },
     },
   };
   let themeRegistered = false;
