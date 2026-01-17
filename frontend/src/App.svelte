@@ -92,7 +92,7 @@
     textStyle: { color: chartText },
     title: { text: title, textStyle: { color: chartText, fontSize: 14 } },
     tooltip: { trigger: "axis" },
-    grid: { left: horizontal ? 140 : 50, right: 20, top: 30, bottom: 40 },
+    grid: { left: horizontal ? 180 : 50, right: 20, top: 30, bottom: 40 },
     xAxis: horizontal
       ? { type: "value", axisLine: { lineStyle: { color: chartAxis } } }
       : {
@@ -220,14 +220,20 @@
     ],
   });
 
+  // Filter functions to exclude unwanted categories
+  const excludeGenericTerms = (items, key) => items?.filter(d => !['other', 'general', 'Other', 'General'].includes(d[key])) || [];
+  const excludeArxiv = (items) => items?.filter(d => !['arxiv', 'arXiv', 'Arxiv'].includes(d.venue)) || [];
+
   $: yearOption = stats.year_counts ? baseBar(stats.year_counts, "year", "count", "Papers by year", false, palette.blue, { show: false }) : null;
   $: categoryOption = stats.category_counts ? baseBar(stats.category_counts, "count", "category", "Entries by category", true, palette.teal) : null;
   $: topicOption = stats.topics ? baseBar(stats.topics, "topic", "count", "Frequent title terms", false, palette.coral) : null;
-  $: methodOption = stats.method_counts ? baseBar(stats.method_counts, "count", "method", "Method families", true, palette.lavender) : null;
-  $: domainOption = stats.domain_counts ? baseBar(stats.domain_counts, "count", "domain", "Domain focus", true, palette.slate) : null;
-  $: venueOption = stats.venue_counts ? baseBar(stats.venue_counts.slice(0, 12), "count", "venue", "Top venues", true, palette.blue) : null;
+  $: filteredMethods = excludeGenericTerms(stats.method_counts, "method");
+  $: methodOption = filteredMethods.length ? baseBar(filteredMethods, "count", "method", "Method families", true, palette.lavender) : null;
+  $: filteredDomains = excludeGenericTerms(stats.domain_counts, "domain");
+  $: domainOption = filteredDomains.length ? baseBar(filteredDomains, "count", "domain", "Domain focus", true, palette.slate) : null;
+  $: filteredVenues = excludeArxiv(stats.venue_counts);
+  $: venueOption = filteredVenues.length ? baseBar(filteredVenues.slice(0, 12), "count", "venue", "Top venues", true, palette.blue) : null;
   $: strataOption = stats.venue_strata ? pie(stats.venue_strata, "stratum", "Venue strata") : null;
-  $: datasetOption = stats.dataset_counts ? baseBar(stats.dataset_counts, "count", "dataset", "Dataset mentions", true, palette.teal) : null;
   $: codeOption = stats.code_availability
     ? pie(
         [
@@ -241,8 +247,8 @@
   $: langOption = stats.language_counts && stats.language_counts.length
     ? pie(stats.language_counts, "language", "Language share (code repos)")
     : null;
-  $: radarOption = stats.method_counts && stats.method_counts.length >= 3
-    ? radar(stats.method_counts.slice(0, 8), "method", "count", "Method comparison")
+  $: radarOption = filteredMethods.length >= 3
+    ? radar(filteredMethods.slice(0, 8), "method", "count", "Method comparison")
     : null;
 </script>
 
@@ -390,8 +396,8 @@
           <div class="panel">
             <h3 style="margin:0 0 8px;">Top venues</h3>
             <div class="list">
-              {#if stats.venue_counts?.length}
-                {#each stats.venue_counts.slice(0, 10) as v, idx}
+              {#if filteredVenues?.length}
+                {#each filteredVenues.slice(0, 10) as v, idx}
                   <div class="list-item" >
                     <span>{@html makeChip(v.venue, venueIcons[v.venue] || "🏛️")}</span>
                     <span class="badge">{fmt(v.count)}</span>
@@ -427,30 +433,6 @@
                 {/each}
               {:else}
                 <p style="color: var(--muted);">No GitHub metadata (run without --skip-code-fetch + set GITHUB_TOKEN).</p>
-              {/if}
-            </div>
-          </div>
-        </div>
-      </section>
-    </ScrollReveal>
-
-    <ScrollReveal>
-      <section class="section">
-        <h2>Dataset mentions</h2>
-        <div class="grid">
-          <div class="panel">{#if datasetOption}<EChart option={datasetOption} height="300px" />{:else}<p>No dataset mentions detected.</p>{/if}</div>
-          <div class="panel">
-            <h3 style="margin:0 0 8px;">Most cited datasets</h3>
-            <div class="list">
-              {#if stats.dataset_counts?.length}
-                {#each stats.dataset_counts as ds}
-                  <div class="list-item">
-                    <span>{ds.dataset}</span>
-                    <span class="badge">{fmt(ds.count)}</span>
-                  </div>
-                {/each}
-              {:else}
-                <p style="color: var(--muted);">No dataset mentions detected.</p>
               {/if}
             </div>
           </div>
@@ -512,11 +494,36 @@
 
     <ScrollReveal>
       <section class="section">
-        <h2>Resources, toolboxes, surveys</h2>
+        <h2>Toolboxes & Libraries</h2>
         <div class="grid">
-          {#each resources as res}
+          {#each resources.filter(r => r.category === 'Toolbox') as res}
             <div class="panel">
-              <div style="color: var(--muted); font-size:12px;text-transform:uppercase;letter-spacing:1px;">{res.category}</div>
+              <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
+            </div>
+          {/each}
+        </div>
+      </section>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <section class="section">
+        <h2>Datasets</h2>
+        <div class="grid">
+          {#each resources.filter(r => r.category === 'Dataset') as res}
+            <div class="panel">
+              <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
+            </div>
+          {/each}
+        </div>
+      </section>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <section class="section">
+        <h2>Survey Papers</h2>
+        <div class="grid">
+          {#each resources.filter(r => r.category === 'Survey Paper') as res}
+            <div class="panel">
               <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
             </div>
           {/each}
