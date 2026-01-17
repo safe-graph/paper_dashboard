@@ -69,6 +69,22 @@
   $: papers = data?.papers || [];
   $: stats = data?.stats || {};
   $: resources = data?.resources || [];
+
+  // Create a lookup map for GitHub repo stars
+  $: repoStarsMap = (stats.code_repos || []).reduce((acc, repo) => {
+    acc[repo.full_name.toLowerCase()] = repo.stars;
+    return acc;
+  }, {});
+
+  // Helper to extract GitHub stars from a URL
+  const getGitHubStars = (url) => {
+    if (!url || !url.includes('github.com')) return null;
+    const match = url.match(/github\.com\/([^\/]+\/[^\/]+)/);
+    if (match) {
+      return repoStarsMap[match[1].toLowerCase()] || null;
+    }
+    return null;
+  };
   $: categories = ["All", ...new Set(papers.map((p) => p.category).filter(Boolean))];
   $: domains = ["All", ...new Set(stats.domain_counts?.map((d) => d.domain) || [])];
   $: years = ["All", ...Array.from(new Set(papers.map((p) => p.year).filter(Boolean))).sort((a, b) => b - a)];
@@ -497,8 +513,11 @@
         <h2>Toolboxes & Libraries</h2>
         <div class="grid">
           {#each resources.filter(r => r.category === 'Toolbox') as res}
-            <div class="panel">
+            <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
               <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
+              {#if getGitHubStars(res.url)}
+                <span class="badge">★ {fmt(getGitHubStars(res.url))}</span>
+              {/if}
             </div>
           {/each}
         </div>
