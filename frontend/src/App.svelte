@@ -1,12 +1,40 @@
 <script>
+  import { onMount } from "svelte";
   import EChart from "./lib/EChart.svelte";
   import ScrollReveal from "./lib/ScrollReveal.svelte";
   import AnimatedNumber from "./lib/AnimatedNumber.svelte";
   import dataInline from "./data.json";
+  import paperStats from "./paper_statistics.json";
 
   let data = dataInline;
   let error = "";
   let loading = false;
+
+  // Survey paper citation counts fetched from OpenAlex
+  let surveyCitations = {};
+  let citationsLoading = true;
+
+  onMount(async () => {
+    const surveys = (data?.resources || []).filter(r => r.category === 'Survey Paper');
+    const results = {};
+    // Fetch citations in small batches to avoid rate limiting
+    for (const survey of surveys) {
+      try {
+        const q = encodeURIComponent(survey.title.replace(/[^\w\s]/g, ' ').trim());
+        const resp = await fetch(`https://api.openalex.org/works?search=${q}&per_page=1`);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.results?.length) {
+            results[survey.title] = data.results[0].cited_by_count || 0;
+          }
+        }
+      } catch (e) {
+        // Silently skip failed lookups
+      }
+    }
+    surveyCitations = results;
+    citationsLoading = false;
+  });
   let query = "";
   let category = "All";
   let domain = "All";
@@ -237,16 +265,18 @@
   });
 
   // Filter functions to exclude unwanted categories
-  const excludeGenericTerms = (items, key) => items?.filter(d => !['other', 'general', 'Other', 'General'].includes(d[key])) || [];
   const excludeArxiv = (items) => items?.filter(d => !['arxiv', 'arXiv', 'Arxiv'].includes(d.venue)) || [];
+
+  // Use new paper_statistics.json for method/domain data
+  const psMethods = paperStats.top_10_method_families.map(d => ({ method: d.method_family, count: d.count }));
+  const psDomains = paperStats.top_10_application_domains.map(d => ({ domain: d.application_domain, count: d.count }));
+  const psDatasets = paperStats.top_10_datasets;
 
   $: yearOption = stats.year_counts ? baseBar(stats.year_counts, "year", "count", "Papers by year", false, palette.blue, { show: false }) : null;
   $: categoryOption = stats.category_counts ? baseBar(stats.category_counts, "count", "category", "Entries by category", true, palette.teal) : null;
   $: topicOption = stats.topics ? baseBar(stats.topics, "topic", "count", "Frequent title terms", false, palette.coral) : null;
-  $: filteredMethods = excludeGenericTerms(stats.method_counts, "method");
-  $: methodOption = filteredMethods.length ? baseBar(filteredMethods, "count", "method", "Method families", true, palette.lavender) : null;
-  $: filteredDomains = excludeGenericTerms(stats.domain_counts, "domain");
-  $: domainOption = filteredDomains.length ? baseBar(filteredDomains, "count", "domain", "Domain focus", true, palette.slate) : null;
+  $: methodOption = psMethods.length ? baseBar(psMethods, "count", "method", "Method families", true, palette.lavender) : null;
+  $: domainOption = psDomains.length ? baseBar(psDomains, "count", "domain", "Application domains", true, palette.slate) : null;
   $: filteredVenues = excludeArxiv(stats.venue_counts);
   $: venueOption = filteredVenues.length ? baseBar(filteredVenues.slice(0, 12), "count", "venue", "Top venues", true, palette.blue) : null;
   $: strataOption = stats.venue_strata ? pie(stats.venue_strata, "stratum", "Venue strata") : null;
@@ -263,8 +293,11 @@
   $: langOption = stats.language_counts && stats.language_counts.length
     ? pie(stats.language_counts, "language", "Language share (code repos)")
     : null;
-  $: radarOption = filteredMethods.length >= 3
-    ? radar(filteredMethods.slice(0, 8), "method", "count", "Method comparison")
+  $: radarOption = psMethods.length >= 3
+    ? radar(psMethods.slice(0, 8), "method", "count", "Method comparison")
+    : null;
+  $: datasetOption = psDatasets.length
+    ? baseBar(psDatasets.map(d => ({ dataset: d.dataset, count: d.count })), "count", "dataset", "Top cited datasets", true, palette.gold)
     : null;
 </script>
 
@@ -458,6 +491,31 @@
 
     <ScrollReveal>
       <section class="section">
+        <h2>Top cited datasets</h2>
+        <div class="grid">
+          <div class="panel">{#if datasetOption}<EChart option={datasetOption} height="340px" />{:else}<p>No data.</p>{/if}</div>
+          <div class="panel">
+            <h3 style="margin:0 0 8px;">Datasets by usage</h3>
+            <div class="list">
+              {#each psDatasets as ds}
+                <div class="list-item">
+                  <span>
+                    <a href={ds.source_url} target="_blank" rel="noopener" style="text-transform:capitalize;">{ds.dataset}</a>
+                    {#if getGitHubStars(ds.source_url)}
+                      <span class="badge" style="margin-left:8px;">★ {fmt(getGitHubStars(ds.source_url))}</span>
+                    {/if}
+                  </span>
+                  <span class="badge">{fmt(ds.count)} papers</span>
+                </div>
+              {/each}
+            </div>
+          </div>
+        </div>
+      </section>
+    </ScrollReveal>
+
+    <ScrollReveal>
+      <section class="section">
         <h2>Interactive paper table</h2>
         <div class="panel">
           <div class="filter-bar">
@@ -529,8 +587,11 @@
         <h2>Datasets</h2>
         <div class="grid">
           {#each resources.filter(r => r.category === 'Dataset') as res}
-            <div class="panel">
+            <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
               <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
+              {#if getGitHubStars(res.url)}
+                <span class="badge">★ {fmt(getGitHubStars(res.url))}</span>
+              {/if}
             </div>
           {/each}
         </div>
@@ -540,10 +601,19 @@
     <ScrollReveal>
       <section class="section">
         <h2>Survey Papers</h2>
-        <div class="grid">
+        <p style="color: var(--muted); margin: 0 0 12px;">
+          Citation counts from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>
+          {#if citationsLoading}<span style="font-size:12px;"> (loading...)</span>{/if}
+        </p>
+        <div class="list">
           {#each resources.filter(r => r.category === 'Survey Paper') as res}
-            <div class="panel">
-              <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
+            <div class="list-item">
+              <span><a href={res.url} target="_blank" rel="noopener">{res.title}</a></span>
+              {#if surveyCitations[res.title] !== undefined}
+                <span class="badge">{fmt(surveyCitations[res.title])} cited</span>
+              {:else if citationsLoading}
+                <span class="badge" style="opacity:0.4;">...</span>
+              {/if}
             </div>
           {/each}
         </div>

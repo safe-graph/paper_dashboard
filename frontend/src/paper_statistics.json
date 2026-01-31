@@ -1,0 +1,243 @@
+{
+  "summary": {
+    "total_papers_analyzed": 240,
+    "unique_datasets_found": 27,
+    "method_families_detected": 23,
+    "application_domains_detected": 13
+  },
+  "top_10_datasets": [
+    {
+      "rank": 1,
+      "dataset": "yelp",
+      "count": 63,
+      "source_url": "https://github.com/YingtongDou/CARE-GNN"
+    },
+    {
+      "rank": 2,
+      "dataset": "amazon",
+      "count": 39,
+      "source_url": "https://github.com/YingtongDou/CARE-GNN"
+    },
+    {
+      "rank": 3,
+      "dataset": "politifact",
+      "count": 19,
+      "source_url": "https://github.com/safe-graph/GNN-FakeNews"
+    },
+    {
+      "rank": 4,
+      "dataset": "fakenewsnet",
+      "count": 16,
+      "source_url": "https://github.com/KaiDMML/FakeNewsNet"
+    },
+    {
+      "rank": 5,
+      "dataset": "weibo",
+      "count": 15,
+      "source_url": "http://alt.qcri.org/~wgao/data/rumdect.zip"
+    },
+    {
+      "rank": 6,
+      "dataset": "twitter",
+      "count": 14,
+      "source_url": "https://www.dropbox.com/s/7ewzdrbelpmrnxu/rumdetect2017.zip?dl=0"
+    },
+    {
+      "rank": 7,
+      "dataset": "gossipcop",
+      "count": 13,
+      "source_url": "https://github.com/safe-graph/GNN-FakeNews"
+    },
+    {
+      "rank": 8,
+      "dataset": "cora",
+      "count": 9,
+      "source_url": "https://linqs.soe.ucsc.edu/data"
+    },
+    {
+      "rank": 9,
+      "dataset": "bitcoin otc",
+      "count": 9,
+      "source_url": "https://snap.stanford.edu/data/soc-sign-bitcoin-otc.html"
+    },
+    {
+      "rank": 10,
+      "dataset": "bitcoin alpha",
+      "count": 8,
+      "source_url": "https://snap.stanford.edu/data/soc-sign-bitcoin-alpha.html"
+    }
+  ],
+  "top_10_method_families": [
+    {
+      "rank": 1,
+      "method_family": "graph neural network",
+      "count": 240
+    },
+    {
+      "rank": 2,
+      "method_family": "generative adversarial network",
+      "count": 183
+    },
+    {
+      "rank": 3,
+      "method_family": "anomaly detection",
+      "count": 163
+    },
+    {
+      "rank": 4,
+      "method_family": "transformer",
+      "count": 141
+    },
+    {
+      "rank": 5,
+      "method_family": "recurrent neural network",
+      "count": 123
+    },
+    {
+      "rank": 6,
+      "method_family": "attention mechanism",
+      "count": 108
+    },
+    {
+      "rank": 7,
+      "method_family": "autoencoder",
+      "count": 94
+    },
+    {
+      "rank": 8,
+      "method_family": "contrastive learning",
+      "count": 82
+    },
+    {
+      "rank": 9,
+      "method_family": "semi-supervised learning",
+      "count": 69
+    },
+    {
+      "rank": 10,
+      "method_family": "ensemble methods",
+      "count": 69
+    }
+  ],
+  "top_10_application_domains": [
+    {
+      "rank": 1,
+      "application_domain": "fraud detection",
+      "count": 172
+    },
+    {
+      "rank": 2,
+      "application_domain": "finance",
+      "count": 116
+    },
+    {
+      "rank": 3,
+      "application_domain": "cybersecurity",
+      "count": 85
+    },
+    {
+      "rank": 4,
+      "application_domain": "review and rating",
+      "count": 72
+    },
+    {
+      "rank": 5,
+      "application_domain": "news and media",
+      "count": 65
+    },
+    {
+      "rank": 6,
+      "application_domain": "social media",
+      "count": 56
+    },
+    {
+      "rank": 7,
+      "application_domain": "e-commerce",
+      "count": 43
+    },
+    {
+      "rank": 8,
+      "application_domain": "payment",
+      "count": 18
+    },
+    {
+      "rank": 9,
+      "application_domain": "bot detection",
+      "count": 9
+    },
+    {
+      "rank": 10,
+      "application_domain": "telecommunications",
+      "count": 6
+    }
+  ],
+  "all_datasets": {
+    "yelp": 63,
+    "amazon": 39,
+    "politifact": 19,
+    "fakenewsnet": 16,
+    "weibo": 15,
+    "twitter": 14,
+    "gossipcop": 13,
+    "cora": 9,
+    "bitcoin otc": 9,
+    "bitcoin alpha": 8,
+    "xfraud": 8,
+    "elliptic": 7,
+    "ogb": 6,
+    "citeseer": 5,
+    "yelpnyc": 5,
+    "pubmed": 4,
+    "twibot": 4,
+    "dgraphfin": 4,
+    "pheme": 4,
+    "yelpzip": 4,
+    "alipay": 3,
+    "cresci": 2,
+    "unsw-nb15": 2,
+    "lending club": 1,
+    "botometer": 1,
+    "credit card fraud": 1,
+    "s-ffsd": 1
+  },
+  "all_method_families": {
+    "graph neural network": 240,
+    "generative adversarial network": 183,
+    "anomaly detection": 163,
+    "transformer": 141,
+    "recurrent neural network": 123,
+    "attention mechanism": 108,
+    "autoencoder": 94,
+    "contrastive learning": 82,
+    "semi-supervised learning": 69,
+    "ensemble methods": 69,
+    "convolutional neural network": 69,
+    "oversampling": 60,
+    "reinforcement learning": 55,
+    "spectral methods": 47,
+    "meta-learning": 42,
+    "matrix factorization": 41,
+    "large language model": 31,
+    "multi-task learning": 24,
+    "diffusion model": 20,
+    "belief propagation": 19,
+    "knowledge distillation": 17,
+    "active learning": 15,
+    "federated learning": 4
+  },
+  "all_application_domains": {
+    "fraud detection": 172,
+    "finance": 116,
+    "cybersecurity": 85,
+    "review and rating": 72,
+    "news and media": 65,
+    "social media": 56,
+    "e-commerce": 43,
+    "payment": 18,
+    "bot detection": 9,
+    "telecommunications": 6,
+    "advertising": 5,
+    "blockchain": 3,
+    "healthcare": 1
+  }
+}

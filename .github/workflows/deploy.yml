@@ -39,8 +39,10 @@ jobs:
           OPENALEX_EMAIL: ${{ secrets.OPENALEX_EMAIL }}
         run: python scripts/build_dashboard.py --output-dir frontend/public --json-only
 
-      - name: Copy data.json to src for Vite import
-        run: cp frontend/public/data.json frontend/src/data.json
+      - name: Copy data files to src for Vite import
+        run: |
+          cp frontend/public/data.json frontend/src/data.json
+          cp frontend/paper_statistics.json frontend/src/paper_statistics.json
 
       - name: Setup Node
         uses: actions/setup-node@v4
