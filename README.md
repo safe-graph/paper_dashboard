@@ -6,7 +6,9 @@ Static dashboard that summarizes graph/transformer fraud & anomaly detection pap
 - Pulls the latest paper list and parses every table row into structured data (year, venue, links, category/section).
 - Computes year, venue, topic, and category distributions plus code availability and GitHub language stats (when code links point to GitHub).
 - Optionally pulls citation counts (OpenAlex) to rank top cited papers.
-- Generates a static `site/index.html` with Plotly charts, a searchable/sortable table (Grid.js), and resource links (toolboxes, datasets, surveys).
+- Provides a search-first paper explorer with domain/year/code filters, sorting, card and compact views, and responsive layouts.
+- Saves reading lists, review status, and notes in local storage; compares papers side by side and exports a Markdown evidence matrix.
+- Generates a static Svelte SPA with ECharts analytics and curated resource links (toolboxes, datasets, surveys).
 - GitHub Actions workflow auto-builds on push, schedule, or repository dispatch and deploys to GitHub Pages.
 
 ## Quick start (local)
@@ -28,7 +30,7 @@ cd frontend && npm install && npm run build
 - The script clones the paper list into `data/papers_repo` by default; override with `--paper-repo-dir` if desired.
 
 ### Frontend stack
-- Svelte + Vite SPA in `frontend/` with ECharts visuals and a dark-themed table.
+- Svelte 5 + Vite SPA in `frontend/` with ECharts visuals, light/dark themes, and a literature-review workspace.
 - Data is pulled from `data.json` emitted by the Python pipeline (placed in `frontend/public` before building).
 
 ## Deploying to GitHub Pages

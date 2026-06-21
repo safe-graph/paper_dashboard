@@ -10,7 +10,6 @@
   }
 
   const displayed = tweened(0, {
-    duration,
     easing: elasticOut,
   });
 
@@ -19,13 +18,13 @@
   onMount(() => {
     setTimeout(() => {
       started = true;
-      displayed.set(value);
+      displayed.set(value, { duration });
     }, delay);
   });
 
   $effect(() => {
     if (started && value !== undefined) {
-      displayed.set(value);
+      displayed.set(value, { duration });
     }
   });
 </script>

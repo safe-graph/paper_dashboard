@@ -1,5 +1,6 @@
 import "./app.css";
 import App from "./App.svelte";
+import { mount } from "svelte";
 
 function showGlobalError(message) {
   const box = document.createElement("div");
@@ -26,8 +27,7 @@ window.addEventListener("unhandledrejection", (e) => {
 
 let app;
 try {
-  // Use `new App` to stay aligned with Svelte 5 compatibility mode.
-  app = new App({
+  app = mount(App, {
     target: document.getElementById("app"),
   });
   if (window.__appBootTimer) {

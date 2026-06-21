@@ -9,6 +9,15 @@
   let data = dataInline;
   let error = "";
   let loading = false;
+  let workspaceHydrated = false;
+  let savedPaperIds = [];
+  let reviewMeta = {};
+  let workspaceOpen = false;
+  let compareIds = [];
+  let compareOpen = false;
+  let toast = "";
+  let toastTimer;
+  let searchInput;
 
   /* ---------------------------------------------------------
      Theme management (light / dark with persistence)
@@ -144,6 +153,16 @@
     theme = saved || (prefersLight ? "light" : "dark");
     applyTheme(theme);
 
+    try {
+      const workspace = JSON.parse(localStorage.getItem("paper-review-workspace") || "{}");
+      savedPaperIds = Array.isArray(workspace.savedPaperIds) ? workspace.savedPaperIds : [];
+      reviewMeta = workspace.reviewMeta && typeof workspace.reviewMeta === "object" ? workspace.reviewMeta : {};
+    } catch (e) {
+      savedPaperIds = [];
+      reviewMeta = {};
+    }
+    workspaceHydrated = true;
+
     const surveys = (data?.resources || []).filter((r) => r.category === "Survey Paper");
     const results = {};
     for (const survey of surveys) {
@@ -161,8 +180,12 @@
   let category = "All";
   let domain = "All";
   let yearFilter = "All";
+  let codeOnly = false;
+  let savedOnly = false;
+  let sortBy = "newest";
+  let viewMode = "cards";
   let page = 1;
-  const pageSize = 20;
+  const pageSize = 18;
 
   const langIcons = {
     Python: "🐍",
@@ -201,6 +224,7 @@
     `<span class="chip"><span class="icon">${icon || "★"}</span>${label}</span>`;
 
   const fmt = (n) => (n || n === 0 ? n.toLocaleString("en-US") : "–");
+  const paperKey = (paper) => paper.paper_url || `${paper.title}::${paper.year || ""}`;
 
   // Shared categorical palette (works in both themes).
   const palette = {
@@ -215,6 +239,12 @@
   $: papers = data?.papers || [];
   $: stats = data?.stats || {};
   $: resources = data?.resources || [];
+  $: codePaperCount = papers.filter((paper) => paper.has_code || paper.code_url).length;
+  $: codePercentage = papers.length ? ((codePaperCount / papers.length) * 100).toFixed(1) : 0;
+  $: citationMap = (stats.top_cited || []).reduce((acc, paper) => {
+    acc[paper.title] = paper.citation_count;
+    return acc;
+  }, {});
 
   $: repoStarsMap = (stats.code_repos || []).reduce((acc, repo) => {
     acc[repo.full_name.toLowerCase()] = repo.stars;
@@ -236,27 +266,151 @@
     "All",
     ...Array.from(new Set(papers.map((p) => p.year).filter(Boolean))).sort((a, b) => b - a),
   ];
-  $: page = 1, query, category, domain, yearFilter; // reset page on filter change
+  $: page = 1, query, category, domain, yearFilter, codeOnly, savedOnly, sortBy; // reset page on filter change
   $: filtered = papers.filter((p) => {
     const q = query.trim().toLowerCase();
     const matchesQuery =
       !q ||
       p.title.toLowerCase().includes(q) ||
-      (p.venue && p.venue.toLowerCase().includes(q));
+      (p.venue && p.venue.toLowerCase().includes(q)) ||
+      (p.domain && p.domain.toLowerCase().includes(q)) ||
+      (p.category && p.category.toLowerCase().includes(q)) ||
+      (p.subcategory && p.subcategory.toLowerCase().includes(q));
     const matchesCategory = category === "All" || p.category === category;
     const matchesDomain = domain === "All" || p.domain === domain;
     const matchesYear = yearFilter === "All" || p.year === yearFilter;
-    return matchesQuery && matchesCategory && matchesDomain && matchesYear;
+    const matchesCode = !codeOnly || p.has_code || p.code_url;
+    const matchesSaved = !savedOnly || savedPaperIds.includes(paperKey(p));
+    return matchesQuery && matchesCategory && matchesDomain && matchesYear && matchesCode && matchesSaved;
+  }).sort((a, b) => {
+    if (sortBy === "oldest") return (a.year || 0) - (b.year || 0) || a.title.localeCompare(b.title);
+    if (sortBy === "title") return a.title.localeCompare(b.title);
+    if (sortBy === "cited") return (citationMap[b.title] || 0) - (citationMap[a.title] || 0) || (b.year || 0) - (a.year || 0);
+    return (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title);
   });
   $: pageCount = filtered.length ? Math.max(1, Math.ceil(filtered.length / pageSize)) : 1;
   $: page = Math.min(page, pageCount);
   $: pageItems = filtered.slice((page - 1) * pageSize, page * pageSize);
+  $: savedPapers = savedPaperIds.map((id) => papers.find((paper) => paperKey(paper) === id)).filter(Boolean);
+  $: comparePapers = compareIds.map((id) => papers.find((paper) => paperKey(paper) === id)).filter(Boolean);
+  $: activeFilterCount = [category !== "All", domain !== "All", yearFilter !== "All", codeOnly, savedOnly].filter(Boolean).length;
+
+  function persistWorkspace() {
+    if (!workspaceHydrated) return;
+    try {
+      localStorage.setItem("paper-review-workspace", JSON.stringify({ savedPaperIds, reviewMeta }));
+    } catch (e) {
+      /* ignore storage failures */
+    }
+  }
+
+  function showToast(message) {
+    toast = message;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => (toast = ""), 2200);
+  }
+
+  function toggleSaved(paper) {
+    const id = paperKey(paper);
+    const isSaved = savedPaperIds.includes(id);
+    savedPaperIds = isSaved ? savedPaperIds.filter((item) => item !== id) : [...savedPaperIds, id];
+    if (!isSaved && !reviewMeta[id]) {
+      reviewMeta = { ...reviewMeta, [id]: { status: "To read", notes: "" } };
+    }
+    persistWorkspace();
+    showToast(isSaved ? "Removed from reading list" : "Saved to reading list");
+  }
+
+  function updateReviewMeta(paper, field, value) {
+    const id = paperKey(paper);
+    reviewMeta = {
+      ...reviewMeta,
+      [id]: { status: "To read", notes: "", ...(reviewMeta[id] || {}), [field]: value },
+    };
+    persistWorkspace();
+  }
+
+  function clearReadingList() {
+    savedPaperIds = [];
+    compareIds = [];
+    persistWorkspace();
+    showToast("Reading list cleared");
+  }
+
+  function toggleCompare(paper) {
+    const id = paperKey(paper);
+    if (compareIds.includes(id)) {
+      compareIds = compareIds.filter((item) => item !== id);
+      return;
+    }
+    if (compareIds.length >= 3) {
+      showToast("Compare up to three papers at a time");
+      return;
+    }
+    compareIds = [...compareIds, id];
+  }
+
+  function jumpToExplorer() {
+    document.getElementById("table")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => searchInput?.focus(), 350);
+  }
+
+  function applyTopic(topic) {
+    query = topic;
+    jumpToExplorer();
+  }
+
+  function escapeCell(value) {
+    return String(value || "").replace(/\|/g, "\\|").replace(/\n/g, " ");
+  }
+
+  function exportReadingList() {
+    if (!savedPapers.length) {
+      showToast("Save papers before exporting");
+      return;
+    }
+    const rows = savedPapers.map((paper) => {
+      const meta = reviewMeta[paperKey(paper)] || {};
+      return `| [${escapeCell(paper.title)}](${paper.paper_url || "#"}) | ${paper.year || "—"} | ${escapeCell(paper.venue)} | ${escapeCell(paper.domain)} | ${escapeCell(meta.status || "To read")} | ${escapeCell(meta.notes)} |`;
+    });
+    const content = `# Literature review reading list\n\nExported from SafeGraph Research Atlas.\n\n| Paper | Year | Venue | Domain | Status | Notes |\n| --- | ---: | --- | --- | --- | --- |\n${rows.join("\n")}\n`;
+    const url = URL.createObjectURL(new Blob([content], { type: "text/markdown;charset=utf-8" }));
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "safegraph-literature-review.md";
+    anchor.click();
+    URL.revokeObjectURL(url);
+    showToast("Reading list exported");
+  }
+
+  async function copyReference(paper) {
+    const reference = `${paper.title}. ${paper.venue || ""}${paper.year ? ` (${paper.year})` : ""}. ${paper.paper_url || ""}`.trim();
+    try {
+      await navigator.clipboard.writeText(reference);
+      showToast("Reference copied");
+    } catch (e) {
+      showToast("Could not copy reference");
+    }
+  }
+
+  function handleKeydown(event) {
+    if (event.key === "Escape") {
+      workspaceOpen = false;
+      compareOpen = false;
+    }
+    if (event.key === "/" && !["INPUT", "TEXTAREA", "SELECT"].includes(event.target?.tagName)) {
+      event.preventDefault();
+      jumpToExplorer();
+    }
+  }
 
   function resetFilters() {
     query = "";
     category = "All";
     domain = "All";
     yearFilter = "All";
+    codeOnly = false;
+    savedOnly = false;
   }
 
   /* ---------------------------------------------------------
@@ -411,22 +565,22 @@
     : null;
 
   const navItems = [
-    { id: "highlights", label: "Highlights" },
-    { id: "top-cited", label: "Top Cited" },
-    { id: "distributions", label: "Trends" },
+    { id: "table", label: "Discover" },
+    { id: "top-cited", label: "Top cited" },
+    { id: "distributions", label: "Landscape" },
     { id: "methods", label: "Methods" },
-    { id: "venues", label: "Venues" },
-    { id: "table", label: "Explorer" },
     { id: "resources", label: "Resources" },
   ];
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div class="glow" aria-hidden="true"></div>
 
 <nav class="nav">
   <div class="nav-brand">
-    <span class="nav-logo">◈</span>
-    <span>Fraud&nbsp;Detection&nbsp;Papers</span>
+    <span class="nav-logo">S</span>
+    <span><strong>SafeGraph</strong><small>Research Atlas</small></span>
   </div>
   <div class="nav-links">
     {#each navItems as item}
@@ -441,23 +595,54 @@
   >
     {theme === "dark" ? "☀️" : "🌙"}
   </button>
+  <button class="workspace-button" on:click={() => (workspaceOpen = true)} aria-label="Open reading list">
+    <span>Reading list</span>
+    <strong>{savedPaperIds.length}</strong>
+  </button>
 </nav>
 
 <main>
   <header class="hero">
-    <ScrollReveal>
-      <span class="pill">Graph &amp; Transformer Fraud Detection</span>
-      <h1>An interactive map of the<br /><span class="grad">Safe-Graph paper collection</span></h1>
-      <p class="lede">
-        Trends, venues, methods, and the most-cited work in graph- and transformer-based
-        fraud, anomaly, and outlier detection — refreshed automatically from the upstream list.
-      </p>
-    </ScrollReveal>
+    <div class="hero-layout">
+      <ScrollReveal>
+        <span class="pill">Living literature map · Updated automatically</span>
+        <h1>Find the papers that<br /><span class="grad">move your review forward.</span></h1>
+        <p class="lede">
+          Search, compare, annotate, and organize graph and transformer research for fraud,
+          anomaly, and outlier detection—all in one evidence-first workspace.
+        </p>
+        <div class="hero-search">
+          <span aria-hidden="true">⌕</span>
+          <input
+            aria-label="Search the paper collection"
+            placeholder="Try “heterogeneous graph”, “financial fraud”, or a venue…"
+            bind:value={query}
+            on:keydown={(event) => event.key === "Enter" && jumpToExplorer()}
+          />
+          <button on:click={jumpToExplorer}>Search collection</button>
+        </div>
+        <div class="topic-row" aria-label="Popular research topics">
+          <span>Popular:</span>
+          {#each (stats.topics || []).slice(0, 4) as topic}
+            <button on:click={() => applyTopic(topic.topic)}>{topic.topic}</button>
+          {/each}
+        </div>
+      </ScrollReveal>
+      <aside class="hero-note" aria-label="Literature review workflow">
+        <div class="hero-note-head"><span>Review workflow</span><strong>01—04</strong></div>
+        <ol>
+          <li><span>01</span><div><strong>Discover</strong><small>Search 500+ curated papers</small></div></li>
+          <li><span>02</span><div><strong>Shortlist</strong><small>Save promising evidence</small></div></li>
+          <li><span>03</span><div><strong>Compare</strong><small>Evaluate methods side by side</small></div></li>
+          <li><span>04</span><div><strong>Synthesize</strong><small>Add notes and export your matrix</small></div></li>
+        </ol>
+      </aside>
+    </div>
     <div class="stat-grid">
       <ScrollReveal delay={0}>
         <div class="stat featured">
           <div class="label"><span class="stat-ico">📄</span> Total papers</div>
-          <div class="value"><AnimatedNumber value={stats.paper_count || papers.length} delay={150} /></div>
+          <div class="value"><AnimatedNumber value={papers.length} delay={150} /></div>
           <div class="sub">across {categories.length - 1} categories</div>
         </div>
       </ScrollReveal>
@@ -465,12 +650,10 @@
         <div class="stat">
           <div class="label"><span class="stat-ico">💻</span> With code</div>
           <div class="value">
-            {#if stats.code_availability}
-              <AnimatedNumber value={stats.code_availability.with_code} delay={250} />
-            {:else}–{/if}
+            <AnimatedNumber value={codePaperCount} delay={250} />
           </div>
           <div class="sub">
-            {#if stats.code_availability}{stats.code_availability.percentage || 0}% of all papers{/if}
+            {codePercentage}% of all papers
           </div>
         </div>
       </ScrollReveal>
@@ -490,6 +673,138 @@
       </ScrollReveal>
     </div>
   </header>
+
+  <section class="section discover" id="table">
+    <div class="discover-heading">
+      <div>
+        <span class="eyebrow">Research workspace</span>
+        <h2>Discover and triage papers</h2>
+        <p>Use <kbd>/</kbd> to jump to search. Save papers to build a persistent reading list.</p>
+      </div>
+      <div class="view-switch" aria-label="Choose results view">
+        <button class:active={viewMode === "cards"} on:click={() => (viewMode = "cards")} aria-pressed={viewMode === "cards"}>Cards</button>
+        <button class:active={viewMode === "compact"} on:click={() => (viewMode = "compact")} aria-pressed={viewMode === "compact"}>Compact</button>
+      </div>
+    </div>
+
+    <div class="explorer-shell">
+      <aside class="filter-panel">
+        <div class="filter-title">
+          <strong>Refine results</strong>
+          {#if activeFilterCount}<span>{activeFilterCount} active</span>{/if}
+        </div>
+
+        <label class="filter-search">
+          <span>Search</span>
+          <div><span aria-hidden="true">⌕</span><input bind:this={searchInput} bind:value={query} placeholder="Title, venue, domain…" /></div>
+        </label>
+
+        <label>
+          <span>Research family</span>
+          <select bind:value={category}>{#each categories as cat}<option value={cat}>{cat === "All" ? "All research families" : cat}</option>{/each}</select>
+        </label>
+        <label>
+          <span>Application domain</span>
+          <select bind:value={domain}>{#each domains as d}<option value={d}>{d === "All" ? "All domains" : d}</option>{/each}</select>
+        </label>
+        <div class="filter-split">
+          <label>
+            <span>Year</span>
+            <select bind:value={yearFilter}>{#each years as y}<option value={y}>{y === "All" ? "Any year" : y}</option>{/each}</select>
+          </label>
+          <label>
+            <span>Sort by</span>
+            <select bind:value={sortBy}>
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="cited">Most cited</option>
+              <option value="title">Title A–Z</option>
+            </select>
+          </label>
+        </div>
+        <label class="check-filter"><input type="checkbox" bind:checked={codeOnly} /><span><strong>Code available</strong><small>Reproducible papers only</small></span></label>
+        <label class="check-filter"><input type="checkbox" bind:checked={savedOnly} /><span><strong>Saved papers</strong><small>Your current reading list</small></span></label>
+
+        <div class="quick-topics">
+          <span>Topic shortcuts</span>
+          <div>
+            {#each (stats.topics || []).slice(0, 6) as topic}
+              <button class:active={query.toLowerCase() === topic.topic.toLowerCase()} on:click={() => (query = topic.topic)}>{topic.topic}</button>
+            {/each}
+          </div>
+        </div>
+        <button class="reset-btn full" on:click={resetFilters} disabled={!query && !activeFilterCount}>Clear all filters</button>
+      </aside>
+
+      <div class="results-panel">
+        <div class="results-toolbar">
+          <div><strong>{fmt(filtered.length)}</strong> papers <span>of {fmt(papers.length)} in the collection</span></div>
+          <button class="saved-shortcut" on:click={() => (workspaceOpen = true)}>Saved <strong>{savedPaperIds.length}</strong></button>
+        </div>
+
+        {#if viewMode === "cards"}
+          <div class="paper-grid">
+            {#each pageItems as paper}
+              <article class:saved={savedPaperIds.includes(paperKey(paper))} class="paper-card">
+                <div class="paper-card-top">
+                  <div class="paper-meta"><span>{paper.year || "N/A"}</span><span>{paper.venue || "Venue unavailable"}</span></div>
+                  <button
+                    class:active={savedPaperIds.includes(paperKey(paper))}
+                    class="save-button"
+                    on:click={() => toggleSaved(paper)}
+                    aria-label={savedPaperIds.includes(paperKey(paper)) ? `Remove ${paper.title} from reading list` : `Save ${paper.title} to reading list`}
+                    title="Save to reading list"
+                  >{savedPaperIds.includes(paperKey(paper)) ? "●" : "○"}</button>
+                </div>
+                <h3><a href={paper.paper_url || "#"} target="_blank" rel="noopener">{paper.title}</a></h3>
+                <div class="paper-tags">
+                  <span>{paper.domain || "General"}</span>
+                  <span>{paper.category}</span>
+                  {#if citationMap[paper.title]}<span class="citation-tag">{fmt(citationMap[paper.title])} citations</span>{/if}
+                </div>
+                <div class="paper-card-actions">
+                  <a href={paper.paper_url || "#"} target="_blank" rel="noopener">Open paper ↗</a>
+                  {#if paper.code_url}<a class="code-link" href={paper.code_url} target="_blank" rel="noopener">Code ↗</a>{/if}
+                  <button class:active={compareIds.includes(paperKey(paper))} on:click={() => toggleCompare(paper)}>
+                    {compareIds.includes(paperKey(paper)) ? "Selected" : "Compare"}
+                  </button>
+                </div>
+              </article>
+            {/each}
+          </div>
+        {:else}
+          <div class="compact-results">
+            {#each pageItems as paper}
+              <article class:saved={savedPaperIds.includes(paperKey(paper))}>
+                <button class:active={savedPaperIds.includes(paperKey(paper))} class="save-button" on:click={() => toggleSaved(paper)} aria-label="Toggle saved paper">{savedPaperIds.includes(paperKey(paper)) ? "●" : "○"}</button>
+                <div class="compact-year">{paper.year || "—"}</div>
+                <div class="compact-main">
+                  <h3><a href={paper.paper_url || "#"} target="_blank" rel="noopener">{paper.title}</a></h3>
+                  <p>{paper.venue || "Venue unavailable"} · {paper.domain || "General"}</p>
+                </div>
+                <div class="compact-actions">
+                  {#if paper.code_url}<a href={paper.code_url} target="_blank" rel="noopener">Code</a>{/if}
+                  <button class:active={compareIds.includes(paperKey(paper))} on:click={() => toggleCompare(paper)}>Compare</button>
+                </div>
+              </article>
+            {/each}
+          </div>
+        {/if}
+
+        {#if !pageItems.length}
+          <div class="empty-state"><span>⌕</span><h3>No matching papers</h3><p>Try removing a filter or using a broader search term.</p><button on:click={resetFilters}>Reset search</button></div>
+        {/if}
+
+        {#if pageItems.length}
+          <div class="pagination">
+            <button on:click={() => (page = Math.max(1, page - 1))} disabled={page === 1}>← Previous</button>
+            <span>Page {page} of {pageCount}</span>
+            <button on:click={() => (page = Math.min(pageCount, page + 1))} disabled={page === pageCount}>Next →</button>
+          </div>
+        {/if}
+      </div>
+    </div>
+  </section>
 
   {#if loading}
     <section class="section"><div class="panel">Loading…</div></section>
@@ -638,52 +953,6 @@
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section" id="table">
-        <div class="section-head"><span class="eyebrow">Explore</span><h2>Paper explorer</h2></div>
-        <div class="panel">
-          <div class="filter-bar">
-            <div class="search-field">
-              <span class="s-icon">🔍</span>
-              <input placeholder="Search title or venue…" bind:value={query} />
-            </div>
-            <select bind:value={category}>{#each categories as cat}<option value={cat}>{cat}</option>{/each}</select>
-            <select bind:value={domain}>{#each domains as d}<option value={d}>{d === "All" ? "All domains" : d}</option>{/each}</select>
-            <select bind:value={yearFilter}>{#each years as y}<option value={y}>{y === "All" ? "All years" : y}</option>{/each}</select>
-            <button class="reset-btn" on:click={resetFilters}>Reset</button>
-            <div class="count-chip">{fmt(filtered.length)} papers</div>
-          </div>
-          <div class="table-wrap">
-            <table class="table">
-              <thead>
-                <tr><th>Year</th><th>Title</th><th>Venue</th><th>Category</th><th>Section</th><th>Code</th></tr>
-              </thead>
-              <tbody>
-                {#each pageItems as p}
-                  <tr>
-                    <td>{p.year || "—"}</td>
-                    <td><a href={p.paper_url || "#"} target="_blank" rel="noopener">{p.title}</a></td>
-                    <td>{p.venue}</td>
-                    <td><span class="tag">{p.category}</span></td>
-                    <td>{p.subcategory || "—"}</td>
-                    <td>{#if p.code_url}<a href={p.code_url} target="_blank" rel="noopener">Code ↗</a>{:else}—{/if}</td>
-                  </tr>
-                {/each}
-                {#if !pageItems.length}
-                  <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:28px;">No papers match these filters.</td></tr>
-                {/if}
-              </tbody>
-            </table>
-          </div>
-          <div class="pagination">
-            <button on:click={() => (page = Math.max(1, page - 1))} disabled={page === 1}>← Prev</button>
-            <span>Page {page} of {pageCount}</span>
-            <button on:click={() => (page = Math.min(pageCount, page + 1))} disabled={page === pageCount}>Next →</button>
-          </div>
-        </div>
-      </section>
-    </ScrollReveal>
-
-    <ScrollReveal>
       <section class="section" id="resources">
         <div class="section-head"><span class="eyebrow">Resources</span><h2>Toolboxes &amp; libraries</h2></div>
         <div class="grid">
@@ -739,3 +1008,68 @@
     Citations via OpenAlex.
   </footer>
 </main>
+
+{#if compareIds.length}
+  <div class="compare-dock" aria-live="polite">
+    <div><span>{compareIds.length}</span><strong>{compareIds.length === 1 ? "paper" : "papers"} selected</strong><small>Select up to 3 to compare</small></div>
+    <button class="text-button" on:click={() => (compareIds = [])}>Clear</button>
+    <button class="primary-button" on:click={() => (compareOpen = true)}>Compare papers</button>
+  </div>
+{/if}
+
+{#if workspaceOpen}
+  <div class="drawer-backdrop" aria-hidden="true"></div>
+  <div class="workspace-drawer" role="dialog" aria-modal="true" aria-label="Reading list" tabindex="-1">
+    <header>
+      <div><span class="eyebrow">Your workspace</span><h2>Reading list</h2><p>{savedPapers.length} saved {savedPapers.length === 1 ? "paper" : "papers"}</p></div>
+      <button class="close-button" on:click={() => (workspaceOpen = false)} aria-label="Close reading list">×</button>
+    </header>
+    <div class="drawer-actions">
+      <button class="primary-button" on:click={exportReadingList} disabled={!savedPapers.length}>Export review matrix</button>
+      <button class="text-button danger" on:click={clearReadingList} disabled={!savedPapers.length}>Clear list</button>
+    </div>
+    <div class="saved-list">
+      {#each savedPapers as paper}
+        <article class="saved-paper">
+          <div class="saved-paper-head">
+            <div><span>{paper.year || "—"} · {paper.venue || "Venue unavailable"}</span><h3><a href={paper.paper_url || "#"} target="_blank" rel="noopener">{paper.title}</a></h3></div>
+            <button class="remove-button" on:click={() => toggleSaved(paper)} aria-label={`Remove ${paper.title}`}>×</button>
+          </div>
+          <div class="saved-controls">
+            <label><span>Review status</span><select value={reviewMeta[paperKey(paper)]?.status || "To read"} on:change={(event) => updateReviewMeta(paper, "status", event.currentTarget.value)}><option>To read</option><option>Reading</option><option>Reviewed</option><option>Key evidence</option></select></label>
+            <button on:click={() => copyReference(paper)}>Copy reference</button>
+          </div>
+          <label class="notes-field"><span>Review notes</span><textarea rows="3" placeholder="Finding, limitation, dataset, follow-up…" value={reviewMeta[paperKey(paper)]?.notes || ""} on:input={(event) => updateReviewMeta(paper, "notes", event.currentTarget.value)}></textarea></label>
+        </article>
+      {:else}
+        <div class="drawer-empty"><span>◇</span><h3>Your reading list is empty</h3><p>Save papers from the explorer to annotate and export them later.</p><button class="primary-button" on:click={() => { workspaceOpen = false; jumpToExplorer(); }}>Discover papers</button></div>
+      {/each}
+    </div>
+  </div>
+{/if}
+
+{#if compareOpen}
+  <div class="modal-backdrop">
+    <div class="compare-modal" role="dialog" aria-modal="true" aria-labelledby="compare-title" tabindex="-1">
+      <header><div><span class="eyebrow">Evidence matrix</span><h2 id="compare-title">Compare selected papers</h2></div><button class="close-button" on:click={() => (compareOpen = false)} aria-label="Close comparison">×</button></header>
+      <div class="comparison-grid" style={`--comparison-count:${Math.max(comparePapers.length, 1)}`}>
+        {#each comparePapers as paper}
+          <article>
+            <div class="comparison-title"><span>{paper.year || "—"}</span><h3><a href={paper.paper_url || "#"} target="_blank" rel="noopener">{paper.title}</a></h3></div>
+            <dl>
+              <div><dt>Venue</dt><dd>{paper.venue || "Not available"}</dd></div>
+              <div><dt>Domain</dt><dd>{paper.domain || "General"}</dd></div>
+              <div><dt>Research family</dt><dd>{paper.category || "Not available"}</dd></div>
+              <div><dt>Section</dt><dd>{paper.subcategory || "Not specified"}</dd></div>
+              <div><dt>Citations</dt><dd>{citationMap[paper.title] ? fmt(citationMap[paper.title]) : "Not indexed"}</dd></div>
+              <div><dt>Code</dt><dd>{#if paper.code_url}<a href={paper.code_url} target="_blank" rel="noopener">Repository ↗</a>{:else}Not linked{/if}</dd></div>
+            </dl>
+            <div class="comparison-actions"><button on:click={() => toggleSaved(paper)}>{savedPaperIds.includes(paperKey(paper)) ? "Saved" : "Save paper"}</button><button on:click={() => copyReference(paper)}>Copy reference</button></div>
+          </article>
+        {/each}
+      </div>
+    </div>
+  </div>
+{/if}
+
+{#if toast}<div class="toast" role="status">{toast}</div>{/if}
