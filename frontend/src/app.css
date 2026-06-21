@@ -438,14 +438,29 @@ h1 .grad {
   display: flex;
   align-items: center;
   min-width: 0;
+  flex: 1 1 auto;
 }
 .list-item .li-text {
   min-width: 0;
+  overflow-wrap: anywhere;
+}
+.list-item .li-text a {
+  overflow-wrap: anywhere;
 }
 .li-meta {
   color: var(--faint);
   font-size: 12px;
   margin-top: 2px;
+}
+/* Right-hand meta (language chip + star badge) on repo rows: keep together,
+   never shrink, wrap as a unit on narrow panels. */
+.repo-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .badge {

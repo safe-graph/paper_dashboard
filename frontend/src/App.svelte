@@ -50,6 +50,85 @@
   let surveyCitations = {};
   let citationsLoading = true;
 
+  /* Robust OpenAlex lookup for a survey (mirrors the Python pipeline):
+     match by publisher DOI / arXiv id first, then a *verified* title search.
+     Returns undefined when no confident match — better to show nothing than a
+     wrong count. */
+  const OA_BASE = "https://api.openalex.org/works";
+  const OA_SELECT = "select=id,display_name,cited_by_count,publication_year";
+  const OA_MAIL = "mailto=ytongdou@gmail.com";
+
+  function normTitle(s) {
+    return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
+  }
+  function bigrams(s) {
+    const m = new Map();
+    for (let i = 0; i < s.length - 1; i++) {
+      const g = s.substr(i, 2);
+      m.set(g, (m.get(g) || 0) + 1);
+    }
+    return m;
+  }
+  function titleSim(a, b) {
+    a = normTitle(a);
+    b = normTitle(b);
+    if (!a || !b) return 0;
+    if (a === b) return 1;
+    if (Math.min(a.length, b.length) >= 20 && (a.includes(b) || b.includes(a))) return 0.95;
+    if (a.length < 2 || b.length < 2) return 0;
+    const A = bigrams(a), B = bigrams(b);
+    let inter = 0, total = 0;
+    A.forEach((cnt, g) => { total += cnt; if (B.has(g)) inter += Math.min(cnt, B.get(g)); });
+    B.forEach((cnt) => { total += cnt; });
+    return (2 * inter) / total;
+  }
+  function extractDoi(u) {
+    const m = u && u.match(/10\.\d{4,9}\/[^\s?#"']+/i);
+    return m ? m[0].replace(/[).,;]+$/, "") : null;
+  }
+  function extractArxiv(u) {
+    if (!u) return null;
+    let m = u.match(/arxiv\.org\/(?:abs|pdf)\/([^?#\s]+)/i);
+    let raw = m ? m[1] : null;
+    if (!raw) {
+      const m2 = u.match(/(?<!\d)(\d{4}\.\d{4,5})(v\d+)?/);
+      raw = m2 ? m2[1] : null;
+    }
+    if (!raw) return null;
+    raw = raw.replace(/\.pdf$/, "").replace(/v\d+$/, "");
+    return raw || null;
+  }
+  async function fetchSurveyCitation(survey) {
+    const doi = extractDoi(survey.url);
+    const ax = extractArxiv(survey.url);
+    const filters = [];
+    if (doi && !/arxiv/i.test(doi)) filters.push(`doi:${doi.toLowerCase()}`);
+    if (ax) filters.push(`doi:10.48550/arxiv.${ax.toLowerCase()}`);
+    for (const f of filters) {
+      try {
+        const r = await fetch(`${OA_BASE}?filter=${encodeURIComponent(f)}&${OA_SELECT}&per_page=1&${OA_MAIL}`);
+        if (r.ok) {
+          const p = await r.json();
+          if (p.results?.length) return p.results[0].cited_by_count || 0;
+        }
+      } catch (e) { /* try next */ }
+    }
+    try {
+      const q = encodeURIComponent(survey.title.replace(/[^\w\s]/g, " ").trim());
+      const r = await fetch(`${OA_BASE}?search=${q}&${OA_SELECT}&per_page=5&${OA_MAIL}`);
+      if (r.ok) {
+        const p = await r.json();
+        let best = null, score = 0;
+        for (const cand of p.results || []) {
+          const s = titleSim(survey.title, cand.display_name || "");
+          if (s > score) { score = s; best = cand; }
+        }
+        if (best && score >= 0.82) return best.cited_by_count || 0;
+      }
+    } catch (e) { /* give up */ }
+    return undefined;
+  }
+
   onMount(async () => {
     // Initialise theme from saved preference or system setting.
     let saved = null;
@@ -68,18 +147,8 @@
     const surveys = (data?.resources || []).filter((r) => r.category === "Survey Paper");
     const results = {};
     for (const survey of surveys) {
-      try {
-        const q = encodeURIComponent(survey.title.replace(/[^\w\s]/g, " ").trim());
-        const resp = await fetch(`https://api.openalex.org/works?search=${q}&per_page=1`);
-        if (resp.ok) {
-          const payload = await resp.json();
-          if (payload.results?.length) {
-            results[survey.title] = payload.results[0].cited_by_count || 0;
-          }
-        }
-      } catch (e) {
-        /* silently skip */
-      }
+      const cc = await fetchSurveyCitation(survey);
+      if (cc !== undefined) results[survey.title] = cc;
     }
     surveyCitations = results;
     citationsLoading = false;
@@ -255,7 +324,7 @@
     textStyle: { color: c.text },
     title: { text: title, textStyle: { color: c.text, fontSize: 14, fontWeight: 700 } },
     tooltip: { trigger: "item", ...baseTooltip(c) },
-    legend: { bottom: 0, textStyle: { color: c.muted }, icon: "circle" },
+    legend: { type: "scroll", bottom: 0, textStyle: { color: c.muted }, icon: "circle", pageTextStyle: { color: c.muted }, pageIconColor: c.muted, pageIconInactiveColor: c.split },
     animationDuration: 900,
     animationEasing: "cubicOut",
     series: [
@@ -532,7 +601,7 @@
                 {#each stats.top_repos as repo, idx}
                   <div class="list-item">
                     <span class="li-main"><span class="rank">{idx + 1}</span><span class="li-text"><a href={repo.url} target="_blank" rel="noopener">{repo.full_name}</a></span></span>
-                    <span style="display:flex;align-items:center;gap:8px;">
+                    <span class="repo-meta">
                       {#if repo.language}<span class="chip"><span class="icon">{langIcons[repo.language] || "💻"}</span>{repo.language}</span>{/if}
                       <span class="badge">★ {fmt(repo.stars)}</span>
                     </span>

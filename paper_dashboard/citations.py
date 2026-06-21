@@ -14,8 +14,10 @@ from .parser import PaperEntry
 logger = logging.getLogger(__name__)
 
 OPENALEX_API_BASE = "https://api.openalex.org/works"
-# Request the fields we actually consume below. host_venue / primary_location /
-# authorships are needed for venue resolution and title-match verification.
+# Only request fields we actually consume. NOTE: `host_venue` was REMOVED from
+# the OpenAlex API (superseded by `primary_location`); including it in `select`
+# makes the whole request 400 and silently drops every result. Venue now comes
+# from `primary_location.source.display_name`.
 OPENALEX_FIELDS = ",".join(
     [
         "id",
@@ -23,10 +25,7 @@ OPENALEX_FIELDS = ",".join(
         "cited_by_count",
         "publication_year",
         "doi",
-        "ids",
-        "host_venue",
         "primary_location",
-        "authorships",
     ]
 )
 DOI_RE = re.compile(r"10\.\d{4,9}/[^\s?#\"']+", re.IGNORECASE)
