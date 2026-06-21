@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Graph Fraud Detection Dashboard</title>
+    <meta name="description" content="Interactive dashboard of graph- and transformer-based fraud, anomaly, and outlier detection papers." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // Apply saved/system theme before first paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var saved = localStorage.getItem("dashboard-theme");
+          var sys = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", saved || sys);
+        } catch (e) {}
+      })();
+    </script>
     <script>
       // Fallback if module fails to load (common for file:// or path issues)
       window.__appBootTimer = setTimeout(() => {

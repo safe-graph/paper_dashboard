@@ -10,31 +10,84 @@
   let error = "";
   let loading = false;
 
-  // Survey paper citation counts fetched from OpenAlex
+  /* ---------------------------------------------------------
+     Theme management (light / dark with persistence)
+     --------------------------------------------------------- */
+  let theme = "dark";
+
+  function applyTheme(t) {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", t);
+    }
+  }
+
+  function toggleTheme() {
+    theme = theme === "dark" ? "light" : "dark";
+    applyTheme(theme);
+    try {
+      localStorage.setItem("dashboard-theme", theme);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  /* Theme-aware chart colors. Reactive blocks below depend on `c`
+     so every chart option recomputes (and re-renders) on toggle. */
+  $: c = {
+    text: theme === "light" ? "#1f2937" : "#e8eef5",
+    muted: theme === "light" ? "#5b6675" : "#9aa8b8",
+    axis: theme === "light" ? "#d3dae6" : "#36424f",
+    split: theme === "light" ? "rgba(15,23,42,0.07)" : "rgba(255,255,255,0.06)",
+    tooltipBg: theme === "light" ? "rgba(255,255,255,0.98)" : "rgba(17,24,33,0.96)",
+    tooltipBorder: theme === "light" ? "rgba(99,102,241,0.35)" : "rgba(129,140,248,0.4)",
+    pieBorder: theme === "light" ? "#ffffff" : "#141a23",
+  };
+
+  /* ---------------------------------------------------------
+     Survey citation counts (runs client-side on GitHub Pages,
+     where OpenAlex is reachable from the user's browser).
+     --------------------------------------------------------- */
   let surveyCitations = {};
   let citationsLoading = true;
 
   onMount(async () => {
-    const surveys = (data?.resources || []).filter(r => r.category === 'Survey Paper');
+    // Initialise theme from saved preference or system setting.
+    let saved = null;
+    try {
+      saved = localStorage.getItem("dashboard-theme");
+    } catch (e) {
+      /* ignore */
+    }
+    const prefersLight =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: light)").matches;
+    theme = saved || (prefersLight ? "light" : "dark");
+    applyTheme(theme);
+
+    const surveys = (data?.resources || []).filter((r) => r.category === "Survey Paper");
     const results = {};
-    // Fetch citations in small batches to avoid rate limiting
     for (const survey of surveys) {
       try {
-        const q = encodeURIComponent(survey.title.replace(/[^\w\s]/g, ' ').trim());
+        const q = encodeURIComponent(survey.title.replace(/[^\w\s]/g, " ").trim());
         const resp = await fetch(`https://api.openalex.org/works?search=${q}&per_page=1`);
         if (resp.ok) {
-          const data = await resp.json();
-          if (data.results?.length) {
-            results[survey.title] = data.results[0].cited_by_count || 0;
+          const payload = await resp.json();
+          if (payload.results?.length) {
+            results[survey.title] = payload.results[0].cited_by_count || 0;
           }
         }
       } catch (e) {
-        // Silently skip failed lookups
+        /* silently skip */
       }
     }
     surveyCitations = results;
     citationsLoading = false;
   });
+
+  /* ---------------------------------------------------------
+     Filters / table state
+     --------------------------------------------------------- */
   let query = "";
   let category = "All";
   let domain = "All";
@@ -75,47 +128,45 @@
     TIFS: "🛡️",
   };
 
-  const makeChip = (label, icon) => `<span class="chip"><span class="icon">${icon || "★"}</span>${label}</span>`;
+  const makeChip = (label, icon) =>
+    `<span class="chip"><span class="icon">${icon || "★"}</span>${label}</span>`;
 
   const fmt = (n) => (n || n === 0 ? n.toLocaleString("en-US") : "–");
 
+  // Shared categorical palette (works in both themes).
   const palette = {
-    blue: "#94b0ff",
-    teal: "#7fc8c2",
-    coral: "#f2b6a0",
-    lavender: "#c6b2ff",
-    gold: "#f7d19e",
-    slate: "#9dbad5",
+    blue: "#6366f1",
+    teal: "#14b8a6",
+    coral: "#f97362",
+    lavender: "#a78bfa",
+    gold: "#f59e0b",
+    slate: "#3b82f6",
   };
-  const chartText = "#e6edf3";
-  const chartMuted = "#b7c3cd";
-  const chartAxis = "#63707f";
-
-  // Data is bundled statically to avoid fetch/runtime path issues on GitHub Pages.
-  // If we ever need to refresh via fetch, we can add a lightweight onMount fetch fallback.
 
   $: papers = data?.papers || [];
   $: stats = data?.stats || {};
   $: resources = data?.resources || [];
 
-  // Create a lookup map for GitHub repo stars
   $: repoStarsMap = (stats.code_repos || []).reduce((acc, repo) => {
     acc[repo.full_name.toLowerCase()] = repo.stars;
     return acc;
   }, {});
 
-  // Helper to extract GitHub stars from a URL
   const getGitHubStars = (url) => {
-    if (!url || !url.includes('github.com')) return null;
+    if (!url || !url.includes("github.com")) return null;
     const match = url.match(/github\.com\/([^\/]+\/[^\/]+)/);
     if (match) {
       return repoStarsMap[match[1].toLowerCase()] || null;
     }
     return null;
   };
+
   $: categories = ["All", ...new Set(papers.map((p) => p.category).filter(Boolean))];
   $: domains = ["All", ...new Set(stats.domain_counts?.map((d) => d.domain) || [])];
-  $: years = ["All", ...Array.from(new Set(papers.map((p) => p.year).filter(Boolean))).sort((a, b) => b - a)];
+  $: years = [
+    "All",
+    ...Array.from(new Set(papers.map((p) => p.year).filter(Boolean))).sort((a, b) => b - a),
+  ];
   $: page = 1, query, category, domain, yearFilter; // reset page on filter change
   $: filtered = papers.filter((p) => {
     const q = query.trim().toLowerCase();
@@ -132,30 +183,49 @@
   $: page = Math.min(page, pageCount);
   $: pageItems = filtered.slice((page - 1) * pageSize, page * pageSize);
 
-  const baseBar = (items, xKey, yKey, title, horizontal = false, color = palette.blue, labelOpts = {}) => ({
-    textStyle: { color: chartText },
-    title: { text: title, textStyle: { color: chartText, fontSize: 14 } },
-    tooltip: { trigger: "axis" },
-    grid: { left: horizontal ? 180 : 50, right: 20, top: 30, bottom: 40 },
+  function resetFilters() {
+    query = "";
+    category = "All";
+    domain = "All";
+    yearFilter = "All";
+  }
+
+  /* ---------------------------------------------------------
+     Chart option builders (take a `c` colors object so they
+     are fully theme-reactive).
+     --------------------------------------------------------- */
+  const baseTooltip = (c) => ({
+    backgroundColor: c.tooltipBg,
+    borderColor: c.tooltipBorder,
+    borderWidth: 1,
+    textStyle: { color: c.text },
+    extraCssText: "box-shadow: 0 8px 28px rgba(0,0,0,0.18); border-radius: 10px;",
+  });
+
+  const baseBar = (c, items, xKey, yKey, title, horizontal = false, color = palette.blue, labelOpts = {}) => ({
+    textStyle: { color: c.text },
+    title: { text: title, textStyle: { color: c.text, fontSize: 14, fontWeight: 700 } },
+    tooltip: { trigger: "axis", ...baseTooltip(c) },
+    grid: { left: horizontal ? 170 : 48, right: 24, top: 38, bottom: 38, containLabel: !horizontal },
     xAxis: horizontal
-      ? { type: "value", axisLine: { lineStyle: { color: chartAxis } } }
+      ? { type: "value", axisLine: { lineStyle: { color: c.axis } }, axisLabel: { color: c.muted }, splitLine: { lineStyle: { color: c.split } } }
       : {
           type: "category",
           data: items.map((d) => d[xKey]),
-          axisLabel: { rotate: 30, color: chartMuted },
-          axisLine: { lineStyle: { color: chartAxis } },
+          axisLabel: { rotate: 30, color: c.muted },
+          axisLine: { lineStyle: { color: c.axis } },
         },
     yAxis: horizontal
       ? {
           type: "category",
           data: items.map((d) => d[yKey]),
-          axisLabel: { color: chartMuted },
-          axisLine: { lineStyle: { color: chartAxis } },
+          axisLabel: { color: c.muted },
+          axisLine: { lineStyle: { color: c.axis } },
         }
-      : { type: "value", axisLine: { lineStyle: { color: chartAxis } } },
+      : { type: "value", axisLine: { lineStyle: { color: c.axis } }, axisLabel: { color: c.muted }, splitLine: { lineStyle: { color: c.split } } },
     animationDuration: 800,
-    animationEasing: "elasticOut",
-    animationDelay: (idx) => idx * 60,
+    animationEasing: "cubicOut",
+    animationDelay: (idx) => idx * 50,
     series: [
       {
         type: "bar",
@@ -163,78 +233,60 @@
         itemStyle: {
           color: {
             type: "linear",
-            x: horizontal ? 0 : 0,
+            x: 0,
             y: horizontal ? 0 : 1,
             x2: horizontal ? 1 : 0,
             y2: 0,
             colorStops: [
               { offset: 0, color: color },
-              { offset: 1, color: color + "99" },
+              { offset: 1, color: color + "aa" },
             ],
           },
-          borderRadius: horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0],
+          borderRadius: horizontal ? [0, 6, 6, 0] : [6, 6, 0, 0],
         },
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 15,
-            shadowColor: color + "66",
-          },
-        },
-        showBackground: true,
-        backgroundStyle: { color: "rgba(255,255,255,0.04)", borderRadius: 4 },
+        emphasis: { itemStyle: { shadowBlur: 14, shadowColor: color + "66" } },
+        barMaxWidth: horizontal ? 22 : 40,
         label: labelOpts,
       },
     ],
   });
 
-  const pie = (items, name, title) => ({
-    textStyle: { color: chartText },
-    title: { text: title, textStyle: { color: chartText, fontSize: 14 } },
-    tooltip: { trigger: "item" },
-    animationDuration: 1000,
-    animationEasing: "elasticOut",
+  const pie = (c, items, name, title) => ({
+    textStyle: { color: c.text },
+    title: { text: title, textStyle: { color: c.text, fontSize: 14, fontWeight: 700 } },
+    tooltip: { trigger: "item", ...baseTooltip(c) },
+    legend: { bottom: 0, textStyle: { color: c.muted }, icon: "circle" },
+    animationDuration: 900,
+    animationEasing: "cubicOut",
     series: [
       {
         type: "pie",
-        radius: ["35%", "60%"],
-        center: ["50%", "55%"],
+        radius: ["42%", "66%"],
+        center: ["50%", "46%"],
         data: items.map((d) => ({ name: d[name], value: d.count || d.bytes || d.value })),
-        label: { color: chartText },
-        itemStyle: {
-          borderWidth: 2,
-          borderColor: "#151b24",
-        },
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 20,
-            shadowColor: "rgba(127,200,194,0.5)",
-          },
-          scale: true,
-          scaleSize: 8,
-        },
+        label: { color: c.text },
+        labelLine: { lineStyle: { color: c.axis } },
+        itemStyle: { borderWidth: 3, borderColor: c.pieBorder, borderRadius: 4 },
+        emphasis: { itemStyle: { shadowBlur: 18, shadowColor: "rgba(99,102,241,0.4)" }, scale: true, scaleSize: 8 },
       },
     ],
   });
 
-  // Radar chart for method comparison
-  const radar = (items, labelKey, valueKey, title) => ({
-    textStyle: { color: chartText },
-    title: { text: title, textStyle: { color: chartText, fontSize: 14 } },
-    tooltip: {},
-    animationDuration: 1000,
-    animationEasing: "elasticOut",
+  const radar = (c, items, labelKey, valueKey, title) => ({
+    textStyle: { color: c.text },
+    title: { text: title, textStyle: { color: c.text, fontSize: 14, fontWeight: 700 } },
+    tooltip: { ...baseTooltip(c) },
+    animationDuration: 900,
+    animationEasing: "cubicOut",
     radar: {
       indicator: items.map((d) => ({
         name: d[labelKey],
         max: Math.max(...items.map((i) => i[valueKey])) * 1.2,
       })),
-      axisLine: { lineStyle: { color: "rgba(255,255,255,0.15)" } },
-      splitLine: { lineStyle: { color: "rgba(255,255,255,0.1)" } },
-      splitArea: {
-        areaStyle: {
-          color: ["rgba(127,200,194,0.02)", "rgba(148,176,255,0.02)"],
-        },
-      },
+      axisName: { color: c.muted },
+      axisLine: { lineStyle: { color: c.split } },
+      splitLine: { lineStyle: { color: c.split } },
+      splitArea: { areaStyle: { color: ["transparent", c.split] } },
     },
     series: [
       {
@@ -245,14 +297,10 @@
             name: title,
             areaStyle: {
               color: {
-                type: "linear",
-                x: 0,
-                y: 0,
-                x2: 0,
-                y2: 1,
+                type: "linear", x: 0, y: 0, x2: 0, y2: 1,
                 colorStops: [
-                  { offset: 0, color: "rgba(127,200,194,0.4)" },
-                  { offset: 1, color: "rgba(127,200,194,0.1)" },
+                  { offset: 0, color: "rgba(20,184,166,0.45)" },
+                  { offset: 1, color: "rgba(20,184,166,0.08)" },
                 ],
               },
             },
@@ -264,141 +312,156 @@
     ],
   });
 
-  // Filter functions to exclude unwanted categories
-  const excludeArxiv = (items) => items?.filter(d => !['arxiv', 'arXiv', 'Arxiv'].includes(d.venue)) || [];
+  const excludeArxiv = (items) =>
+    items?.filter((d) => !["arxiv", "arXiv", "Arxiv"].includes(d.venue)) || [];
 
-  // Use new paper_statistics.json for method/domain data
-  const psMethods = paperStats.top_10_method_families.map(d => ({ method: d.method_family, count: d.count }));
-  const psDomains = paperStats.top_10_application_domains.map(d => ({ domain: d.application_domain, count: d.count }));
+  const psMethods = paperStats.top_10_method_families.map((d) => ({ method: d.method_family, count: d.count }));
+  const psDomains = paperStats.top_10_application_domains.map((d) => ({ domain: d.application_domain, count: d.count }));
   const psDatasets = paperStats.top_10_datasets;
 
-  $: yearOption = stats.year_counts ? baseBar(stats.year_counts, "year", "count", "Papers by year", false, palette.blue, { show: false }) : null;
-  $: categoryOption = stats.category_counts ? baseBar(stats.category_counts, "count", "category", "Entries by category", true, palette.teal) : null;
-  $: topicOption = stats.topics ? baseBar(stats.topics, "topic", "count", "Frequent title terms", false, palette.coral) : null;
-  $: methodOption = psMethods.length ? baseBar(psMethods, "count", "method", "Method families", true, palette.lavender) : null;
-  $: domainOption = psDomains.length ? baseBar(psDomains, "count", "domain", "Application domains", true, palette.slate) : null;
+  $: yearOption = stats.year_counts ? baseBar(c, stats.year_counts, "year", "count", "Papers by year", false, palette.blue, { show: false }) : null;
+  $: categoryOption = stats.category_counts ? baseBar(c, stats.category_counts, "count", "category", "Entries by category", true, palette.teal) : null;
+  $: topicOption = stats.topics ? baseBar(c, stats.topics, "topic", "count", "Frequent title terms", false, palette.coral) : null;
+  $: methodOption = psMethods.length ? baseBar(c, psMethods, "count", "method", "Method families", true, palette.lavender) : null;
+  $: domainOption = psDomains.length ? baseBar(c, psDomains, "count", "domain", "Application domains", true, palette.slate) : null;
   $: filteredVenues = excludeArxiv(stats.venue_counts);
-  $: venueOption = filteredVenues.length ? baseBar(filteredVenues.slice(0, 12), "count", "venue", "Top venues", true, palette.blue) : null;
-  $: strataOption = stats.venue_strata ? pie(stats.venue_strata, "stratum", "Venue strata") : null;
+  $: venueOption = filteredVenues.length ? baseBar(c, filteredVenues.slice(0, 12), "count", "venue", "Top venues", true, palette.blue) : null;
+  $: strataOption = stats.venue_strata ? pie(c, stats.venue_strata, "stratum", "Venue strata") : null;
   $: codeOption = stats.code_availability
-    ? pie(
-        [
-          { label: "With code", count: stats.code_availability.with_code },
-          { label: "No code", count: stats.code_availability.without_code },
-        ],
-        "label",
-        "Code availability"
-      )
+    ? pie(c, [
+        { label: "With code", count: stats.code_availability.with_code },
+        { label: "No code", count: stats.code_availability.without_code },
+      ], "label", "Code availability")
     : null;
   $: langOption = stats.language_counts && stats.language_counts.length
-    ? pie(stats.language_counts, "language", "Language share (code repos)")
+    ? pie(c, stats.language_counts, "language", "Language share (code repos)")
     : null;
-  $: radarOption = psMethods.length >= 3
-    ? radar(psMethods.slice(0, 8), "method", "count", "Method comparison")
-    : null;
+  $: radarOption = psMethods.length >= 3 ? radar(c, psMethods.slice(0, 8), "method", "count", "Method comparison") : null;
   $: datasetOption = psDatasets.length
-    ? baseBar(psDatasets.map(d => ({ dataset: d.dataset, count: d.count })), "count", "dataset", "Top cited datasets", true, palette.gold)
+    ? baseBar(c, psDatasets.map((d) => ({ dataset: d.dataset, count: d.count })), "count", "dataset", "Top cited datasets", true, palette.gold)
     : null;
+
+  const navItems = [
+    { id: "highlights", label: "Highlights" },
+    { id: "top-cited", label: "Top Cited" },
+    { id: "distributions", label: "Trends" },
+    { id: "methods", label: "Methods" },
+    { id: "venues", label: "Venues" },
+    { id: "table", label: "Explorer" },
+    { id: "resources", label: "Resources" },
+  ];
 </script>
 
-<!-- Particle background -->
-<div class="particles" aria-hidden="true">
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-  <div class="particle"></div>
-</div>
-
 <div class="glow" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <span class="nav-logo">◈</span>
+    <span>Fraud&nbsp;Detection&nbsp;Papers</span>
+  </div>
+  <div class="nav-links">
+    {#each navItems as item}
+      <a href={`#${item.id}`}>{item.label}</a>
+    {/each}
+  </div>
+  <button
+    class="theme-toggle"
+    on:click={toggleTheme}
+    aria-label="Toggle light and dark theme"
+    title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+  >
+    {theme === "dark" ? "☀️" : "🌙"}
+  </button>
+</nav>
+
 <main>
-  <header>
+  <header class="hero">
     <ScrollReveal>
-      <span class="pill">Graph & Transformer Fraud Detection Papers</span>
-      <h1>Interactive summary of the Safe-Graph curated list</h1>
+      <span class="pill">Graph &amp; Transformer Fraud Detection</span>
+      <h1>An interactive map of the<br /><span class="grad">Safe-Graph paper collection</span></h1>
       <p class="lede">
-        SPA front-end built with Svelte + ECharts. Data is fetched from <code>data.json</code> generated by the Python pipeline.
+        Trends, venues, methods, and the most-cited work in graph- and transformer-based
+        fraud, anomaly, and outlier detection — refreshed automatically from the upstream list.
       </p>
     </ScrollReveal>
-    <div class="grid">
+    <div class="stat-grid">
       <ScrollReveal delay={0}>
-        <div class="card featured">
-          <h3>Total papers</h3>
-          <div class="value">
-            <AnimatedNumber value={stats.paper_count || papers.length} delay={200} />
-          </div>
+        <div class="stat featured">
+          <div class="label"><span class="stat-ico">📄</span> Total papers</div>
+          <div class="value"><AnimatedNumber value={stats.paper_count || papers.length} delay={150} /></div>
+          <div class="sub">across {categories.length - 1} categories</div>
         </div>
       </ScrollReveal>
-      <ScrollReveal delay={100}>
-        <div class="card">
-          <h3>Code availability</h3>
+      <ScrollReveal delay={80}>
+        <div class="stat">
+          <div class="label"><span class="stat-ico">💻</span> With code</div>
           <div class="value">
             {#if stats.code_availability}
-              <AnimatedNumber value={stats.code_availability.with_code} delay={300} />
-              <span style="font-size: 18px; color: var(--muted);"> ({stats.code_availability.percentage || 0}%)</span>
-            {:else}
-              –
-            {/if}
+              <AnimatedNumber value={stats.code_availability.with_code} delay={250} />
+            {:else}–{/if}
+          </div>
+          <div class="sub">
+            {#if stats.code_availability}{stats.code_availability.percentage || 0}% of all papers{/if}
           </div>
         </div>
       </ScrollReveal>
-      <ScrollReveal delay={200}>
-        <div class="card">
-          <h3>Top venue</h3>
-          <div class="value">{stats.venue_counts?.[0]?.venue || "–"}</div>
+      <ScrollReveal delay={160}>
+        <div class="stat">
+          <div class="label"><span class="stat-ico">🏛️</span> Top venue</div>
+          <div class="value" style="font-size:24px;">{stats.venue_counts?.[0]?.venue || "–"}</div>
+          <div class="sub">{stats.venue_counts?.[0]?.count || 0} papers</div>
         </div>
       </ScrollReveal>
-      <ScrollReveal delay={300}>
-        <div class="card">
-          <h3>Dominant topic</h3>
-          <div class="value">{stats.topics?.[0]?.topic || "–"}</div>
+      <ScrollReveal delay={240}>
+        <div class="stat">
+          <div class="label"><span class="stat-ico">🔥</span> Dominant topic</div>
+          <div class="value" style="font-size:24px;text-transform:capitalize;">{stats.topics?.[0]?.topic || "–"}</div>
+          <div class="sub">most frequent title term</div>
         </div>
       </ScrollReveal>
     </div>
   </header>
 
   {#if loading}
-    <section class="section"><div class="card">Loading…</div></section>
+    <section class="section"><div class="panel">Loading…</div></section>
   {:else if error}
-    <section class="section"><div class="card">{error}</div></section>
+    <section class="section"><div class="panel">{error}</div></section>
   {:else}
     <ScrollReveal>
-      <section class="section">
-        <h2>What stands out</h2>
-        <div class="card">
+      <section class="section" id="highlights">
+        <div class="section-head"><span class="eyebrow">Overview</span><h2>What stands out</h2></div>
+        <div class="panel insights">
           <ul>
             {#if stats.insights?.length}
-              {#each stats.insights as insight}
-                <li>{insight}</li>
-              {/each}
-            {:else}
-              <li>No insights available.</li>
-            {/if}
+              {#each stats.insights as insight}<li>{insight}</li>{/each}
+            {:else}<li>No insights available.</li>{/if}
           </ul>
         </div>
       </section>
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section">
-        <h2>Top cited papers</h2>
+      <section class="section" id="top-cited">
+        <div class="section-head"><span class="eyebrow">Impact</span><h2>Most cited papers</h2></div>
+        <p class="section-sub">
+          Ranked by citation count{#if stats.citation_source} via {stats.citation_source}{/if}.
+          Counts refresh on each automated build.
+        </p>
         <div class="panel">
           <div class="list">
             {#if stats.top_cited?.length}
               {#each stats.top_cited as paper, idx}
                 <div class="list-item">
-                  <span>
-                    {idx + 1}. <a href={paper.paper_url || paper.openalex_url || "#"} target="_blank" rel="noopener">{paper.title}</a>
-                    {#if paper.year || paper.venue}
-                      <span style="color: var(--muted); font-size: 12px;">({paper.year || "—"} - {paper.venue || "Venue N/A"})</span>
-                    {/if}
+                  <span class="li-main">
+                    <span class="rank">{idx + 1}</span>
+                    <span class="li-text">
+                      <a href={paper.paper_url || paper.openalex_url || "#"} target="_blank" rel="noopener">{paper.title}</a>
+                      {#if paper.year || paper.venue}
+                        <div class="li-meta">{paper.year || "—"} · {paper.venue || "Venue N/A"}</div>
+                      {/if}
+                    </span>
                   </span>
-                  <span class="badge">{fmt(paper.citation_count)}</span>
+                  <span class="badge">{fmt(paper.citation_count)} cites</span>
                 </div>
               {/each}
             {:else}
@@ -407,16 +470,13 @@
               </p>
             {/if}
           </div>
-          {#if stats.citation_source}
-            <p style="color: var(--muted); margin: 10px 0 0;">Source: {stats.citation_source}</p>
-          {/if}
         </div>
       </section>
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section">
-        <h2>Distributions</h2>
+      <section class="section" id="distributions">
+        <div class="section-head"><span class="eyebrow">Trends</span><h2>Distributions</h2></div>
         <div class="grid">
           <div class="panel">{#if yearOption}<EChart option={yearOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
           <div class="panel">{#if categoryOption}<EChart option={categoryOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
@@ -426,8 +486,8 @@
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section">
-        <h2>Method & domain signals</h2>
+      <section class="section" id="methods">
+        <div class="section-head"><span class="eyebrow">Techniques</span><h2>Method &amp; domain signals</h2></div>
         <div class="grid">
           <div class="panel">{#if methodOption}<EChart option={methodOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
           <div class="panel">{#if domainOption}<EChart option={domainOption} height="320px" />{:else}<p>No data.</p>{/if}</div>
@@ -437,24 +497,22 @@
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section">
-        <h2>Venues and strata</h2>
+      <section class="section" id="venues">
+        <div class="section-head"><span class="eyebrow">Where it's published</span><h2>Venues &amp; strata</h2></div>
         <div class="grid">
           <div class="panel">{#if venueOption}<EChart option={venueOption} height="360px" />{:else}<p>No data.</p>{/if}</div>
           <div class="panel">{#if strataOption}<EChart option={strataOption} height="360px" />{:else}<p>No data.</p>{/if}</div>
           <div class="panel">
-            <h3 style="margin:0 0 8px;">Top venues</h3>
+            <h3>Top venues</h3>
             <div class="list">
               {#if filteredVenues?.length}
-                {#each filteredVenues.slice(0, 10) as v, idx}
-                  <div class="list-item" >
+                {#each filteredVenues.slice(0, 10) as v}
+                  <div class="list-item">
                     <span>{@html makeChip(v.venue, venueIcons[v.venue] || "🏛️")}</span>
                     <span class="badge">{fmt(v.count)}</span>
                   </div>
                 {/each}
-              {:else}
-                <p style="color: var(--muted);">No venue data.</p>
-              {/if}
+              {:else}<p style="color: var(--muted);">No venue data.</p>{/if}
             </div>
           </div>
         </div>
@@ -463,26 +521,24 @@
 
     <ScrollReveal>
       <section class="section">
-        <h2>Code availability & repos</h2>
+        <div class="section-head"><span class="eyebrow">Reproducibility</span><h2>Code availability &amp; repos</h2></div>
         <div class="grid">
-          <div class="panel">{#if codeOption}<EChart option={codeOption} height="280px" />{:else}<p>No data.</p>{/if}</div>
-          <div class="panel">{#if langOption}<EChart option={langOption} height="280px" />{:else}<p>No language data.</p>{/if}</div>
+          <div class="panel">{#if codeOption}<EChart option={codeOption} height="300px" />{:else}<p>No data.</p>{/if}</div>
+          <div class="panel">{#if langOption}<EChart option={langOption} height="300px" />{:else}<p style="color:var(--muted);">No language data (run without --skip-code-fetch).</p>{/if}</div>
           <div class="panel">
-            <h3 style="margin:0 0 6px;">Top GitHub repos</h3>
+            <h3>Top GitHub repos</h3>
             <div class="list">
               {#if stats.top_repos?.length}
                 {#each stats.top_repos as repo, idx}
                   <div class="list-item">
-                    <span>{idx + 1}. <a href={repo.url} target="_blank" rel="noopener">{repo.full_name}</a></span>
+                    <span class="li-main"><span class="rank">{idx + 1}</span><span class="li-text"><a href={repo.url} target="_blank" rel="noopener">{repo.full_name}</a></span></span>
                     <span style="display:flex;align-items:center;gap:8px;">
                       {#if repo.language}<span class="chip"><span class="icon">{langIcons[repo.language] || "💻"}</span>{repo.language}</span>{/if}
                       <span class="badge">★ {fmt(repo.stars)}</span>
                     </span>
                   </div>
                 {/each}
-              {:else}
-                <p style="color: var(--muted);">No GitHub metadata (run without --skip-code-fetch + set GITHUB_TOKEN).</p>
-              {/if}
+              {:else}<p style="color: var(--muted);">No GitHub metadata (run without --skip-code-fetch + set GITHUB_TOKEN).</p>{/if}
             </div>
           </div>
         </div>
@@ -491,19 +547,17 @@
 
     <ScrollReveal>
       <section class="section">
-        <h2>Top cited datasets</h2>
+        <div class="section-head"><span class="eyebrow">Benchmarks</span><h2>Top cited datasets</h2></div>
         <div class="grid">
           <div class="panel">{#if datasetOption}<EChart option={datasetOption} height="340px" />{:else}<p>No data.</p>{/if}</div>
           <div class="panel">
-            <h3 style="margin:0 0 8px;">Datasets by usage</h3>
+            <h3>Datasets by usage</h3>
             <div class="list">
               {#each psDatasets as ds}
                 <div class="list-item">
                   <span>
                     <a href={ds.source_url} target="_blank" rel="noopener" style="text-transform:capitalize;">{ds.dataset}</a>
-                    {#if getGitHubStars(ds.source_url)}
-                      <span class="badge" style="margin-left:8px;">★ {fmt(getGitHubStars(ds.source_url))}</span>
-                    {/if}
+                    {#if getGitHubStars(ds.source_url)}<span class="badge" style="margin-left:8px;">★ {fmt(getGitHubStars(ds.source_url))}</span>{/if}
                   </span>
                   <span class="badge">{fmt(ds.count)} papers</span>
                 </div>
@@ -515,33 +569,24 @@
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section">
-        <h2>Interactive paper table</h2>
+      <section class="section" id="table">
+        <div class="section-head"><span class="eyebrow">Explore</span><h2>Paper explorer</h2></div>
         <div class="panel">
           <div class="filter-bar">
-            <input placeholder="Search title or venue" bind:value={query} />
-            <select bind:value={category}>
-              {#each categories as c}<option value={c}>{c}</option>{/each}
-            </select>
-            <select bind:value={domain}>
-              {#each domains as d}<option value={d}>{d}</option>{/each}
-            </select>
-            <select bind:value={yearFilter}>
-              {#each years as y}<option value={y}>{y}</option>{/each}
-            </select>
-            <div class="chip">Showing {fmt(filtered.length)} papers</div>
+            <div class="search-field">
+              <span class="s-icon">🔍</span>
+              <input placeholder="Search title or venue…" bind:value={query} />
+            </div>
+            <select bind:value={category}>{#each categories as cat}<option value={cat}>{cat}</option>{/each}</select>
+            <select bind:value={domain}>{#each domains as d}<option value={d}>{d === "All" ? "All domains" : d}</option>{/each}</select>
+            <select bind:value={yearFilter}>{#each years as y}<option value={y}>{y === "All" ? "All years" : y}</option>{/each}</select>
+            <button class="reset-btn" on:click={resetFilters}>Reset</button>
+            <div class="count-chip">{fmt(filtered.length)} papers</div>
           </div>
-          <div style="overflow:auto;">
+          <div class="table-wrap">
             <table class="table">
               <thead>
-                <tr>
-                  <th>Year</th>
-                  <th>Title</th>
-                  <th>Venue</th>
-                  <th>Category</th>
-                  <th>Section</th>
-                  <th>Code</th>
-                </tr>
+                <tr><th>Year</th><th>Title</th><th>Venue</th><th>Category</th><th>Section</th><th>Code</th></tr>
               </thead>
               <tbody>
                 {#each pageItems as p}
@@ -549,33 +594,34 @@
                     <td>{p.year || "—"}</td>
                     <td><a href={p.paper_url || "#"} target="_blank" rel="noopener">{p.title}</a></td>
                     <td>{p.venue}</td>
-                    <td>{p.category}</td>
+                    <td><span class="tag">{p.category}</span></td>
                     <td>{p.subcategory || "—"}</td>
-                    <td>{#if p.code_url}<a href={p.code_url} target="_blank" rel="noopener">Code</a>{:else}—{/if}</td>
+                    <td>{#if p.code_url}<a href={p.code_url} target="_blank" rel="noopener">Code ↗</a>{:else}—{/if}</td>
                   </tr>
                 {/each}
+                {#if !pageItems.length}
+                  <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:28px;">No papers match these filters.</td></tr>
+                {/if}
               </tbody>
             </table>
           </div>
           <div class="pagination">
-            <button on:click={() => (page = Math.max(1, page - 1))} disabled={page === 1}>Prev</button>
-            <span>Page {page} / {pageCount}</span>
-            <button on:click={() => (page = Math.min(pageCount, page + 1))} disabled={page === pageCount}>Next</button>
+            <button on:click={() => (page = Math.max(1, page - 1))} disabled={page === 1}>← Prev</button>
+            <span>Page {page} of {pageCount}</span>
+            <button on:click={() => (page = Math.min(pageCount, page + 1))} disabled={page === pageCount}>Next →</button>
           </div>
         </div>
       </section>
     </ScrollReveal>
 
     <ScrollReveal>
-      <section class="section">
-        <h2>Toolboxes & Libraries</h2>
+      <section class="section" id="resources">
+        <div class="section-head"><span class="eyebrow">Resources</span><h2>Toolboxes &amp; libraries</h2></div>
         <div class="grid">
-          {#each resources.filter(r => r.category === 'Toolbox') as res}
-            <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          {#each resources.filter((r) => r.category === "Toolbox") as res}
+            <div class="res-item">
               <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
-              {#if getGitHubStars(res.url)}
-                <span class="badge">★ {fmt(getGitHubStars(res.url))}</span>
-              {/if}
+              {#if getGitHubStars(res.url)}<span class="badge">★ {fmt(getGitHubStars(res.url))}</span>{/if}
             </div>
           {/each}
         </div>
@@ -584,14 +630,12 @@
 
     <ScrollReveal>
       <section class="section">
-        <h2>Datasets</h2>
+        <div class="section-head"><span class="eyebrow">Data</span><h2>Datasets</h2></div>
         <div class="grid">
-          {#each resources.filter(r => r.category === 'Dataset') as res}
-            <div class="panel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+          {#each resources.filter((r) => r.category === "Dataset") as res}
+            <div class="res-item">
               <a href={res.url} target="_blank" rel="noopener">{res.title}</a>
-              {#if getGitHubStars(res.url)}
-                <span class="badge">★ {fmt(getGitHubStars(res.url))}</span>
-              {/if}
+              {#if getGitHubStars(res.url)}<span class="badge">★ {fmt(getGitHubStars(res.url))}</span>{/if}
             </div>
           {/each}
         </div>
@@ -600,19 +644,19 @@
 
     <ScrollReveal>
       <section class="section">
-        <h2>Survey Papers</h2>
-        <p style="color: var(--muted); margin: 0 0 12px;">
+        <div class="section-head"><span class="eyebrow">Reading</span><h2>Survey papers</h2></div>
+        <p class="section-sub">
           Citation counts from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>
-          {#if citationsLoading}<span style="font-size:12px;"> (loading...)</span>{/if}
+          {#if citationsLoading}<span style="font-size:12px;"> (loading…)</span>{/if}
         </p>
         <div class="list">
-          {#each resources.filter(r => r.category === 'Survey Paper') as res}
+          {#each resources.filter((r) => r.category === "Survey Paper") as res}
             <div class="list-item">
               <span><a href={res.url} target="_blank" rel="noopener">{res.title}</a></span>
               {#if surveyCitations[res.title] !== undefined}
-                <span class="badge">{fmt(surveyCitations[res.title])} cited</span>
+                <span class="badge">{fmt(surveyCitations[res.title])} cites</span>
               {:else if citationsLoading}
-                <span class="badge" style="opacity:0.4;">...</span>
+                <span class="badge" style="opacity:0.4;">…</span>
               {/if}
             </div>
           {/each}
@@ -622,6 +666,7 @@
   {/if}
 
   <footer>
-    Built as a static SPA with Svelte + ECharts. Data comes from the Python pipeline (see README).
+    Static SPA built with Svelte + ECharts · Data generated by the Python pipeline (see README) ·
+    Citations via OpenAlex.
   </footer>
 </main>
