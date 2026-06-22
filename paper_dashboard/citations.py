@@ -306,6 +306,43 @@ def build_openalex_entry(paper: PaperEntry, data: Dict, match: str) -> Dict:
     }
 
 
+def _is_published_record(data: Dict) -> bool:
+    doi = (data.get("doi") or "").lower()
+    return bool(doi and "10.48550/arxiv" not in doi)
+
+
+def _select_preferred_match(
+    paper: PaperEntry, matches: List[Tuple[str, Dict]]
+) -> Optional[Tuple[str, Dict]]:
+    """Choose the strongest citation record without summing duplicate versions.
+
+    OpenAlex may expose a low- or zero-citation DataCite arXiv record separately
+    from the canonical publisher record. Among verified matches for the same
+    title, use the record with the greatest citation coverage, preferring a
+    published version as the tie-breaker.
+    """
+    unique_matches: List[Tuple[str, Dict]] = []
+    seen_ids = set()
+    for method, data in matches:
+        work_id = data.get("id")
+        if work_id and work_id in seen_ids:
+            continue
+        if work_id:
+            seen_ids.add(work_id)
+        unique_matches.append((method, data))
+
+    if not unique_matches:
+        return None
+    return max(
+        unique_matches,
+        key=lambda item: (
+            int(item[1].get("cited_by_count") or 0),
+            _is_published_record(item[1]),
+            title_similarity(paper.title, item[1].get("display_name") or ""),
+        ),
+    )
+
+
 def dedupe_entries(entries: List[Dict], top_k: int) -> List[Dict]:
     deduped: List[Dict] = []
     seen = set()
@@ -336,7 +373,7 @@ def _identifier_lookups(paper: PaperEntry) -> List[Tuple[str, str]]:
             ("arxiv", f"https://doi.org/{arxiv_doi(arxiv_id)}")
         )
     if doi and "arxiv" in doi.lower() and not arxiv_id:
-        identifiers.append(("doi", f"https://doi.org/{doi.lower()}"))
+        identifiers.append(("arxiv", f"https://doi.org/{doi.lower()}"))
     return identifiers
 
 
@@ -348,9 +385,11 @@ def fetch_citation_for_paper(
 ) -> Optional[Dict]:
     """Resolve a single paper to an OpenAlex record.
 
-    Tries authoritative identifier lookups (publisher DOI, then arXiv DOI) and
-    only falls back to a *verified* title search when no identifier resolves.
+    Publisher DOI matches are authoritative. ArXiv DOI matches are cross-checked
+    against a verified title search because OpenAlex may keep a separate,
+    zero-citation DataCite record alongside the cited publisher record.
     """
+    matches: List[Tuple[str, Dict]] = []
     for method, identifier in _identifier_lookups(paper):
         data = fetch_openalex_by_identifier(
             identifier,
@@ -359,7 +398,9 @@ def fetch_citation_for_paper(
             timeout=timeout,
         )
         if data and data.get("cited_by_count") is not None:
-            return build_openalex_entry(paper, data, method)
+            if method in {"doi", "acl-doi"}:
+                return build_openalex_entry(paper, data, method)
+            matches.append((method, data))
 
     data = search_openalex_by_title(
         paper.title,
@@ -369,8 +410,13 @@ def fetch_citation_for_paper(
         timeout=timeout,
     )
     if data and data.get("cited_by_count") is not None:
-        return build_openalex_entry(paper, data, "title")
-    return None
+        matches.append(("title", data))
+
+    selected = _select_preferred_match(paper, matches)
+    if not selected:
+        return None
+    method, data = selected
+    return build_openalex_entry(paper, data, method)
 
 
 def fetch_top_cited(
