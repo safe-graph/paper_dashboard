@@ -4,6 +4,7 @@ import logging
 import os
 import sys
 from dataclasses import asdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -21,7 +22,13 @@ from paper_dashboard.code_repos import (
     fetch_all_metadata,
     unique_github_repos,
 )
-from paper_dashboard.parser import ParseResult, parse_readme, sync_repo, load_readme
+from paper_dashboard.parser import (
+    PaperEntry,
+    ParseResult,
+    load_readme,
+    parse_readme,
+    sync_repo,
+)
 
 
 def build_stats(
@@ -31,6 +38,8 @@ def build_stats(
     skip_citations: bool,
     citations_limit: Optional[int],
     citations_top_k: int,
+    openalex_email: Optional[str],
+    openalex_api_key: Optional[str],
 ) -> Dict:
     papers = parsed.papers
     stats: Dict = {
@@ -72,21 +81,76 @@ def build_stats(
     stats["insights"] = analysis.derive_insights(stats)
     if skip_citations:
         stats["top_cited"] = []
+        stats["paper_citations"] = []
         stats["citation_note"] = "Citation fetch skipped (run without --skip-citations)."
     else:
-        openalex_email = os.environ.get("OPENALEX_EMAIL")
-        top_cited, note, source = citations.fetch_top_cited(
+        paper_citations, queried = citations.fetch_all_citations(
             papers,
             openalex_email=openalex_email,
-            top_k=citations_top_k,
+            openalex_api_key=openalex_api_key,
             limit=citations_limit,
         )
-        stats["top_cited"] = top_cited
-        if source:
-            stats["citation_source"] = source
-        if note:
-            stats["citation_note"] = note
+        stats["paper_citations"] = paper_citations
+        stats["top_cited"] = citations.dedupe_entries(
+            paper_citations, citations_top_k
+        )
+        stats["citation_source"] = "OpenAlex"
+        stats["citation_updated_at"] = datetime.now(timezone.utc).isoformat()
+        stats["citation_coverage"] = {
+            "matched": len(paper_citations),
+            "queried": queried,
+            "percentage": round((len(paper_citations) / queried) * 100, 1)
+            if queried
+            else 0,
+        }
+        if len(paper_citations) < queried:
+            stats["citation_note"] = (
+                f"OpenAlex matched {len(paper_citations)} of {queried} unique papers."
+            )
     return stats
+
+
+def build_resources(
+    parsed: ParseResult,
+    skip_citations: bool,
+    openalex_email: Optional[str],
+    openalex_api_key: Optional[str],
+) -> List[Dict]:
+    resources = [asdict(resource) for resource in parsed.resources]
+    if skip_citations:
+        return resources
+
+    surveys = [
+        PaperEntry(
+            year=None,
+            title=resource.title,
+            venue="",
+            paper_url=resource.url,
+            code_url=None,
+            category=resource.category,
+        )
+        for resource in parsed.resources
+        if resource.category == "Survey Paper"
+    ]
+    survey_citations, _ = citations.fetch_all_citations(
+        surveys,
+        openalex_email=openalex_email,
+        openalex_api_key=openalex_api_key,
+    )
+    citations_by_title = {entry["title"]: entry for entry in survey_citations}
+    for resource in resources:
+        citation = citations_by_title.get(resource["title"])
+        if not citation:
+            continue
+        resource.update(
+            {
+                "citation_count": citation["citation_count"],
+                "citation_source": citation["citation_source"],
+                "citation_match_method": citation["match_method"],
+                "openalex_url": citation["openalex_url"],
+            }
+        )
+    return resources
 
 
 def main() -> None:
@@ -147,6 +211,13 @@ def main() -> None:
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    openalex_email = os.environ.get("OPENALEX_EMAIL")
+    openalex_api_key = os.environ.get("OPENALEX_API_KEY")
+    if not args.skip_citations and not openalex_api_key:
+        raise RuntimeError(
+            "OPENALEX_API_KEY is required for complete citation enrichment. "
+            "Create a free OpenAlex API key or use --skip-citations for an offline build."
+        )
 
     paper_repo_dir = Path(args.paper_repo_dir)
     output_dir = Path(args.output_dir)
@@ -164,12 +235,20 @@ def main() -> None:
         skip_citations=args.skip_citations,
         citations_limit=args.citations_limit,
         citations_top_k=args.citations_top_k,
+        openalex_email=openalex_email,
+        openalex_api_key=openalex_api_key,
+    )
+    resources = build_resources(
+        parsed,
+        skip_citations=args.skip_citations,
+        openalex_email=openalex_email,
+        openalex_api_key=openalex_api_key,
     )
 
     context = {
         "papers": papers_serializable,
         "stats": stats,
-        "resources": [asdict(r) for r in parsed.resources],
+        "resources": resources,
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "data.json").write_text(json.dumps(context, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -4,7 +4,7 @@ import time
 from difflib import SequenceMatcher
 from typing import Dict, Iterable, List, Optional, Tuple
 
-from urllib.parse import unquote
+from urllib.parse import quote, unquote
 
 import requests
 
@@ -34,12 +34,23 @@ ARXIV_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/([^?#\s]+)", re.IGNORECASE)
 # Lookbehind avoids grabbing the tail of a longer number; we don't use \b so
 # underscore-prefixed filenames still match.
 ARXIV_ID_RE = re.compile(r"(?<!\d)(\d{4}\.\d{4,5})(v\d+)?")
+ACL_ANTHOLOGY_RE = re.compile(
+    r"aclanthology\.org/((?:\d{4}|\d{2})\.[a-z0-9-]+\.\d+)", re.IGNORECASE
+)
 
 # How close a title-search candidate must be before we trust it. DOI / arXiv-id
 # matches are authoritative and skip these checks; only fuzzy title matches do.
 TITLE_STRONG_THRESHOLD = 0.92  # accept on title alone
 TITLE_WITH_YEAR_THRESHOLD = 0.82  # accept if the publication year also lines up
 YEAR_TOLERANCE = 1  # arXiv preprint vs. published version can differ by a year
+
+
+class OpenAlexError(RuntimeError):
+    """Raised when OpenAlex cannot provide a trustworthy citation result."""
+
+
+class OpenAlexRateLimitError(OpenAlexError):
+    """Raised when an API budget or request-rate limit is exhausted."""
 
 
 def normalize_title(text: str) -> str:
@@ -95,14 +106,26 @@ def arxiv_doi(arxiv_id: str) -> str:
     return f"10.48550/arxiv.{arxiv_id.lower()}"
 
 
+def extract_acl_doi(url: Optional[str]) -> Optional[str]:
+    """Convert a modern ACL Anthology URL into its canonical DOI."""
+    if not url:
+        return None
+    match = ACL_ANTHOLOGY_RE.search(url)
+    return f"10.18653/v1/{match.group(1)}" if match else None
+
+
 def _openalex_headers() -> Dict[str, str]:
     return {"User-Agent": "paper-dashboard/1.0 (citation enrichment)"}
 
 
-def _openalex_params(email: Optional[str]) -> Dict[str, str]:
+def _openalex_params(
+    email: Optional[str], api_key: Optional[str] = None
+) -> Dict[str, str]:
     params = {"select": OPENALEX_FIELDS}
     if email:
         params["mailto"] = email
+    if api_key:
+        params["api_key"] = api_key
     return params
 
 
@@ -132,10 +155,12 @@ def _openalex_year(data: Dict) -> Optional[int]:
         return None
 
 
-def _request_openalex(params: Dict[str, str], timeout: int) -> Optional[Dict]:
+def _request_openalex(
+    params: Dict[str, str], timeout: int, url: str = OPENALEX_API_BASE
+) -> Optional[Dict]:
     try:
         resp = requests.get(
-            OPENALEX_API_BASE,
+            url,
             params=params,
             headers=_openalex_headers(),
             timeout=timeout,
@@ -143,6 +168,17 @@ def _request_openalex(params: Dict[str, str], timeout: int) -> Optional[Dict]:
     except requests.RequestException as exc:
         logger.warning("OpenAlex request failed: %s", exc)
         return None
+    if resp.status_code == 429:
+        retry_after = resp.headers.get("Retry-After") or "unknown"
+        raise OpenAlexRateLimitError(
+            "OpenAlex citation enrichment exhausted its API budget or rate limit "
+            f"(retry after {retry_after}s). Configure OPENALEX_API_KEY; anonymous "
+            "access is limited to testing and must not be used for production builds."
+        )
+    if resp.status_code in {401, 403}:
+        raise OpenAlexError(
+            f"OpenAlex authentication failed ({resp.status_code}). Check OPENALEX_API_KEY."
+        )
     if resp.status_code != 200:
         logger.warning(
             "OpenAlex request failed: %s %s", resp.status_code, resp.text[:200]
@@ -156,9 +192,12 @@ def _request_openalex(params: Dict[str, str], timeout: int) -> Optional[Dict]:
 
 
 def fetch_openalex_by_filter(
-    filter_value: str, email: Optional[str], timeout: int = 30
+    filter_value: str,
+    email: Optional[str],
+    api_key: Optional[str] = None,
+    timeout: int = 30,
 ) -> Optional[Dict]:
-    params = _openalex_params(email)
+    params = _openalex_params(email, api_key)
     params["filter"] = filter_value
     params["per-page"] = 1
     payload = _request_openalex(params, timeout)
@@ -170,10 +209,34 @@ def fetch_openalex_by_filter(
     return results[0]
 
 
-def search_openalex_by_title(
-    title: str, year: Optional[int], email: Optional[str], timeout: int = 30
+def fetch_openalex_by_identifier(
+    identifier: str,
+    email: Optional[str],
+    api_key: Optional[str] = None,
+    timeout: int = 30,
 ) -> Optional[Dict]:
-    params = _openalex_params(email)
+    """Fetch a work with OpenAlex's singleton endpoint.
+
+    Singleton lookups are both more authoritative and dramatically cheaper than
+    list filters, which matters under OpenAlex's credit-based API limits.
+    """
+    params = _openalex_params(email, api_key)
+    encoded_identifier = quote(identifier, safe=":/")
+    return _request_openalex(
+        params,
+        timeout,
+        url=f"{OPENALEX_API_BASE}/{encoded_identifier}",
+    )
+
+
+def search_openalex_by_title(
+    title: str,
+    year: Optional[int],
+    email: Optional[str],
+    api_key: Optional[str] = None,
+    timeout: int = 30,
+) -> Optional[Dict]:
+    params = _openalex_params(email, api_key)
     params["search"] = title
     params["per-page"] = 5
     payload = _request_openalex(params, timeout)
@@ -181,12 +244,26 @@ def search_openalex_by_title(
         return None
     candidates = payload.get("results", []) if isinstance(payload, dict) else []
     best = None
-    best_score = 0.0
+    best_rank = (0.0, False, False, 0)
     for cand in candidates:
         cand_title = cand.get("display_name") or ""
         score = title_similarity(title, cand_title)
-        if score > best_score:
-            best_score = score
+        cand_year = _openalex_year(cand)
+        year_ok = (
+            year is not None
+            and cand_year is not None
+            and abs(cand_year - year) <= YEAR_TOLERANCE
+        )
+        doi = (cand.get("doi") or "").lower()
+        published_version = bool(doi and "10.48550/arxiv" not in doi)
+        rank = (
+            score,
+            year_ok,
+            published_version,
+            int(cand.get("cited_by_count") or 0),
+        )
+        if rank > best_rank:
+            best_rank = rank
             best = cand
     if best is None:
         return None
@@ -199,6 +276,7 @@ def search_openalex_by_title(
         and cand_year is not None
         and abs(cand_year - year) <= YEAR_TOLERANCE
     )
+    best_score = best_rank[0]
     if best_score >= TITLE_STRONG_THRESHOLD:
         return best
     if best_score >= TITLE_WITH_YEAR_THRESHOLD and year_ok:
@@ -221,6 +299,9 @@ def build_openalex_entry(paper: PaperEntry, data: Dict, match: str) -> Dict:
         "venue": paper.venue or _openalex_venue(data),
         "paper_url": paper.paper_url or _openalex_landing_url(data),
         "openalex_url": data.get("id"),
+        "openalex_title": data.get("display_name"),
+        "doi": data.get("doi"),
+        "citation_source": "OpenAlex",
         "match_method": match,
     }
 
@@ -239,35 +320,54 @@ def dedupe_entries(entries: List[Dict], top_k: int) -> List[Dict]:
     return deduped
 
 
-def _identifier_filters(paper: PaperEntry) -> List[Tuple[str, str]]:
-    """Ordered authoritative lookups for a paper: (match_method, filter)."""
-    filters: List[Tuple[str, str]] = []
+def _identifier_lookups(paper: PaperEntry) -> List[Tuple[str, str]]:
+    """Ordered authoritative lookups for a paper: (method, external ID)."""
+    identifiers: List[Tuple[str, str]] = []
     doi = extract_doi(paper.paper_url)
     arxiv_id = extract_arxiv_id(paper.paper_url)
+    acl_doi = extract_acl_doi(paper.paper_url)
     # A real publisher DOI is the strongest signal; prefer it over the arXiv DOI.
     if doi and "arxiv" not in doi.lower():
-        filters.append(("doi", f"doi:{doi.lower()}"))
+        identifiers.append(("doi", f"https://doi.org/{doi.lower()}"))
+    if acl_doi and acl_doi != doi:
+        identifiers.append(("acl-doi", f"https://doi.org/{acl_doi.lower()}"))
     if arxiv_id:
-        filters.append(("arxiv", f"doi:{arxiv_doi(arxiv_id)}"))
+        identifiers.append(
+            ("arxiv", f"https://doi.org/{arxiv_doi(arxiv_id)}")
+        )
     if doi and "arxiv" in doi.lower() and not arxiv_id:
-        filters.append(("doi", f"doi:{doi.lower()}"))
-    return filters
+        identifiers.append(("doi", f"https://doi.org/{doi.lower()}"))
+    return identifiers
 
 
 def fetch_citation_for_paper(
-    paper: PaperEntry, email: Optional[str], timeout: int = 30
+    paper: PaperEntry,
+    email: Optional[str],
+    api_key: Optional[str] = None,
+    timeout: int = 30,
 ) -> Optional[Dict]:
     """Resolve a single paper to an OpenAlex record.
 
     Tries authoritative identifier lookups (publisher DOI, then arXiv DOI) and
     only falls back to a *verified* title search when no identifier resolves.
     """
-    for method, filter_value in _identifier_filters(paper):
-        data = fetch_openalex_by_filter(filter_value, email=email, timeout=timeout)
+    for method, identifier in _identifier_lookups(paper):
+        data = fetch_openalex_by_identifier(
+            identifier,
+            email=email,
+            api_key=api_key,
+            timeout=timeout,
+        )
         if data and data.get("cited_by_count") is not None:
             return build_openalex_entry(paper, data, method)
 
-    data = search_openalex_by_title(paper.title, paper.year, email=email, timeout=timeout)
+    data = search_openalex_by_title(
+        paper.title,
+        paper.year,
+        email=email,
+        api_key=api_key,
+        timeout=timeout,
+    )
     if data and data.get("cited_by_count") is not None:
         return build_openalex_entry(paper, data, "title")
     return None
@@ -276,23 +376,57 @@ def fetch_citation_for_paper(
 def fetch_top_cited(
     papers: Iterable[PaperEntry],
     openalex_email: Optional[str] = None,
+    openalex_api_key: Optional[str] = None,
     top_k: int = 10,
     limit: Optional[int] = None,
     sleep_seconds: float = 0.0,
 ) -> Tuple[List[Dict], Optional[str], Optional[str]]:
+    entries, queried = fetch_all_citations(
+        papers,
+        openalex_email=openalex_email,
+        openalex_api_key=openalex_api_key,
+        limit=limit,
+        sleep_seconds=sleep_seconds,
+    )
+    if entries:
+        note = None
+        if len(entries) < queried:
+            note = f"OpenAlex matched {len(entries)} of {queried} unique works."
+        return dedupe_entries(entries, top_k), note, "OpenAlex"
+
+    return [], "No citation data returned from OpenAlex.", None
+
+
+def fetch_all_citations(
+    papers: Iterable[PaperEntry],
+    openalex_email: Optional[str] = None,
+    openalex_api_key: Optional[str] = None,
+    limit: Optional[int] = None,
+    sleep_seconds: float = 0.0,
+) -> Tuple[List[Dict], int]:
+    """Resolve citation metadata for every unique work.
+
+    A failed rate-limited request raises instead of returning a misleading
+    partial leaderboard. Duplicate rows are resolved once and then reused.
+    """
     openalex_results: List[Dict] = []
     queried = 0
+    seen_targets = set()
     for paper in papers:
+        target_key = normalize_title(paper.title)
+        if target_key in seen_targets:
+            continue
         if limit is not None and queried >= limit:
             break
+        seen_targets.add(target_key)
         queried += 1
-        entry = fetch_citation_for_paper(paper, email=openalex_email)
+        entry = fetch_citation_for_paper(
+            paper,
+            email=openalex_email,
+            api_key=openalex_api_key,
+        )
         if entry is not None:
             openalex_results.append(entry)
         if sleep_seconds:
             time.sleep(sleep_seconds)
-
-    if openalex_results:
-        return dedupe_entries(openalex_results, top_k), None, "OpenAlex"
-
-    return [], "No citation data returned from OpenAlex.", None
+    return openalex_results, queried

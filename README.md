@@ -17,15 +17,15 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# generate data.json for the SPA
-python scripts/build_dashboard.py --paper-repo-dir tmp_papers_repo --output-dir frontend/public --skip-code-fetch --json-only
+# generate data.json for the SPA (use --skip-citations for an offline build)
+OPENALEX_API_KEY=<your-free-key> python scripts/build_dashboard.py --paper-repo-dir tmp_papers_repo --output-dir frontend/public --skip-code-fetch --json-only
 
 # build Svelte + ECharts SPA into frontend/dist
 cd frontend && npm install && npm run build
 # open frontend/dist/index.html in a browser
 ```
 - Omit `--skip-code-fetch` to query GitHub for stars/languages (set `GITHUB_TOKEN` to avoid rate limits).
-- Citation counts come from OpenAlex; set `OPENALEX_EMAIL` (polite usage) or add `--skip-citations` to avoid API calls.
+- Citation counts come from OpenAlex and are cached into the generated JSON for both papers and surveys. Set `OPENALEX_API_KEY` to a free OpenAlex API key and optionally set `OPENALEX_EMAIL`; use `--skip-citations` only for offline builds. Since February 2026, anonymous OpenAlex access is limited to testing and cannot reliably enrich the full collection.
 - Add `--skip-sync` to reuse a pre-cloned paper repo without pulling.
 - The script clones the paper list into `data/papers_repo` by default; override with `--paper-repo-dir` if desired.
 
@@ -35,7 +35,8 @@ cd frontend && npm install && npm run build
 
 ## Deploying to GitHub Pages
 1. Enable Pages in repo settings with source: GitHub Actions.
-2. Push to `main` (or run the workflow manually). The workflow now:
+2. Add an `OPENALEX_API_KEY` repository secret from your OpenAlex account so citation enrichment can complete atomically.
+3. Push to `main` (or run the workflow manually). The workflow now:
    - Runs the Python pipeline to emit `frontend/public/data.json`
    - Installs Node deps and builds the SPA into `frontend/dist`
    - Publishes `frontend/dist` to Pages

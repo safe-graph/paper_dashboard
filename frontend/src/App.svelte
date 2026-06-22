@@ -52,93 +52,7 @@
     pieBorder: theme === "light" ? "#ffffff" : "#141a23",
   };
 
-  /* ---------------------------------------------------------
-     Survey citation counts (runs client-side on GitHub Pages,
-     where OpenAlex is reachable from the user's browser).
-     --------------------------------------------------------- */
-  let surveyCitations = {};
-  let citationsLoading = true;
-
-  /* Robust OpenAlex lookup for a survey (mirrors the Python pipeline):
-     match by publisher DOI / arXiv id first, then a *verified* title search.
-     Returns undefined when no confident match — better to show nothing than a
-     wrong count. */
-  const OA_BASE = "https://api.openalex.org/works";
-  const OA_SELECT = "select=id,display_name,cited_by_count,publication_year";
-  const OA_MAIL = "mailto=ytongdou@gmail.com";
-
-  function normTitle(s) {
-    return (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
-  }
-  function bigrams(s) {
-    const m = new Map();
-    for (let i = 0; i < s.length - 1; i++) {
-      const g = s.substr(i, 2);
-      m.set(g, (m.get(g) || 0) + 1);
-    }
-    return m;
-  }
-  function titleSim(a, b) {
-    a = normTitle(a);
-    b = normTitle(b);
-    if (!a || !b) return 0;
-    if (a === b) return 1;
-    if (Math.min(a.length, b.length) >= 20 && (a.includes(b) || b.includes(a))) return 0.95;
-    if (a.length < 2 || b.length < 2) return 0;
-    const A = bigrams(a), B = bigrams(b);
-    let inter = 0, total = 0;
-    A.forEach((cnt, g) => { total += cnt; if (B.has(g)) inter += Math.min(cnt, B.get(g)); });
-    B.forEach((cnt) => { total += cnt; });
-    return (2 * inter) / total;
-  }
-  function extractDoi(u) {
-    const m = u && u.match(/10\.\d{4,9}\/[^\s?#"']+/i);
-    return m ? m[0].replace(/[).,;]+$/, "") : null;
-  }
-  function extractArxiv(u) {
-    if (!u) return null;
-    let m = u.match(/arxiv\.org\/(?:abs|pdf)\/([^?#\s]+)/i);
-    let raw = m ? m[1] : null;
-    if (!raw) {
-      const m2 = u.match(/(?<!\d)(\d{4}\.\d{4,5})(v\d+)?/);
-      raw = m2 ? m2[1] : null;
-    }
-    if (!raw) return null;
-    raw = raw.replace(/\.pdf$/, "").replace(/v\d+$/, "");
-    return raw || null;
-  }
-  async function fetchSurveyCitation(survey) {
-    const doi = extractDoi(survey.url);
-    const ax = extractArxiv(survey.url);
-    const filters = [];
-    if (doi && !/arxiv/i.test(doi)) filters.push(`doi:${doi.toLowerCase()}`);
-    if (ax) filters.push(`doi:10.48550/arxiv.${ax.toLowerCase()}`);
-    for (const f of filters) {
-      try {
-        const r = await fetch(`${OA_BASE}?filter=${encodeURIComponent(f)}&${OA_SELECT}&per_page=1&${OA_MAIL}`);
-        if (r.ok) {
-          const p = await r.json();
-          if (p.results?.length) return p.results[0].cited_by_count || 0;
-        }
-      } catch (e) { /* try next */ }
-    }
-    try {
-      const q = encodeURIComponent(survey.title.replace(/[^\w\s]/g, " ").trim());
-      const r = await fetch(`${OA_BASE}?search=${q}&${OA_SELECT}&per_page=5&${OA_MAIL}`);
-      if (r.ok) {
-        const p = await r.json();
-        let best = null, score = 0;
-        for (const cand of p.results || []) {
-          const s = titleSim(survey.title, cand.display_name || "");
-          if (s > score) { score = s; best = cand; }
-        }
-        if (best && score >= 0.82) return best.cited_by_count || 0;
-      }
-    } catch (e) { /* give up */ }
-    return undefined;
-  }
-
-  onMount(async () => {
+  onMount(() => {
     // Initialise theme from saved preference or system setting.
     let saved = null;
     try {
@@ -163,14 +77,6 @@
     }
     workspaceHydrated = true;
 
-    const surveys = (data?.resources || []).filter((r) => r.category === "Survey Paper");
-    const results = {};
-    for (const survey of surveys) {
-      const cc = await fetchSurveyCitation(survey);
-      if (cc !== undefined) results[survey.title] = cc;
-    }
-    surveyCitations = results;
-    citationsLoading = false;
   });
 
   /* ---------------------------------------------------------
@@ -224,6 +130,9 @@
     `<span class="chip"><span class="icon">${icon || "★"}</span>${label}</span>`;
 
   const fmt = (n) => (n || n === 0 ? n.toLocaleString("en-US") : "–");
+  const fmtDate = (value) => value
+    ? new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(new Date(value))
+    : "";
   const paperKey = (paper) => paper.paper_url || `${paper.title}::${paper.year || ""}`;
 
   // Shared categorical palette (works in both themes).
@@ -241,7 +150,8 @@
   $: resources = data?.resources || [];
   $: codePaperCount = papers.filter((paper) => paper.has_code || paper.code_url).length;
   $: codePercentage = papers.length ? ((codePaperCount / papers.length) * 100).toFixed(1) : 0;
-  $: citationMap = (stats.top_cited || []).reduce((acc, paper) => {
+  $: citationEntries = stats.paper_citations?.length ? stats.paper_citations : (stats.top_cited || []);
+  $: citationMap = citationEntries.reduce((acc, paper) => {
     acc[paper.title] = paper.citation_count;
     return acc;
   }, {});
@@ -828,8 +738,12 @@
       <section class="section" id="top-cited">
         <div class="section-head"><span class="eyebrow">Impact</span><h2>Most cited papers</h2></div>
         <p class="section-sub">
-          Ranked by citation count{#if stats.citation_source} via {stats.citation_source}{/if}.
-          Counts refresh on each automated build.
+          Ranked by {stats.citation_source || "OpenAlex"}-indexed citations.
+          {#if stats.citation_updated_at} Updated {fmtDate(stats.citation_updated_at)}.{/if}
+          {#if stats.citation_coverage}
+            Matched {fmt(stats.citation_coverage.matched)} of {fmt(stats.citation_coverage.queried)} unique papers.
+          {/if}
+          Counts vary across scholarly indexes; this dashboard reports OpenAlex only and does not mix sources.
         </p>
         <div class="panel">
           <div class="list">
@@ -845,7 +759,7 @@
                       {/if}
                     </span>
                   </span>
-                  <span class="badge">{fmt(paper.citation_count)} cites</span>
+                  <span class="badge">{fmt(paper.citation_count)} OpenAlex cites</span>
                 </div>
               {/each}
             {:else}
@@ -984,17 +898,17 @@
       <section class="section">
         <div class="section-head"><span class="eyebrow">Reading</span><h2>Survey papers</h2></div>
         <p class="section-sub">
-          Citation counts from <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>
-          {#if citationsLoading}<span style="font-size:12px;"> (loading…)</span>{/if}
+          Citation counts are matched and cached during the automated build using
+          <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a>.
         </p>
         <div class="list">
           {#each resources.filter((r) => r.category === "Survey Paper") as res}
             <div class="list-item">
               <span><a href={res.url} target="_blank" rel="noopener">{res.title}</a></span>
-              {#if surveyCitations[res.title] !== undefined}
-                <span class="badge">{fmt(surveyCitations[res.title])} cites</span>
-              {:else if citationsLoading}
-                <span class="badge" style="opacity:0.4;">…</span>
+              {#if res.citation_count !== undefined}
+                <a class="badge" href={res.openalex_url || res.url} target="_blank" rel="noopener">{fmt(res.citation_count)} OpenAlex cites</a>
+              {:else}
+                <span class="badge" style="opacity:0.55;">Not indexed</span>
               {/if}
             </div>
           {/each}
